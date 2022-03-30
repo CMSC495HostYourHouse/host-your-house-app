@@ -1,0 +1,23 @@
+{
+  "name": "host-your-house-app",
+  "version": "1.0.0",
+  "description": "CMS495 Project - Host Your House Inc.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Troy Raines, Khalil Savoy, Caleb Elkins, Geraldo Moura, Thomas Lindley, Paul Armbrester",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.2.9"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
