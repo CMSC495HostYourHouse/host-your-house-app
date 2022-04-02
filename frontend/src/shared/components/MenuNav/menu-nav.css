@@ -1,9 +1,8 @@
 #main-menu {
     position: fixed;
-    padding: 10px;
     background-color: #2F4858;
-    height: 30px;
-    width: 99%;
+    height: 5%;
+    width: 100%;
     color: white;
 }
 
