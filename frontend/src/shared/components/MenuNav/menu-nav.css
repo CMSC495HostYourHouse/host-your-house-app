@@ -1,0 +1,10 @@
+#main-menu {
+    padding: 10px;
+    background-color: #2F4858;
+    height: 30px;
+    color: white;
+}
+
+.account-section {
+    float: right;
+}

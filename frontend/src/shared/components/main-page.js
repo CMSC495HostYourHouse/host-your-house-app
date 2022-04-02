@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import MenuNav from './MenuNav/menu-nav';
+import AppFooter from "./AppFooter/app-footer";
 
 const MainPage = () => {
     return (
-        <div>Hello</div>
+        <MenuNav/>
+        // <AppFooter/>
     )
 }
 

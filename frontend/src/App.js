@@ -1,5 +1,4 @@
-import MainPage from './shared/components/main-page'
-
+import MainPage from './shared/components/main-page';
 
 const App = () => {
   return (
