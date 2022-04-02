@@ -4,8 +4,11 @@ import AppFooter from "./AppFooter/app-footer";
 
 const MainPage = () => {
     return (
-        <MenuNav/>
-        // <AppFooter/>
+        <div style={{height: "100vh"}}>
+            <MenuNav/>
+            <AppFooter/>
+        </div>
+
     )
 }
 

@@ -1,16 +1,15 @@
 
 #main-footer {
-    position: absolute;
-
+    position: fixed;
     background-color: #2F4858;
     color: white;
 
     height: 30px;
+    width: 100%;
 
     bottom: 0;
     padding: 10px;
 }
 
 .creators {
-    float: right;
 }

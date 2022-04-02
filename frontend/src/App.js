@@ -2,7 +2,7 @@ import MainPage from './shared/components/main-page';
 
 const App = () => {
   return (
-    <div><MainPage /></div>
+    <div id={'main-container'} style={{height: "100vh"}}><MainPage /></div>
   );
 }
 
