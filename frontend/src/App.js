@@ -1,9 +1,9 @@
-import Hello from './shared/components/Hello'
+import MainPage from './shared/components/main-page'
 
 
 const App = () => {
   return (
-    <div><Hello /></div>
+    <div><MainPage /></div>
   );
 }
 
