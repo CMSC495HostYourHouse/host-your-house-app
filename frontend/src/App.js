@@ -1,4 +1,4 @@
-import Hello from './components/Hello'
+import Hello from './shared/components/Hello'
 
 
 const App = () => {
