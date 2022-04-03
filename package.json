@@ -16,6 +16,7 @@
   "author": "Troy Raines, Khalil Savoy, Caleb Elkins, Geraldo Moura, Thomas Lindley, Paul Armbrester",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^16.0.0",
@@ -24,7 +25,7 @@
     "mongoose": "^6.2.9"
   },
   "devDependencies": {
-    "concurrently": "^7.0.0",
+    "concurrently": "^7.1.0",
     "nodemon": "^2.0.15"
   }
 }
