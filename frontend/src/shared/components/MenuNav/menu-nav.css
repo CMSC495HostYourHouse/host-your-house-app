@@ -1,0 +1,11 @@
+#main-menu {
+    position: fixed;
+    background-color: #2F4858;
+    height: 5%;
+    width: 100%;
+    color: white;
+}
+
+.account-section {
+    float: right;
+}

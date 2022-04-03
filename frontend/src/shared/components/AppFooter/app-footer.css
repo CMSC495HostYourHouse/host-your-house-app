@@ -1,0 +1,14 @@
+
+#main-footer {
+    position: fixed;
+    background-color: #2F4858;
+    color: white;
+
+    height: 5%;
+    width: 100%;
+
+    bottom: 0;
+}
+
+.creators {
+}
