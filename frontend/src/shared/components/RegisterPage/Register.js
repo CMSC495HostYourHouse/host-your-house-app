@@ -18,11 +18,13 @@ export const Register = () => {
         });
     }
 
+    function comparePasswords(password1, password2) {
+
+    }
+
     //responsible for submitting the user
     async function onSubmit(e) {
         e.preventDefault();
-
-        window.alert("got here");
 
         //creating a new user using the form data
         const newUser = {...form};
