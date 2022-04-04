@@ -33,10 +33,8 @@ userEndpoints.route("/users/:id").get(function (req, res) {
 userEndpoints.route("/users/add").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
   let myobj = {
-    name: req.body.name,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
-    isAdmin: req.body.isAdmin,
   };
   db_connect.collection("records").insertOne(myobj, function (err, res) {
     if (err) throw err;
