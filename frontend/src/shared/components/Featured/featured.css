@@ -1,0 +1,13 @@
+.box {
+  position: relative;
+  left: 10%;
+  size: relative;
+  height: 20%;
+  width: 80%;
+  margin-top: 1%;
+  padding: 1%;
+  border: 3px solid;
+  border-color: #007c91;
+  border-radius: 25px;
+  background-color: #00abc159;
+}

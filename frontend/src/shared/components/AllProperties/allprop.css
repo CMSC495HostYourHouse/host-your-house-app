@@ -1,0 +1,14 @@
+.propbox{
+  position: relative;
+  left: 10%;
+  size: relative;
+  height: 59%;
+  width: 80%;
+  margin-top: 1%;
+  
+  padding: 1%;
+  border: 3px solid;
+  border-color: #007c91;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.7);
+}

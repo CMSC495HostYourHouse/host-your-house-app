@@ -1,14 +1,22 @@
 import React from 'react';
 import './main-page.css';
-import MenuNav from "../MenuNav/menu-nav";
-import AppFooter from "../AppFooter/app-footer";
+
+import TopMenu from "../Topmenu/topmenu";
+import AllProp from '../AllProperties/AllProperties';
+import Featured from '../Featured/Featured';
+
 
 export const MainPage = () => {
-    return (
-        <div>
-            <MenuNav/>
-            <div id={'main-content'}></div>
-            <AppFooter/>
-        </div>
+     return (
+        <section className='homepagebackground'>
+            <div className="homepagebanner">
+                <h1 className="x-large">Host Your House</h1>
+            </div>
+            <TopMenu></TopMenu>
+            <h1 className="labels">Featured Homes</h1>
+            <Featured></Featured>
+            <h1 className="labels">All Properties</h1>
+            <AllProp></AllProp>
+        </section>
     )
 }
