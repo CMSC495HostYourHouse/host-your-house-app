@@ -5,7 +5,7 @@ const userEndpoints = express.Router(); //instance of express router that takes 
 const databaseConnection = require("../conn"); // This will help us connect to the database
 const ObjectId = require("mongodb").ObjectId; // This help convert the id from string to ObjectId for the _id.
 
-// This section will help you get a list of all the records.
+// This section will help you get a list of all the users.
 userEndpoints.route("/users").get(function (req, res) {
   let db_connect = databaseConnection.getDb("users");
   db_connect
@@ -17,7 +17,7 @@ userEndpoints.route("/users").get(function (req, res) {
     });
 });
 
-// This section will help you get a single record by id
+// This section will help you get a single user by id
 userEndpoints.route("/users/:id").get(function (req, res) {
   let db_connect = databaseConnection.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
@@ -39,6 +39,37 @@ userEndpoints.route("/users/add").post(function (req, response) {
   db_connect.collection("records").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
+  });
+});
+
+// Endpoint to login as a particular user.
+userEndpoints.route("/login").post(function (req, response) {
+  let db_connect = databaseConnection.getDb();
+  let myobj = {
+    _id: req.body.email,
+  };
+
+  db_connect.collection("records").findOne(myobj, function (err, user) {
+    if (err) throw err;
+    if (!user) {
+      throw {error: 'User Not Found!'};
+    } else {
+      if (checkPassword(user.password, req.body.password)) {
+        const payload = {id: user.email, name: user.name};
+        jwt.sign(payload, 'secretKey', {
+          expiresIn: 1440
+        },
+            (err, token) => {
+          response.json({
+            success:true,
+            token: "Bearer " + token
+          });
+            });
+        response.json('Success!')
+      } else {
+        throw {error: 'Incorrect Password!'};
+      }
+    }
   });
 });
 
@@ -66,5 +97,12 @@ userEndpoints.route("/:id").delete((req, response) => {
     response.json(obj);
   });
 });
+
+function checkPassword(userInput, dbPassword) {
+  bcrypt.compare(userInput, dbPassword, (err, res) => {
+    return res;
+  });
+    return false
+}
 
 module.exports = userEndpoints;
