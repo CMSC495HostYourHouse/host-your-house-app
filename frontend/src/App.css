@@ -372,6 +372,12 @@ button {
   margin-right: 0.6rem;
 }
 
+.background {
+  position: relative;
+  background: url('./img/vacation_home.jpg') no-repeat center center/cover;
+  height: 100vh;
+}
+
 /* Landing Page */
 .landing {
   position: relative;
