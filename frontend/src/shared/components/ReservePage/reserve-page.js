@@ -4,6 +4,8 @@ import './reserve-page.css';
 import ActivityList from './ActivityList';
 import PhotoSlider from './PhotoSlider';
 
+import {Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
+    SocialDistance, Wash, LocationOn, Flight} from '@mui/icons-material';
 
 export const ReservePage = () => {
     return (
@@ -42,53 +44,54 @@ export const ReservePage = () => {
 /* TEST DATA */
 const amenities_test = [{
     description: "Pool",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: Pool
     }, {
     description: "Free WiFi",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: CellWifi
     }, {
     description: "Parking included",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: LocalParking
     }, {
     description: "Pet Friendly",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: Pets
     }, {        
     description: "Breakfast included",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: FreeBreakfast
+    }, {        
+    description: "Free Airport Shuttle",
+    icon: AirportShuttle
   }]
-
 
 const services_test = [{
     description: "Cleaned with disinfectant",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: Sanitizer
     }, {
     description: "Personal protective equipment",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: Masks
     }, {
     description: "Hand sanitizer provided",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: Wash
     }, {
     description: "Social distancing",
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"  
+    icon: SocialDistance
 }]
-
 
 const activities_test = [{
     description: "William P. Didusch Utolgical Museum",
     distance: '7 min drive',
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: LocationOn
     }, {
     description: "Baltimore, MD (BWI-Baltimore Washington Intl. Thurgood Marshall",
     distance: '11 min drive',
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: Flight
     }, {
     description: "Baltimore Cruise Terminal",
     distance: '12 min drive',
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    icon: LocationOn
     }, {
     description: "Fort McHenry",
     distance: '13 min drive',
-    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"  
+    icon: LocationOn
 }]
 
 const photoUrls_test = [
