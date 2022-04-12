@@ -17,7 +17,7 @@ const reviewSchema = mongoose.Schema({
     timestamps: true
 })
 
-const housesSchema = mongoose.Schema({
+const houseSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         require: true,
@@ -26,6 +26,14 @@ const housesSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true,
     },
     state: {
         type: String,
@@ -55,15 +63,15 @@ const housesSchema = mongoose.Schema({
         required: true,
         default: 0
     },
-    reservations: {
+    reservations: [{
         type: String,
         required: true,
         default: 0
-    }
+    }]
 }, {
     timestamps: true
 })
 
-const Houses = mongoose.model('Properties', housesSchema)
+const House = mongoose.model('Properties', houseSchema)
 
-export default Houses
+export default House

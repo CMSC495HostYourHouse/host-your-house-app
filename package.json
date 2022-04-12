@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "CMS495 Project - Host Your House Inc.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server",
