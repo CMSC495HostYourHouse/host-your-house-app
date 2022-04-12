@@ -30,7 +30,13 @@
     border-radius: var(--large-radius);
 }
 
-.amenity-wrapper {
+.reservation-form h1 {
+    margin-bottom: 8px;
+    font-size: x-large;
+    color: var(--secondary-color-dar);
+}
+
+.service-wrapper {
     display: flex;
     flex-grow: 1;
     justify-content: left;
@@ -38,17 +44,18 @@
     width: 200px;
 }
 
-.amenity-icon {
+.service-icon {
     width: 24px;
     height: 24px;
     margin-right: 8px;
 }
 
-.amenity-label {
-    text-align: center;
+.service-label {
+    text-align: left;
+    font-size: small;
 }
 
-.amenity-grid {
+.service-grid {
     float: left;
     display: flex;
     flex-wrap: wrap;

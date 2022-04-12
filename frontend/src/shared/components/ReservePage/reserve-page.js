@@ -1,6 +1,28 @@
 import React from 'react';
-import AmenityList from './AmenityList';
+import ServiceList from './ServiceList';
 import './reserve-page.css';
+
+
+export const ReservePage = () => {
+    return (
+        <section className='background'>
+            <section className='reservation-form'>
+                <h1>Back to Listings</h1>
+                <section>
+                    <h3>Name</h3>
+                    <p>Address</p>
+                    <label>Rating</label>
+                </section>
+
+                <h1>Amenities</h1>
+                <ServiceList services={amenities_test}/>
+
+                <h1>Cleaning and Safety Practices</h1>
+                <ServiceList services={services_test}/>
+            </section>
+        </section>
+    )
+}
 
 
 const amenities_test = [{
@@ -21,19 +43,16 @@ const amenities_test = [{
   }]
 
 
-export const ReservePage = () => {
-    return (
-        <section className='background'>
-            <section className='reservation-form'>
-                <section>
-                    <h3>Name</h3>
-                    <p>Address</p>
-                    <label>Rating</label>
-                </section>
-
-                <h1>Amenities</h1>
-                <AmenityList amenities={amenities_test}/>
-            </section>
-        </section>
-    )
-}
+const services_test = [{
+    description: "Cleaned with disinfectant",
+    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    }, {
+    description: "Personal protective equipment",
+    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    }, {
+    description: "Hand sanitizer provided",
+    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+    }, {
+    description: "Social distancing",
+    imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"  
+}]
