@@ -5,6 +5,7 @@ import { Landing } from './shared/components/LandingPage/Landing';
 import { Register } from './shared/components/RegisterPage/Register';
 import { Login } from './shared/components/LoginPage/Login';
 import { MainPage } from './shared/components/main-page/main-page';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
