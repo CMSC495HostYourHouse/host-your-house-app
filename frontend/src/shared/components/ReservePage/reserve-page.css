@@ -42,6 +42,7 @@
     color: var(--secondary-color-dar);
 }
 
+/* Services */
 .service-wrapper {
     display: flex;
     flex-grow: 1;
@@ -79,6 +80,7 @@
     width: 60%;
 }
 
+/* Activities */
 .activity-wrapper {
     display: flex;
     flex-grow: 1;
@@ -97,4 +99,21 @@
     text-align: right;
     font-size: small;
     width: 30%;
+}
+
+/* Photo Slider*/
+.photo-container {
+    vertical-align: middle;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.photo {
+    height: 150px;
+    width: 150px;
+    margin: 8px;
+    display: inline-block;
 }

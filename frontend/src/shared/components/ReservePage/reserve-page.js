@@ -2,6 +2,7 @@ import React from 'react';
 import ServiceList from './ServiceList';
 import './reserve-page.css';
 import ActivityList from './ActivityList';
+import PhotoSlider from './PhotoSlider';
 
 
 export const ReservePage = () => {
@@ -11,6 +12,9 @@ export const ReservePage = () => {
                 <section className='reservation-form'>
                     
                     <h1>Back to Listings</h1>
+
+                    <PhotoSlider photos={photoUrls_test}/>
+
                     <section>
                         <h3>Name</h3>
                         <p>Address</p>
@@ -35,6 +39,7 @@ export const ReservePage = () => {
 }
 
 
+/* TEST DATA */
 const amenities_test = [{
     description: "Pool",
     imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
@@ -85,3 +90,12 @@ const activities_test = [{
     distance: '13 min drive',
     imageLink: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"  
 }]
+
+const photoUrls_test = [
+    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
+    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
+    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
+    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
+    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
+    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png" 
+]
