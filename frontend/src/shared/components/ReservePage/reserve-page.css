@@ -60,6 +60,7 @@
     float: right;
     display: inline;
     margin-top: 16px;
+    margin-right: 0;
 }
 
 /* Services */
@@ -133,6 +134,7 @@
 }
 
 .photo {
+    object-fit: cover;
     height: 160px;
     width: 200px;
     margin-right: 8px;

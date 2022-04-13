@@ -5,7 +5,7 @@ import ActivityList from './ActivityList';
 import PhotoSlider from './PhotoSlider';
 import { Link } from 'react-router-dom';
 
-import { Button, FormText } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import { Icon } from '@mui/material';
 import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
@@ -111,11 +111,13 @@ const activities_test = [{
     icon: LocationOn
 }]
 
+// Photos from unsplash.com
 const photoUrls_test = [
-    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
-    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
-    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
-    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
-    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png",
-    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png" 
+    "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    "https://images.unsplash.com/photo-1616137466211-f939a420be84?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
+    "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+    "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1181&q=80",
+    "https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+    "https://images.unsplash.com/photo-1616593969747-4797dc75033e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
 ]
