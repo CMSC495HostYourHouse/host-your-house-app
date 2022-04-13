@@ -3,9 +3,14 @@ import ServiceList from './ServiceList';
 import './reserve-page.css';
 import ActivityList from './ActivityList';
 import PhotoSlider from './PhotoSlider';
+import { Link } from 'react-router-dom';
 
-import {Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
-    SocialDistance, Wash, LocationOn, Flight} from '@mui/icons-material';
+import { Button, FormText } from 'react-bootstrap';
+
+import { Icon } from '@mui/material';
+import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
+    SocialDistance, Wash, LocationOn, Flight, KeyboardBackspace} from '@mui/icons-material';
+
 
 export const ReservePage = () => {
     return (
@@ -13,15 +18,26 @@ export const ReservePage = () => {
             <section className='overlay-light'>
                 <section className='reservation-form'>
                     
-                    <h1>Back to Listings</h1>
+                    {/* Link to go back */}
+                    <Link to="/" className='back-link'>
+                        <Icon component={KeyboardBackspace}/>
+                        <span>Back to Listings</span>
+                    </Link>
 
+                    {/* Submit list of photos for the rental here */}
                     <PhotoSlider photos={photoUrls_test}/>
+                    
+                    {/* Button for reserving the viewed rental */}
+                    <Button id='reserve-button'>Reserve</Button>
 
+                    {/* Name, address, and rating section */}
                     <section>
-                        <h3>Name</h3>
-                        <p>Address</p>
-                        <label>Rating</label>
+                        <h1 id='rental-name'>Name</h1>
+                        <text>Address</text>
+                        <p id='rental-rating'>Rating</p>
                     </section>
+
+                    {/* Left column of form: Amenities and Cleaning/Safety */}
                     <div className='left-column'>
                         <h1>Popular Amenities</h1>
                         <ServiceList services={amenities_test}/>
@@ -30,6 +46,7 @@ export const ReservePage = () => {
                         <ServiceList services={services_test}/>
                     </div>
 
+                    {/* Right column of form: Nearby activities */}
                     <div className='right-column'>
                         <h1>Explore the Area</h1>
                         <ActivityList activities={activities_test}/>

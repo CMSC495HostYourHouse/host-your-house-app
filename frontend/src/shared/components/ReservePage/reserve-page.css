@@ -37,9 +37,29 @@
 }
 
 .reservation-form h1 {
-    margin-bottom: 8px;
     font-size: x-large;
-    color: var(--secondary-color-dar);
+    color: var(--secondary-color-dark);
+}
+
+.back-link {
+    text-decoration: none;
+    font-size: larger;
+}
+
+#rental-name {
+    color: var(--secondary-color-dark);
+    margin-bottom: 0;
+}
+
+#rental-rating {
+    font-size: small;
+    color: var(--primary-color-dark);
+}
+
+#reserve-button {
+    float: right;
+    display: inline;
+    margin-top: 16px;
 }
 
 /* Services */
@@ -65,19 +85,20 @@
 .service-grid {
     display: flex;
     flex-wrap: wrap;
-    max-width: 420px;
-}
-
-.right-column {
-    display: inline;
-    float: right;
-    width: 40%;
+    max-width: 500px;
+    margin-bottom: 16px;
 }
 
 .left-column {
     display: inline;
     float: left;
     width: 60%;
+}
+
+.right-column {
+    display: inline;
+    float: right;
+    width: 40%;
 }
 
 /* Activities */
@@ -112,8 +133,8 @@
 }
 
 .photo {
-    height: 150px;
-    width: 150px;
-    margin: 8px;
+    height: 160px;
+    width: 200px;
+    margin-right: 8px;
     display: inline-block;
 }
