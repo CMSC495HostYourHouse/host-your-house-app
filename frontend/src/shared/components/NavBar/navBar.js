@@ -15,18 +15,15 @@ export const TopMenu = () => {
                 <Navbar.Brand href="/main">Host A House</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav>
-                        <NavDropdown title="Properties" id="nav-dropdown" menuVariant='dark' className='d-flex p-2'>
-                            <Nav.Link href="#/allProperties">All Properties</Nav.Link>
-                            <Nav.Link href="#/savedProperties">Saved Properties</Nav.Link>
-                            <Nav.Link href="#/reservations">All Properties</Nav.Link>
-                        </NavDropdown>
-                    </Nav>
+                    
                     <Nav className="justify-content-end d-flex p-2" style={{ width: "100%" }}>
+                        <Nav.Link href="#/allProperties">All Properties</Nav.Link>
                         <NavDropdown title="Account" id="nav-dropdown" menuVariant='dark' >
                             <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                             <NavDropdown.Item href="/register">Register</NavDropdown.Item>
                             <NavDropdown.Item href="#/myaccount">My Account</NavDropdown.Item>
+                            <NavDropdown.Item href="#/savedProperties">Saved Properties</NavDropdown.Item>
+                            <NavDropdown.Item href="#/reservations">All Properties</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

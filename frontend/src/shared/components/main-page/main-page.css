@@ -1,5 +1,16 @@
 .homepagebackground {
     position: relative;
-    background: url('/src/img/vacation_home.jpg') no-repeat center center/cover;
+    background: url('/src/img/vacation_home.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: rgb(6, 197, 255);
+    
 }

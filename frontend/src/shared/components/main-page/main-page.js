@@ -6,7 +6,6 @@ import AllProp from '../AllProperties/AllProperties';
 import Featured from '../Featured/Featured';
 import MainPageSearch from '../MainPageSearch/mainpageSearch';
 
-
 export const MainPage = () => {
      return (
         <section className='homepagebackground'>
@@ -14,6 +13,7 @@ export const MainPage = () => {
             
             <NavBar />
             <MainPageSearch />
+            
             <Featured />
         </section>
     )
