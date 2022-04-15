@@ -22,8 +22,8 @@ export const TopMenu = () => {
                             <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                             <NavDropdown.Item href="/register">Register</NavDropdown.Item>
                             <NavDropdown.Item href="/myaccount">My Account</NavDropdown.Item>
-                            <NavDropdown.Item href="#/savedProperties">Saved Properties</NavDropdown.Item>
-                            <NavDropdown.Item href="#/reservations">Reserved Properties</NavDropdown.Item>
+                            <NavDropdown.Item href="/mysaved">Saved Properties</NavDropdown.Item>
+                            <NavDropdown.Item href="/myreserved">Reserved Properties</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

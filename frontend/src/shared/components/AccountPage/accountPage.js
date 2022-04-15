@@ -34,8 +34,8 @@ export const AccountPage = () => {
                       </Card.Text>
                       <Card.Footer>
                         <DropdownButton id="dropdown-basic-button" title="Account Actions">
-                        <Dropdown.Item href="#/action-1">Veiw Saved Properties</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Veiw Reserved Properties</Dropdown.Item>
+                        <Dropdown.Item href="/mysaved">Veiw Saved Properties</Dropdown.Item>
+                        <Dropdown.Item href="/myreserved">Veiw Reserved Properties</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Reset Password</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Change Email</Dropdown.Item>
                       </DropdownButton>
