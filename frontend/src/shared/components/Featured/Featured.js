@@ -4,15 +4,21 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/esm/Container';
 import PropertyCards from '../PropertyCards/propertyCards';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export const featured = () => {
      return (
         <section>
             <Container className='d-flex p-2 justify-content-center'>
-                <Card style={{ width: '80rem', height: '50rem'}} bg='dark' text='light'>
-                <Card.Header>Featured Properties</Card.Header>
+                <Card bg='dark' text='light'>
+                <Card.Header><h1>Featured Properties</h1></Card.Header>
                     <Card.Body>
-                        <PropertyCards />
+                        <Row>
+                        <Col><PropertyCards /></Col>
+                        <Col><PropertyCards /></Col>
+                        <Col><PropertyCards /></Col>
+                    </Row>
                         
                     </Card.Body>
                 </Card>
