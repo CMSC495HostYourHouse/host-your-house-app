@@ -12,14 +12,13 @@ export const featured = () => {
         <section>
             <Container className='d-flex p-2 justify-content-center'>
                 <Card bg='dark' text='light'>
-                <Card.Header><h1>Featured Properties</h1></Card.Header>
+                    <Card.Header><h1>Featured Properties</h1></Card.Header>
                     <Card.Body>
                         <Row>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                    </Row>
-                        
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                        </Row>
                     </Card.Body>
                 </Card>
             </Container>

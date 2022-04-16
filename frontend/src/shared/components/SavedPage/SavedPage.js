@@ -16,12 +16,12 @@ export const SavedPage = () => {
                 <Card bg='dark' text='light'>
                 <Card.Header><h1>My Saved Properties</h1></Card.Header>
                     <Card.Body>
+                        modify calebs reservation for here
                         <Row>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                    </Row>
-                        
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                        </Row>
                     </Card.Body>
                 </Card>
             </Container>

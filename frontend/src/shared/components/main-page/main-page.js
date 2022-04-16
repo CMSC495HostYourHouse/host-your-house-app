@@ -11,9 +11,9 @@ export const MainPage = () => {
      return (
         <section className='homepagebackground'>
             <div className='fill-window'>
-            <NavBar />
-            <Featured />
-            <AllPropMainPage />
+                <NavBar />
+                <Featured />
+                <AllPropMainPage />
             </div>
         </section>
     )

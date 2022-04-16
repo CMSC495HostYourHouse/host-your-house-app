@@ -17,7 +17,6 @@ export const mainPageSearch = () => {
                   <Accordion.Header>Search</Accordion.Header>
                   <Accordion.Body className='accordStyle1'>
                     <Row>
-                      <Col><h3>Search</h3></Col>
                       <Col style={{textAlign: 'center'}}><a>City</a></Col>
                       <Col style={{textAlign: 'center'}}><a>Price</a></Col>
                       <Col style={{textAlign: 'center'}}><a>Stars</a></Col>
@@ -25,11 +24,9 @@ export const mainPageSearch = () => {
                       <Col style={{textAlign: 'center'}}><a>Day</a></Col>
                       <Col style={{textAlign: 'center'}}><a>Year</a></Col>
                       <Col></Col>
-                    
                     </Row>
                       <Form>
                         <Row className='d-flex align-items-center'>
-                          <Col><a></a></Col>
                           <Col>
                             <Form.Group controlId="destination">
                               <Form.Select>
@@ -88,17 +85,16 @@ export const mainPageSearch = () => {
                           Search
                         </Button></Col>
                         </Row>
-                        
                       </Form>
                   </Accordion.Body>
                 </Accordion.Item>
+
 
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>Sort</Accordion.Header>
                   <Accordion.Body className='accordStyle1'>
                       <Form>
                         <Row className='d-flex align-items-center'>
-                          <Col><h3>Sort</h3></Col>
                           <Col style={{textAlign: 'right'}}><a>City</a></Col>
                           <Col xs={2}>
                             <Form.Group controlId="destinationSort">
@@ -135,6 +131,10 @@ export const mainPageSearch = () => {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
+            </Container>
+
+              {/* different style for search/sort using cards. takes up more space but looks better
+               */}
                 {/* <Card bg='primary' text='light'>
                     <Card.Body>
                     <Row>
@@ -256,7 +256,7 @@ export const mainPageSearch = () => {
                     </Card.Body> 
                 </Card> */}
            
-</Container>
+
             {/* <Container className='d-flex p-2 justify-content-center'>
                 <Card style={{ width: '80rem', height: '11rem'}} bg='dark' text='light'>
                     <Card.Body>

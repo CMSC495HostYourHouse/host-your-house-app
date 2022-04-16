@@ -12,22 +12,22 @@ export const allPropMainPage = () => {
         <section>
             <Container className='d-flex p-2 justify-content-center flex-row'>
                 <Card bg='dark' text='light'>
-                <Card.Header><h1>All Properties</h1>
-                    <MainPageSearch />
-                </Card.Header>
+                    <Card.Header><h1>All Properties</h1>
+                        <MainPageSearch />
+                    </Card.Header>
                     <Card.Body>
-                    <Row>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                        <Col><PropertyCards /></Col>
-                    </Row>
+                        <Row>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col>
+                        </Row>
                     </Card.Body>
                 </Card>
             </Container>
