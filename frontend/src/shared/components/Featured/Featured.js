@@ -11,7 +11,7 @@ export const featured = () => {
      return (
         <section>
             <Container className='d-flex p-2 justify-content-center'>
-                <Card bg='dark' text='light'>
+                <Card className='featured-card' bg='dark' text='light'>
                     <Card.Header><h1>Featured Properties</h1></Card.Header>
                     <Card.Body>
                         <Row>

@@ -19,9 +19,9 @@ export const TopMenu = () => {
                         <NavDropdown title="Account" id="nav-dropdown" menuVariant='dark' >
                             <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                             <NavDropdown.Item href="/register">Register</NavDropdown.Item>
-                            <NavDropdown.Item href="/myaccount">My Account</NavDropdown.Item>
-                            <NavDropdown.Item href="/mysaved">Saved Properties</NavDropdown.Item>
-                            <NavDropdown.Item href="/myreserved">Reserved Properties</NavDropdown.Item>
+                            <NavDropdown.Item href="/account">My Account</NavDropdown.Item>
+                            <NavDropdown.Item href="/saved">Saved Properties</NavDropdown.Item>
+                            <NavDropdown.Item href="/reserved">Reserved Properties</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
