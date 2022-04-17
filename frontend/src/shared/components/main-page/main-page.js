@@ -1,14 +1,21 @@
 import React from 'react';
 import './main-page.css';
-import MenuNav from "../MenuNav/menu-nav";
-import AppFooter from "../AppFooter/app-footer";
+
+import NavBar from "../NavBar/navBar";
+import Featured from '../Featured/Featured';
+
+import Listings from '../Listings/Listings';
+
 
 export const MainPage = () => {
-    return (
-        <div>
-            <MenuNav/>
-            <div id={'main-content'}></div>
-            <AppFooter/>
+     return (
+        <div className='main-page'>
+            <div className='homepagebackground'></div>
+            <div className='fill-window'>
+                <NavBar />
+                <Featured />
+                <Listings />
+            </div>
         </div>
     )
 }
