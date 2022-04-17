@@ -30,7 +30,7 @@
     "react-bootstrap": "^2.2.3",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.0",
-    "react-scroll-parallax": "^3.0.6"
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",
