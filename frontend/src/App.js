@@ -8,6 +8,7 @@ import { MainPage } from './shared/components/main-page/main-page';
 import { AccountPage } from './shared/components/AccountPage/accountPage';
 import { ReservedPage } from './shared/components/ReservedPage/ReservedPage';
 import { SavedPage } from './shared/components/SavedPage/SavedPage';
+import { ReservePage } from "./shared/components/ReservePage/reserve-page";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -21,6 +22,8 @@ const App = () => {
               <Route path="/account" element={ <AccountPage/> }/>
               <Route path="/reserved" element={ <ReservedPage/> }/>
               <Route path="/saved" element={ <SavedPage/> }/>
+              <Route path="/dashboard" element={ <MainPage/> }/>
+              <Route path="/reservation" element={ <ReservePage/> }/>
           </Routes>
       </Router>
   );
