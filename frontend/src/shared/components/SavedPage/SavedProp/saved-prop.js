@@ -12,7 +12,7 @@ import CheckInCheckOutForm from './CheckInOutForm';
 export const ReservePage = () => {
     return (
         <Container className='d-flex p-2 justify-content-center flex-row'>
-                <Card className='saved-card' bg='dark' text='light'>
+                <Card className='saved-card' bg='light' text='dark'>
                     <Card.Body>
                         <section className='overlay-light'>
                 <section>
