@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+import NavBar from "../NavBar/navBar";
 
 export const Login = () => {
 
@@ -41,7 +42,9 @@ const navigate = useNavigate();
     }
 
     return (
+        
         <div className='register-body'>
+        <NavBar />
             <section className="register-form">
                 <h1 className="large text-primary">Log In</h1>
                 <form className="form" onSubmit={onSubmit}>
