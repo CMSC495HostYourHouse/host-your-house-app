@@ -21,7 +21,7 @@ export const propertyCards = () => {
                       <p>Rating: 4 Star</p>
                       <p>Vaccant: Yes</p>
                     </Card.Text>
-                    <Button variant="primary">Reserve</Button>
+                    <Button href="/reservation" variant="primary">Reserve</Button>
                     <Button variant="success">Save</Button>
                   </Card.Body>
                 </Card>

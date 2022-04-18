@@ -1,17 +1,17 @@
 import React from 'react';
-import './SavedPage.css';
+import './ReservedProperties.css';
 import NavBar from "../NavBar/navBar";
-import SavedPageComp from './SavedPageComp';
+import ReservedPageComp from './ReservedPageComp';
 
-export const SavedPage = () => {
+export const ReservedProperties = () => {
      return (
         <section>
             <div className='homepagebackground'></div>
             <NavBar />
-            <SavedPageComp />
+            <ReservedPageComp />
         
         </section>
     )
 }
 
-export default SavedPage;
+export default ReservedProperties;

@@ -1,45 +1,32 @@
 import React from 'react';
 import ServiceList from './ServiceList';
-import './reserve-page.css';
+import './saved-prop.css';
 import ActivityList from './ActivityList';
 import PhotoSlider from './PhotoSlider';
-import CheckInCheckOutForm from "./CheckInOutForm";
-import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { Icon } from '@mui/material';
 import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
     SocialDistance, Wash, LocationOn, Flight, KeyboardBackspace} from '@mui/icons-material';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/esm/Container';
+import CheckInCheckOutForm from './CheckInOutForm';
 
 export const ReservePage = () => {
     return (
-        
-        <section className='background'>
-            <section className='overlay-light'>
-                <section className='reservation-form'>
-                    
-                    {/* Link to go back */}
-                    <Link to="/" className='back-link'>
-                        <Icon component={KeyboardBackspace}/>
-                        <span>Back to Listings</span>
-                    </Link>
-
-                    {/* Submit list of photos for the rental here */}
-                    <PhotoSlider photos={photoUrls_test}/>
-                    
-                    {/* Pop-up form to get check in check out dates*/}
-                    <div id='reserve-button'><CheckInCheckOutForm /></div>
-                    
-    
-                    {/* Button for reserving the viewed rental */}
-                    {/* <Button id='reserve-button'>Reserve Now</Button> */}
-
+        <Container className='d-flex p-2 justify-content-center flex-row'>
+                <Card className='saved-card' bg='dark' text='light'>
+                    <Card.Body>
+                        <section className='overlay-light'>
+                <section>
                     {/* Name, address, and rating section */}
                     <section>
-                        <h1 id='rental-name'>Name</h1>
+                        <h2 id='rental-name'>Name</h2>
                         <text>Address</text>
                         <p id='rental-rating'>Rating</p>
                     </section>
 
+                    {/* Submit list of photos for the rental here */}
+                    <PhotoSlider photos={photoUrls_test}/>
+
+                    
                     {/* Left column of form: Amenities and Cleaning/Safety */}
                     <div className='left-column'>
                         <h1>Popular Amenities</h1>
@@ -55,8 +42,16 @@ export const ReservePage = () => {
                         <ActivityList activities={activities_test}/>
                     </div>
                 </section>
+                {/* Check in check out days */}
+                        <CheckInCheckOutForm />
             </section>
-        </section>
+            
+                    </Card.Body>
+                </Card>
+            </Container>
+        
+            
+        
     )
 }
 
@@ -124,3 +119,5 @@ const photoUrls_test = [
     "https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
     "https://images.unsplash.com/photo-1616593969747-4797dc75033e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
 ]
+
+export default ReservePage;
