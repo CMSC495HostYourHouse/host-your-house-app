@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom';
 import NavBar from "../NavBar/navBar";
 
 export const Register = () => {
@@ -19,11 +18,13 @@ export const Register = () => {
         });
     }
 
+    function comparePasswords(password1, password2) {
+
+    }
+
     //responsible for submitting the user
     async function onSubmit(e) {
         e.preventDefault();
-
-        window.alert("got here");
 
         //creating a new user using the form data
         const newUser = {...form};
