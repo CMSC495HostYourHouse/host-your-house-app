@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import NavBar from "../NavBar/navBar";
 
 export const Register = () => {
 
@@ -45,6 +46,7 @@ export const Register = () => {
 
     return (
         <div className='register-body'>
+            <NavBar />
             <section className="register-form">
                 <h1 className="large text-primary">Sign Up</h1>
                 <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>

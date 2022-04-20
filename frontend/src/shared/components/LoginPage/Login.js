@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NavBar from "../NavBar/navBar";
 
 export const Login = () => {
     return (
+        
         <div className='register-body'>
+        <NavBar />
             <section className="register-form">
                 <h1 className="large text-primary">Log In</h1>
                 <form className="form" action="">
