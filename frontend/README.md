@@ -1,9 +1,10 @@
 # Frontend for Host Your House App
 
-In order to run the front-end you must first download the latest version of
-Node from the official website - https://nodejs.org/en/
+In order to run the front-end independently of the backend,
+you must first download the latest version of Node from the official
+website at https://nodejs.org/en/
 
-From there you will:
+After downloading both Node and npm, do the following:
 1. Run `npm install` in order to install all of the dependencies.
 2. Run `npm start` in order to start up the front-end application
 

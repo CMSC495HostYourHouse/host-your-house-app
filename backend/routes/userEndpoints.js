@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs') //used for encrypting the password
-
+const jwt = require("jsonwebtoken");
+const keys = require("../config/keys") //secret keys for things
 const express = require("express");
+
 const userEndpoints = express.Router(); //instance of express router that takes control of requests starting with /users
 const databaseConnection = require("../conn"); // This will help us connect to the database
 const ObjectId = require("mongodb").ObjectId; // This help convert the id from string to ObjectId for the _id.
@@ -54,20 +56,20 @@ userEndpoints.route("/login").post(function (req, response) {
     if (!user) {
       throw {error: 'User Not Found!'};
     } else {
-      if (checkPassword(user.password, req.body.password)) {
+      if (bcrypt.compareSync(user.password, req.body.password)) {
         const payload = {id: user.email, name: user.name};
-        jwt.sign(payload, 'secretKey', {
+        jwt.sign(payload, keys.secretOrKey, {
           expiresIn: 1440
         },
-            (err, token) => {
-          response.json({
-            success:true,
-            token: "Bearer " + token
-          });
+          (err, token) => {
+            response.json({
+              success:true,
+              token: "Bearer " + token
             });
-        response.json('Success!')
+          });
       } else {
-        throw {error: 'Incorrect Password!'};
+        // throw {error: 'Incorrect Password!'};
+        console.log('Incorrect Password!')
       }
     }
   });
@@ -97,12 +99,5 @@ userEndpoints.route("/:id").delete((req, response) => {
     response.json(obj);
   });
 });
-
-function checkPassword(userInput, dbPassword) {
-  bcrypt.compare(userInput, dbPassword, (err, res) => {
-    return res;
-  });
-    return false
-}
 
 module.exports = userEndpoints;
