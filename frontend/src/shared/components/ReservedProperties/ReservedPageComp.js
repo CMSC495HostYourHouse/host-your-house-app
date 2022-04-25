@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ReservedProp from './ReservedProp/ReservedProp.js'
 
+// need to check what properties user reserved, and then create the components with the properties data
 
 export const ReservedPageComp = () => {
      return (
@@ -14,6 +15,7 @@ export const ReservedPageComp = () => {
                 <Card className='reserved-card' bg='primary' text='light'>
                     <Card.Header><h1>Reserved Properties</h1>
                     </Card.Header>
+                    {/* will need to dynamicly create rows based on how many properties are reserved */}
                     <Card.Body>
                         <Row>
                             <Col><ReservedProp /></Col>

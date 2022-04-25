@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Savedprop from './SavedProp/saved-prop.js'
 
+// need to get what properties user saved and use the properties information to display the properties with thier information
+
 
 export const SavedPageComp = () => {
      return (
@@ -14,6 +16,7 @@ export const SavedPageComp = () => {
                 <Card className='saved-card' bg='primary' text='light'>
                     <Card.Header><h1>Saved Properties</h1>
                     </Card.Header>
+                    {/* need to dynamically create rows based on how many properties saved */}
                     <Card.Body>
                         <Row>
                             <Col><Savedprop /></Col>

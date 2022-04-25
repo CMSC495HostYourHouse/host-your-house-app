@@ -3,9 +3,8 @@ import './propertyCards.css';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/esm/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 
+// need to take in what property card to make for properties from the database.
 
 export const propertyCards = () => {
      return (
