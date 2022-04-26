@@ -1,10 +1,8 @@
 const colors = require('colors');
 const express = require('express');
 const passport = require('passport');
-
 require('dotenv').config({ path: './config.env' })
 const connectDB = require('./config/db.js')
-// import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 const housesEndpoints = require('./routes/housesEndpoints');
 

@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import NavBar from "../NavBar/navBar";
+import {setToken} from "../../../utils/authToken";
+import jwt_decode from "jwt-decode";
 
 export const Login = () => {
 
@@ -32,13 +34,15 @@ const navigate = useNavigate();
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newUser)
+        }).then(async response => {
+            let res = await response.json();
+            setToken(await jwt_decode(res.token));
+            setForm({email: "", password: ""}) //reset the form
+            navigate("/")
         }).catch (error => { //if there is an error
             window.alert(error); //make a pop-up of the issue appear
             return; //end the code block
         });
-
-        setForm({email: "", password: ""}) //reset the form
-        navigate("/")
     }
 
     return (

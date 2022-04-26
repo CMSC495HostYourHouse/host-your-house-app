@@ -13,7 +13,7 @@ export const SavedPageComp = () => {
      return (
         <section>
         <Container className='d-flex p-2 justify-content-center flex-row'>
-                <Card className='saved-card' bg='primary' text='light'>
+                <Card className='saved-card' bg='dark' text='light'>
                     <Card.Header><h1>Saved Properties</h1>
                     </Card.Header>
                     {/* need to dynamically create rows based on how many properties saved */}

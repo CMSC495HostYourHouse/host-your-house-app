@@ -14,7 +14,6 @@ const App = () => {
   return (
       <Router>
           <Routes>
-              {/* Removed unused paths/duplicates */}
               <Route path="/" element={ <MainPage/> }/>
               <Route path="/register" element={ <Register/> }/>
               <Route path="/login" element={ <Login/> }/>
