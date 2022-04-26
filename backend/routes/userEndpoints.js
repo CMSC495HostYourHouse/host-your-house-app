@@ -52,24 +52,23 @@ userEndpoints.route("/login").post(function (req, response) {
   };
 
   db_connect.collection("records").findOne(myobj, function (err, user) {
-    if (err) throw err;
+    if (err) return response.status(400).json(err);
     if (!user) {
-      throw { error: 'User Not Found!' };
+      return response.status(400).json({error: 'User Not Found!'});
     } else {
-      if (bcrypt.compareSync(user.password, req.body.password)) {
-        const payload = { id: user.email, name: user.name };
+      if (bcrypt.compareSync(req.body.password, user.password)) {
+        const payload = {id: user.email, name: user.name};
         jwt.sign(payload, keys.secretOrKey, {
           expiresIn: 1440
         },
           (err, token) => {
             response.json({
-              success: true,
+              success:true,
               token: "Bearer " + token
             });
           });
       } else {
-        // throw {error: 'Incorrect Password!'};
-        console.log('Incorrect Password!')
+        return response.status(400).json({error: 'Incorrect Password!'});
       }
     }
   });
