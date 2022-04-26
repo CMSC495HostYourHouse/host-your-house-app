@@ -16,6 +16,6 @@ body {
 
 }
 .saved-card {
-  max-width: 70vw;
-  min-width: 70vw !important;
+  max-width: 1000px !important;
+  min-width: 1000px !important;
 }
