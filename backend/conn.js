@@ -23,5 +23,3 @@ module.exports = {
     return _db;
   },
 };
-
-export default connectToServer

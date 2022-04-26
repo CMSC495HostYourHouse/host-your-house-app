@@ -1,24 +1,25 @@
-import mongoose from 'mongoose'
-import users from './data/users.js'
-import houses from './data/houses.js'
-import User from './models/userModels.js'
-import House from './models/propertiesModel.js'
+const dotenv = require('dotenv');
+const colors = require('colors');
+const mongoose = require('mongoose');
+// const users = require('./data/users.js');
+const houses = require('./data/houses.js')
+// const User = require('./models/userModels.js');
+const House = require('./models/propertiesModel.js');
+const connectDB = require('./config/db.js');
 
-import connectToServer from './conn.js';
-
-connectToServer()
+connectDB()
 
 const importData = async () => {
     try {
         await House.deleteMany()
-        await User.deleteMany()
+        // await User.deleteMany()
 
-        const createdUsers = await User.insertMany(users)
+        // const createdUsers = await User.insertMany(users)
 
-        const adminUser = createdUsers[0]._id
+        // const adminUser = createdUsers[0]._id
 
         const sampleHouses = houses.map((house) => {
-            return { ...house, user: adminUser }
+            return { ...house }
         })
 
         await House.insertMany(sampleHouses)

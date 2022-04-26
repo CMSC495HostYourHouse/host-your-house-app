@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const reviewSchema = mongoose.Schema({
     name: {
@@ -74,4 +74,4 @@ const houseSchema = mongoose.Schema({
 
 const House = mongoose.model('Properties', houseSchema)
 
-export default House
+module.exports = House;

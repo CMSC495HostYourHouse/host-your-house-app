@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "CMS495 Project - Host Your House Inc.",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server",
@@ -31,6 +30,8 @@
     "jquery": "^3.6.0",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.9",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
     "popper.js": "^1.16.1",
     "react": "^18.0.0",
     "react-bootstrap": "^2.2.3",

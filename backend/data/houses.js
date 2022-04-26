@@ -53,4 +53,4 @@ const houses = [
     }
 ]
 
-export default houses
+module.exports = houses;
