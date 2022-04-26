@@ -22,13 +22,13 @@ userEndpoints.route("/users").get(function (req, res) {
 // This section will help you get a single user by id
 userEndpoints.route("/users/:id").get(function (req, res) {
   let db_connect = databaseConnection.getDb();
-  let myquery = { _id: ObjectId( req.params.id )};
+  let myquery = { _id: ObjectId(req.params.id) };
   db_connect
-      .collection("records")
-      .findOne(myquery, function (err, result) {
-        if (err) throw err;
-        res.json(result);
-      });
+    .collection("records")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
 });
 
 // This section will help you create a new record.
@@ -77,7 +77,7 @@ userEndpoints.route("/login").post(function (req, response) {
 // This section will help you update a record by id.
 userEndpoints.route("/update/:id").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
-  let myquery = { _id: ObjectId( req.params.id )};
+  let myquery = { _id: ObjectId(req.params.id) };
   let newvalues = {
     $set: {
       name: req.body.name,
@@ -91,7 +91,7 @@ userEndpoints.route("/update/:id").post(function (req, response) {
 // This section will help you delete a record
 userEndpoints.route("/:id").delete((req, response) => {
   let db_connect = databaseConnection.getDb();
-  let myquery = { _id: ObjectId( req.params.id )};
+  let myquery = { _id: ObjectId(req.params.id) };
   db_connect.collection("records").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 user deleted");

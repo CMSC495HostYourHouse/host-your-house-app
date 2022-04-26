@@ -11,11 +11,16 @@ export const listings = () => {
      return (
         <section>
             <Container className='d-flex p-2 justify-content-center flex-row'>
+                {/* Listings card diplays on main page, shows all the properties */}
                 <Card className='listings-card' bg='dark' text='light'>
                     <Card.Header><h1>All Properties</h1>
+                        {/* bring in the search/sort bars */}
+                        {/* this will need to be modified to get what the user selected and modify the order or what listings show in the card  */}
                         <MainPageSearch />
                     </Card.Header>
                     <Card.Body>
+                        {/* This needs to be modified to be dynamic. it needs to initially display all properties, but then needs to be able to show the properties sorted
+                            or only show matching properties to search. This will require the dynamic creation of the collomuns based on how many properties shown */}
                         <Row>
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
