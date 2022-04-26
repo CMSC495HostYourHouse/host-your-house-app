@@ -2,10 +2,7 @@ import React from 'react';
 import './accountPage.css';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import NavBar from "../NavBar/navBar";
-import Button from 'react-bootstrap/esm/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 

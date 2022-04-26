@@ -1,4 +1,3 @@
-
 let token = {
     token: '',
     name: '',
@@ -23,5 +22,4 @@ export const checkToken = () => {
     } else {
         return false;
     }
-
 };
