@@ -1,13 +1,15 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
-
+const databaseConnection = require("../conn"); // This will help us connect to the database
 const House = require('../models/propertiesModel');
+const ObjectId = require("mongodb").ObjectId; // This help convert the id from string to ObjectId for the _id.
+
 
 // @desc Fetch all houses
 // @route GET /api/houses
 // @access Public
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/houses2', asyncHandler(async (req, res) => {
     const houses = await House.find({})
 
     res.json(houses)

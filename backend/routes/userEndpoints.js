@@ -19,6 +19,30 @@ userEndpoints.route("/users").get(function (req, res) {
     });
 });
 
+// This section will help you get a list of all the houses.
+userEndpoints.route("/houses").get(function (req, res) {
+  let db_connect = databaseConnection.getDb("houses");
+  db_connect
+    .collection("properties")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
+// This section will help you get a single house by id
+userEndpoints.route("/house/:id").get(function (req, res) {
+  let db_connect = databaseConnection.getDb('house');
+  let myquery = { _id: ObjectId(req.params.id) };
+  db_connect
+    .collection("properties")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 // This section will help you get a single user by id
 userEndpoints.route("/users/:id").get(function (req, res) {
   let db_connect = databaseConnection.getDb();
@@ -35,7 +59,8 @@ userEndpoints.route("/users/:id").get(function (req, res) {
 userEndpoints.route("/users/add").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
   let myobj = {
-    _id: req.body.email,
+    _id: new ObjectId(),
+    email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
   };
   db_connect.collection("records").insertOne(myobj, function (err, res) {
@@ -48,7 +73,7 @@ userEndpoints.route("/users/add").post(function (req, response) {
 userEndpoints.route("/login").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
   let myobj = {
-    _id: req.body.email,
+    email: req.body.email,
   };
 
   db_connect.collection("records").findOne(myobj, function (err, user) {
