@@ -9,7 +9,7 @@ const ObjectId = require("mongodb").ObjectId; // This help convert the id from s
 // @desc Fetch all houses
 // @route GET /api/houses
 // @access Public
-router.get('/houses2', asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
     const houses = await House.find({})
 
     res.json(houses)
