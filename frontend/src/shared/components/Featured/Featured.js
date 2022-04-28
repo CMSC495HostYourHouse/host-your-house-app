@@ -20,14 +20,16 @@ class Featured extends React.Component{
             DataisLoaded: false
         };
     }
+
+    
     // trying to get single house, no work
     componentDidMount() {
+        const house = {
+            body: '626755f52b362e4bbac37904'
+        }
+
         fetch("http://localhost:5000/api/houses/:id", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            params: JSON.stringify('626755f52b362e4bbac37904')
+            house
         }).then((res) => res.json())
             .then((json) => {
                 this.setState({
@@ -35,6 +37,7 @@ class Featured extends React.Component{
                     DataisLoaded: true
                 });
             })
+        
     }
 
     // gets all houses works ------------------------------------------

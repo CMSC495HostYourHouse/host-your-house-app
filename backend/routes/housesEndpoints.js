@@ -1,3 +1,4 @@
+const { ContactlessOutlined } = require('@mui/icons-material');
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
@@ -19,7 +20,8 @@ router.get('/:id', asyncHandler(async (req, res) => {
     const house = await House.findById(req.params.id)
 
     if (house) {
-        res.json(product)
+        res.json(house)
+        console.log(house)
     } else {
         res.status(404)
         throw new Error('Product not found!')
