@@ -1,4 +1,4 @@
-import React, {Component } from 'react';
+import React from 'react';
 import './featured.css';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/esm/Container';
@@ -15,29 +15,21 @@ class Featured extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-            items: [],
-            DataisLoaded: false
-        };
-    }
 
-    
-    // trying to get single house, no work
-    componentDidMount() {
-        const house = {
-            body: '626755f52b362e4bbac37904'
-        }
-
-        fetch("http://localhost:5000/api/houses/:id", {
-            house
-        }).then((res) => res.json())
-            .then((json) => {
-                this.setState({
-                    items: json,
-                    DataisLoaded: true
-                });
-            })
-        
+        fetch("http://localhost:5000/api/houses/626755f52b362e4bbac37904", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            
+        }).then(async(res) => {
+            let house = await res.json()
+            console.log(house)
+            this.setState({
+                items: house,
+                DataisLoaded: true
+            });
+        })
     }
 
     // gets all houses works ------------------------------------------
@@ -54,7 +46,7 @@ class Featured extends React.Component{
     // }
 
     render(){
-        const { DataisLoaded, items } = this.state;
+        const { items, DataisLoaded } = this.state;
         if (!DataisLoaded) return <div>
             <h1> Pleses wait some time.... </h1> </div> ;
 
@@ -70,14 +62,7 @@ class Featured extends React.Component{
                         <Row>
                             {/* Bring in test property cards, theese need to be updated to be able to select specific properties from the database, and display their information */}
                             {/* I think this could just be static */}
-                            <Col>{
-                                items.map((item) => ( 
-                                <ol key = { item._id } >
-                                    
-                                    house name: { item.name} 
-                                    </ol>
-                                ))
-                            }</Col>
+                            <Col>house name: { items.name} </Col>
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>

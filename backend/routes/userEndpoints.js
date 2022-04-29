@@ -59,7 +59,6 @@ userEndpoints.route("/users/:id").get(function (req, res) {
 userEndpoints.route("/users/add").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
   let myobj = {
-    _id: new ObjectId(),
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
   };
