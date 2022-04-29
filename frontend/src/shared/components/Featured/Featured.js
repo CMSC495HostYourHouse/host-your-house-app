@@ -12,28 +12,7 @@ class Featured extends React.Component{
         house2_id : '626755f52b362e4bbac37906',
         house3_id : '626755f52b362e4bbac37907'
     }
-
-    constructor(props) {
-        super(props);
-
-        fetch("http://localhost:5000/api/houses/626755f52b362e4bbac37904", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            
-        }).then(async(res) => {
-            let house = await res.json()
-            console.log(house)
-            this.setState({
-                items: house,
-                DataisLoaded: true
-            });
-        })
-    }
-
-    // gets all houses works ------------------------------------------
-
+    // gets all houses
     // componentDidMount() {
     //     fetch("http://localhost:5000/api/houses/")
     //         .then((res) => res.json())
@@ -44,13 +23,10 @@ class Featured extends React.Component{
     //             });
     //         })
     // }
-
     render(){
-        const { items, DataisLoaded } = this.state;
-        if (!DataisLoaded) return <div>
-            <h1> Pleses wait some time.... </h1> </div> ;
-
-     return (
+        
+        return (
+            
         <section>
             
             {/* container for featured card */}
@@ -62,10 +38,9 @@ class Featured extends React.Component{
                         <Row>
                             {/* Bring in test property cards, theese need to be updated to be able to select specific properties from the database, and display their information */}
                             {/* I think this could just be static */}
-                            <Col>house name: { items.name} </Col>
-                            <Col><PropertyCards /></Col>
-                            <Col><PropertyCards /></Col>
-                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards featHouse = {this.state.house1_id} /></Col>
+                            <Col><PropertyCards featHouse = {this.state.house2_id}/></Col>
+                            <Col><PropertyCards featHouse = {this.state.house3_id}/></Col>
                         </Row>
                     </Card.Body>
                 </Card>

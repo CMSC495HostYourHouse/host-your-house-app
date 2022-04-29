@@ -7,7 +7,23 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MainPageSearch from '../MainPageSearch/mainpageSearch';
 
-export const listings = () => {
+class listings extends React.Component{
+    state = {
+        items: []
+    }
+    // gets all houses
+    componentDidMount() {
+        fetch("http://localhost:5000/api/houses/")
+            .then(async(res) => await res.json())
+            .then((json) => {
+                this.setState({
+                    items: json,
+                    DataisLoaded: true
+                });
+            })
+    }
+
+    render(){
      return (
         <section>
             <Container className='d-flex p-2 justify-content-center flex-row'>
@@ -22,6 +38,12 @@ export const listings = () => {
                         {/* This needs to be modified to be dynamic. it needs to initially display all properties, but then needs to be able to show the properties sorted
                             or only show matching properties to search. This will require the dynamic creation of the collomuns based on how many properties shown */}
                         <Row>
+                            {this.state.items.map(item =>(
+                              <Col key={item._id}>
+                              <PropertyCards featHouse = {item._id}/>
+                              </Col>  
+                            ))}
+                            {/* <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
@@ -30,8 +52,7 @@ export const listings = () => {
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
-                            <Col><PropertyCards /></Col>
-                            <Col><PropertyCards /></Col>
+                            <Col><PropertyCards /></Col> */}
                         </Row>
                     </Card.Body>
                 </Card>
@@ -39,5 +60,5 @@ export const listings = () => {
         </section>
     )
 }
-
+}
 export default listings;
