@@ -40,6 +40,9 @@ router.get('/search/:searchType/:item1/:item2', asyncHandler(async (req, res) =>
     if(search == 2){
         house = await searchRating(req.params.item1)
     }
+    if(search == 3){
+        house = await House.find({})
+    }
     
     console.log(house)
     if (house) {

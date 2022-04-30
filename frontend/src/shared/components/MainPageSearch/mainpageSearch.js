@@ -5,18 +5,13 @@ import Container from 'react-bootstrap/Container';
 import Form from  'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Accordion from 'react-bootstrap/Accordion'
+import Accordion from 'react-bootstrap/Accordion';
 
 // need to export user input from here to sort search properties in the listings component
 
 class mainPageSearch extends React.Component{
-      state = {
-        items: [],
-        searchType: [0, 1, 2],
-        price1: [0, 50],
-        price2: [50, 100],
-      }
   render(){
+    
      return (
         <section>
             <Container>
@@ -96,36 +91,12 @@ class mainPageSearch extends React.Component{
                           <Form.Group controlId="dayAvail">
                               <Form.Select>
                                 <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                                <option>04</option>
-                                <option>05</option>
-                                <option>06</option>
-                                <option>07</option>
-                                <option>08</option>
-                                <option>09</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>17</option>
-                                <option>18</option>
-                                <option>19</option>
-                                <option>20</option>
-                                <option>21</option>
-                                <option>22</option>
-                                <option>23</option>
-                                <option>24</option>
-                                <option>25</option>
-                                <option>26</option>
-                                <option>27</option>
-                                <option>28</option>
-                                <option>29</option>
-                                <option>30</option>
-                                <option>31</option>
+                                <option>02</option><option>03</option><option>04</option><option>05</option><option>06</option>
+                                <option>07</option><option>08</option><option>09</option><option>10</option><option>11</option>
+                                <option>12</option><option>13</option><option>14</option><option>15</option><option>16</option>
+                                <option>17</option><option>18</option><option>19</option><option>20</option><option>21</option>
+                                <option>22</option><option>23</option><option>24</option><option>25</option><option>26</option>
+                                <option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
                               </Form.Select>
                             </Form.Group>
                           </Col>
