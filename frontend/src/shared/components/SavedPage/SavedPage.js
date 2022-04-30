@@ -9,7 +9,6 @@ export const SavedPage = () => {
      return (
         <section>
             <div className='homepagebackground'></div>
-            <NavBar />
             <SavedPageComp />
         
         </section>

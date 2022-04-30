@@ -9,7 +9,6 @@ export const ReservedProperties = () => {
      return (
         <section>
             <div className='homepagebackground'></div>
-            <NavBar />
             <ReservedPageComp />
         
         </section>

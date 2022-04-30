@@ -5,7 +5,6 @@ import ActivityList from './ActivityList';
 import PhotoSlider from './PhotoSlider';
 import CheckInCheckOutForm from "./CheckInOutForm";
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import { Icon } from '@mui/material';
 import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
     SocialDistance, Wash, LocationOn, Flight, KeyboardBackspace} from '@mui/icons-material';
@@ -13,7 +12,6 @@ import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sani
 export const ReservePage = () => {
     return (
         
-        <section className='background'>
             <section className='overlay-light'>
                 <section className='reservation-form'>
                     
@@ -56,7 +54,6 @@ export const ReservePage = () => {
                     </div>
                 </section>
             </section>
-        </section>
     )
 }
 
