@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import NavBar from "../NavBar/navBar";
+import './register-page.css'
 
 export const Register = () => {
 
@@ -49,14 +50,13 @@ export const Register = () => {
         <div className='register-body'>
             <NavBar />
             <section className="register-form">
-                <h1 className="large text-primary">Sign Up</h1>
-                <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+                <h1 className="medium text-primary">Register</h1>
                 <form className="form" onSubmit={onSubmit}>
 
                     <div className="form-group">
                         <input 
                             type="email" 
-                            placeholder="Email Address" 
+                            placeholder="Email" 
                             name="email"
                             id="email"
                             value={form.email}
@@ -64,7 +64,7 @@ export const Register = () => {
                             required/>
                     </div>
 
-                    <div className="form-group" style={{ marginTop: '2rem' }}>
+                    <div className="form-group">
                         <input
                             type="password"
                             placeholder="Password"
@@ -83,14 +83,12 @@ export const Register = () => {
                             minLength="8"/>
                     </div>
 
-                    <div className='form-group'>
-                        <input type="submit" className="btn btn-primary" value="Register" />
+                    <div className='form-group right-justified'>
+                        <Link to="/login" id='sign-in'><b> Sign In</b></Link>
+                        <input type="submit" className="btn btn-primary" value="Submit" />
                     </div>
                 </form>
 
-                <p className="my-1">Already have an account? 
-                    <Link to="/login"><b> Sign In</b></Link>
-                </p>
             </section>
         </div>
       )
