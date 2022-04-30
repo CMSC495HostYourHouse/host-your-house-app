@@ -35,7 +35,7 @@ userEndpoints.route("/users/:id").get(function (req, res) {
 userEndpoints.route("/users/add").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
   let myobj = {
-    _id: req.body.email,
+    email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
   };
   db_connect.collection("records").insertOne(myobj, function (err, res) {
@@ -48,7 +48,7 @@ userEndpoints.route("/users/add").post(function (req, response) {
 userEndpoints.route("/login").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
   let myobj = {
-    _id: req.body.email,
+    email: req.body.email,
   };
 
   db_connect.collection("records").findOne(myobj, function (err, user) {
