@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import NavBar from "../NavBar/navBar";
 import {setToken} from "../../../utils/authToken";
 import jwt_decode from "jwt-decode";
+import '../RegisterPage/register-page.css'
 
 export const Login = () => {
 
@@ -50,14 +51,19 @@ const navigate = useNavigate();
         <div className='register-body'>
         <NavBar />
             <section className="register-form">
-                <h1 className="large text-primary">Log In</h1>
-                <form className="form" onSubmit={onSubmit}>
+                <h1 className="medium text-primary">Log In</h1>
 
+                <p id='register-link-group'>
+                    Don't Have an Account? 
+                    <Link to="/register" id="register-link"><b>Create One Here</b></Link>
+                </p>
+
+                <form className="form" onSubmit={onSubmit}>
 
                     <div className="form-group">
                         <input 
                             type="email" 
-                            placeholder="Email Address" 
+                            placeholder="Email" 
                             name="email"
                             value={form.email}
                             onChange={(e) => updateForm({email: e.target.value})}
@@ -75,7 +81,6 @@ const navigate = useNavigate();
                     </div>
 
                     <div className="right-justified">
-                        <button className='btn btn-white'><Link to="/register"><b>Sign Up</b></Link></button>
                         <input type="submit" className="btn btn-primary" value="Log In" />
                     </div>
                 </form>

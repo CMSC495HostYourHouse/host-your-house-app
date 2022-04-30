@@ -83,8 +83,8 @@ export const Register = () => {
                             minLength="8"/>
                     </div>
 
-                    <div className='form-group right-justified'>
-                        <Link to="/login" id='sign-in'><b> Sign In</b></Link>
+                    <div className='right-justified'>
+                        <Link to="/login" id='sign-in-link'><b>Sign In</b></Link>
                         <input type="submit" className="btn btn-primary" value="Submit" />
                     </div>
                 </form>
