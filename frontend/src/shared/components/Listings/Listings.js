@@ -21,30 +21,40 @@ class Listings extends React.Component{
 			searchParam2: 0,
 			
 		};
-		this.handleChange = this.handleChange.bind(this);
+		this.handleChange0 = this.handleChange0.bind(this);
 		this.handleChange2 = this.handleChange2.bind(this);
 		this.handleChange3 = this.handleChange3.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this)
 		
   }
-	handleChange(evt) {
+	handleChange0(evt) {
 		this.setState({searchType: 1});
 		this.setState({searchParam1: evt.target.value});
-		console.log("new value city", evt.target.value);
-		this.updatelist();
+		console.log("new value city");
+		console.log(this.state.searchParam1)
+		
 	}
 
 	handleChange2(evt) {
 		this.setState({searchType: 0});
 		this.setState({searchParam2: evt.target.value});
 		console.log("new value price", evt.target.value);
-		this.updatelist();
+		console.log(2)
+		console.log(this.state.searchParam2)
 	}
 
 	handleChange3(evt) {
 		this.setState({searchType: 2});
 		this.setState({searchParam2: evt.target.value});
 		console.log("new value rating", evt.target.value);
-		this.updatelist();
+		console.log(this.state.searchParam2)
+	}
+
+	handleSubmit(evt){
+		this.updatelist()
+		evt.preventDefault();
+		
+		console.log("submitted");
 	}
 
 	updatelist(){
@@ -52,8 +62,11 @@ class Listings extends React.Component{
 				.then(async(res) => await res.json())
 				.then((json) => {
 					this.setState({
-							items: json,
-							DataisLoaded: true
+						items: []
+					})
+					this.setState({
+						items: json,
+						DataisLoaded: true
 							
 					}); 
 					console.log(json)
@@ -97,19 +110,19 @@ class Listings extends React.Component{
 											<Col style={{textAlign: 'center'}}><a>Year</a></Col>
 											<Col></Col>
 										</Row>
-										<Form >
+										<Form onSubmit={this.handleSubmit}>
 													{/* second row is the form groups */}
 											<Row className='d-flex align-items-center'>
 												<Col>
 													{/* destination form group */}
 													<Form.Group>
 													{/* controlId="destination" onChange={handleChange} value={this.state.destination} */}
-														<Form.Select name="city" onChange={this.handleChange}>
+														<Form.Select name="city" onChange={this.handleChange0}>
 															<option></option>
-															<option value={"Sebastool"}>Sebastool</option>
-															<option value={"Hamlin"}>Hamlin</option>
-															<option value={"Joshua Tree"}>Joshua Tree</option>
-															<option value={"Terlingue"}>Terlingua</option>
+															<option value={'Sebastool'}>Sebastool</option>
+															<option value={'Hamlin'}>Hamlin</option>
+															<option value={'Joshua Tree'}>Joshua Tree</option>
+															<option value={'Terlingue'}>Terlingua</option>
 														</Form.Select>
 													</Form.Group>
 												</Col>
@@ -131,11 +144,11 @@ class Listings extends React.Component{
 													<Form.Group name="rating" onChange={this.handleChange3}>
 													<Form.Select>
 														<option></option>
-														<option value={1}>1 Star</option>
-														<option value={2}>2 Star</option>
-														<option value={3}>3 Star</option>
-														<option value={4}>4 Star</option>
-														<option value={5}>5 Star</option>
+														<option value={1}>0 to 1 Star</option>
+														<option value={2}>1 to 2 Star</option>
+														<option value={3}>2 to 3 Star</option>
+														<option value={4}>3 to 4 Star</option>
+														<option value={5}>4 to 5 Star</option>
 													</Form.Select>
 													</Form.Group>
 												</Col>
@@ -179,7 +192,7 @@ class Listings extends React.Component{
 														</Form.Select>
 													</Form.Group>
 												</Col>
-												<Col><Button variant="success" type="submit" value="Submit">Search</Button></Col>
+												<Col><Button variant="success" type="submit" value={"Submit"}>Search</Button></Col>
 											</Row>
 										</Form>
 									</Accordion.Body>
