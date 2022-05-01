@@ -39,7 +39,7 @@ class Featured extends React.Component{
                         <Row>
                             {/* Bring in test property cards, theese need to be updated to be able to select specific properties from the database, and display their information */}
                             {/* I think this could just be static */}
-                            <Col><PropertyCards featHouse = {this.state.house1_id} /></Col>
+                            <Col><FeaturedProperty featHouse = {this.state.house1_id} /></Col>
                             <Col><FeaturedProperty featHouse = {this.state.house2_id}/></Col>
                             <Col><FeaturedProperty featHouse = {this.state.house3_id}/></Col>
                         </Row>

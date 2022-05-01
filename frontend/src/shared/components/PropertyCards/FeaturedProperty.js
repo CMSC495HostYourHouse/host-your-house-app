@@ -44,10 +44,11 @@ state = {
                         <h2 className='header2'>{items.name}</h2>
                         <span className="featured-address">{items.city}, {items.state} {items.zipCode}</span><br/>
                         
-                        <div className='featured-price'>${items.price}</div>
-                        <div className='featured-rating-container'>
-                            <span >{items.rating}</span>
+                        <div className='featured-bottom-container'>
+                            <span className='featured-price'>Price: <b>${items.price}/Night</b></span>
+                            <span><b>{items.rating}</b></span>
                             <StarRateIcon/>
+                            <span className="featured-reviews-num">({items.numReviews} reviews)</span>
                         </div>
                     </div>
                 </Link>

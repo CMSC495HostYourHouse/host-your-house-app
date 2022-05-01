@@ -1,14 +1,14 @@
 .featured-body {
+    position: relative;
     background-color: rgb(255, 255, 255);
     color: var(--secondary-color-dark);
-    max-height: 40rem;
+    min-height: 23rem;
+    max-height: 23rem;
     width: 100%;
     overflow: hidden;
     border-radius: var(--small-radius);
-    /* border: 1px solid var(--border-color-light); */
-    /* display: flex; */
     margin-bottom: 1rem;
-    box-shadow: 1px 4px 4px rgba(0, 0, 20, 0.3);
+    box-shadow: 2px 6px 6px rgba(0, 0, 0, 0.3);
     text-decoration: none;
 }
 
@@ -18,71 +18,48 @@ a {
 }
 
 .featured-body img {
-    max-height: 14rem;
     width: 100%;
     aspect-ratio: 4 / 3;
     background-size: contain;
 }
 
-#featured-name {
+h2 {
     margin-bottom: 0;
+    padding: 0.25rem 0.5rem;
 }
 
 .featured-address {
+    padding: 0 0.5rem;
     font-style: italic;
-    font-size: small;
+    font-size: medium;
 }
 
-.featured-price {
-    font-size: larger;
-    font-weight: bold;
-    color: var(--primary-color-dark);
-}
-
-.featured-rating-container {
+.featured-bottom-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: fit-content;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    margin: auto;
     display: flex;
     align-items: center;
+    padding-bottom: 0.5rem;
 }
 
-.featured-rating-container span {
-    font-size: large;
-}
-
-.featured-rating-container svg {
-    transform: scale(0.75);
+.featured-bottom-container svg {
+    transform: scale(0.85);
     padding-right: 0;
     margin-right: 0;
 }
 
-#featured-grid {
-    flex-grow: 1;
-    position: relative;
-    margin: 0.5rem;
+.featured-reviews-num {
+    font-style: italic;
+    font-size: medium;
 }
 
-#featured-left-col {
-    float: left;
-    width: 75%;
-}
-
-#featured-left-col p {
-    margin-top: 0.5rem;
-    max-height: 8rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#featured-right-col {
-    position: relative;
-    float: right;
-    height: 100%;
-    align-content: flex-end;
-    justify-content: flex-end;
-    text-align: end;
-}
-
-#featured-reserve-btn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+.featured-price {
+    font-size: medium;
+    color: var(--primary-color-dark);
+    margin-right: 2rem;
 }
