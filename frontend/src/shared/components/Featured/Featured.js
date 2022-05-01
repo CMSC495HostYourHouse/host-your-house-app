@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/esm/Container';
 import PropertyCards from '../PropertyCards/propertyCards';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import FeaturedProperty from '../PropertyCards/FeaturedProperty';
 
 class Featured extends React.Component{
     state = {
@@ -39,8 +40,8 @@ class Featured extends React.Component{
                             {/* Bring in test property cards, theese need to be updated to be able to select specific properties from the database, and display their information */}
                             {/* I think this could just be static */}
                             <Col><PropertyCards featHouse = {this.state.house1_id} /></Col>
-                            <Col><PropertyCards featHouse = {this.state.house2_id}/></Col>
-                            <Col><PropertyCards featHouse = {this.state.house3_id}/></Col>
+                            <Col><FeaturedProperty featHouse = {this.state.house2_id}/></Col>
+                            <Col><FeaturedProperty featHouse = {this.state.house3_id}/></Col>
                         </Row>
                     </Card.Body>
                 </Card>
