@@ -27,18 +27,18 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }))
 
 // search properties
-router.get('/search/:searchType/:param/', asyncHandler(async (req, res) => {
+router.get('/search/:searchType/:param1/:param2/', asyncHandler(async (req, res) => {
     const search = req.params.searchType;
     let house = ''
     // const house = await House.find({price: {$gte:req.params.item1, $lte: req.params.item2}})
     if(search == 0){
-        house = await searchPrice(req.params.param)
+        house = await searchPrice(req.params.param2)
     }
     if(search == 1){
-        house = await searchCity(req.params.param)
+        house = await searchCity(req.params.param1)
     }
     if(search == 2){
-        house = await searchRating(req.params.param)
+        house = await searchRating(req.params.param2)
     }
     if(search == 3){
         house = await House.find({})
@@ -53,7 +53,9 @@ router.get('/search/:searchType/:param/', asyncHandler(async (req, res) => {
 
 // helper functions to search properties
 const searchPrice = async(item) =>{
-    const house = await House.find({price: {$gte:item, $lte:item + 100}})
+    let pricevar = item - 100;
+    const house = await House.find({price: {$gte:pricevar, $lte:item }})
+    console.log(pricevar + " to " + item)
     return house;
 }
 
@@ -63,8 +65,24 @@ const searchCity = async(item) =>{
 }
 
 const searchRating = async(item) =>{
-    const house = await House.find({rating: {$gte:item, $lte:item+1}})
+    let ratevar = item - 1;
+    const house = await House.find({rating: {$gte:ratevar, $lte:item}})
     return house;
 }
+
+// // search properties
+// router.get('/search/:searchType/:param1/:param2/:param3', asyncHandler(async (req, res) => {
+//     const search = req.params.searchType;
+    
+//     // const house = await House.find({price: {$gte:req.params.item1, $lte: req.params.item2}})
+//     const house = await House.find({city: req.params.param1}, {price: {$gte:req.params.param1[0], $lte:req.params.param1[1]}}, {rating: {$gte:req.params.param1[0], $lte:req.params.param1[1]}})
+
+//     if (house) {
+//         res.json(house)
+//     } else {
+//         res.status(404)
+//         throw new Error('Product not found!')
+//     }
+// }))
 
 module.exports = router;
