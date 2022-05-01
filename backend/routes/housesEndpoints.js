@@ -53,7 +53,8 @@ router.get('/search/:searchType/:param/', asyncHandler(async (req, res) => {
 
 // helper functions to search properties
 const searchPrice = async(item) =>{
-    const house = await House.find({price: {$gte:item, $lte:item + 100}})
+	console.log(item)
+    const house = await House.find({price: {$gte:item}})
     return house;
 }
 
