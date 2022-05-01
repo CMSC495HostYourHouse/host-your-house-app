@@ -66,6 +66,18 @@ img {
   align-items: center;
 }
 
+/* Headers */
+.header1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0;
+}
+
+.header2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0;
+}
 
 /* Text Styles*/
 .x-large {
@@ -75,7 +87,7 @@ img {
 }
 
 .large {
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 }

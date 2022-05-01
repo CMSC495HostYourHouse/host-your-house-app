@@ -3,6 +3,7 @@ import './Listings.css';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/esm/Container';
 import PropertyCards from '../PropertyCards/propertyCards';
+import Property from '../PropertyCards/Property';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MainPageSearch from '../MainPageSearch/mainpageSearch';
@@ -37,11 +38,11 @@ class listings extends React.Component{
                     <Card.Body>
                         {/* This needs to be modified to be dynamic. it needs to initially display all properties, but then needs to be able to show the properties sorted
                             or only show matching properties to search. This will require the dynamic creation of the collomuns based on how many properties shown */}
-                        <Row>
+                            
                             {this.state.items.map(item =>(
-                              <Col key={item._id}>
-                              <PropertyCards featHouse = {item._id}/>
-                              </Col>  
+                              <Row key={item._id}>
+                              <Property featHouse = {item._id}/>
+                              </Row>  
                             ))}
                             {/* <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
@@ -53,7 +54,7 @@ class listings extends React.Component{
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col>
                             <Col><PropertyCards /></Col> */}
-                        </Row>
+                        
                     </Card.Body>
                 </Card>
             </Container>

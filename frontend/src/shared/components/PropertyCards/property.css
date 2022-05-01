@@ -1,0 +1,81 @@
+.property-body {
+    background-color: rgb(255, 255, 255);
+    color: var(--secondary-color-dark);
+    max-height: 14rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--small-radius);
+    border: 1px solid var(--primary-color-dark);
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.property-body img {
+    max-height: 14rem;
+    width: auto;
+    aspect-ratio: 4 / 3;
+    background-size: contain;
+}
+
+#property-name {
+    margin-bottom: 0;
+}
+
+.property-address {
+    font-style: italic;
+    font-size: small;
+}
+
+.property-price {
+    font-size: larger;
+    font-weight: bold;
+    color: var(--primary-color-dark);
+}
+
+.property-rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.property-rating-container span {
+    font-size: large;
+}
+
+.property-rating-container svg {
+    transform: scale(0.75);
+    padding-right: 0;
+    margin-right: 0;
+}
+
+#property-grid {
+    flex-grow: 1;
+    position: relative;
+    margin: 0.5rem;
+}
+
+#property-left-col {
+    float: left;
+    width: 75%;
+}
+
+#property-left-col p {
+    margin-top: 0.5rem;
+    max-height: 8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#property-right-col {
+    position: relative;
+    float: right;
+    height: 100%;
+    align-content: flex-end;
+    justify-content: flex-end;
+    text-align: end;
+}
+
+#property-reserve-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
