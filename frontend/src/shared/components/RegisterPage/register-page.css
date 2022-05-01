@@ -15,14 +15,6 @@
     border-radius: var(--large-radius);
     border: 1px solid var(--primary-color);
 }
- 
-.register-body {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    background: url('../../../img/vacation_home.jpg') no-repeat center center/cover;
-    background-size: cover;
-}
 
 #sign-in-link {
     text-Decoration: none;

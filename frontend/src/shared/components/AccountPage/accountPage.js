@@ -10,7 +10,7 @@ export const AccountPage = () => {
      return (
         <section className='background'>
           {/* Bring in the navbar that displays on top of page */}
-          <NavBar />
+          {/* <NavBar />Persistent NavBar added in App.js */}
           {/* Container for card */}
           <Container className='d-flex p-2 justify-content-center'>
             {/* Card that displays relavent account information */}

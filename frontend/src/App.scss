@@ -23,6 +23,17 @@ $light: #f4f4f4;
 $dark: #284652;
 /* end custom.scss */
 
+.background-image {
+  position: fixed;
+  background: url('./img/vacation_home.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

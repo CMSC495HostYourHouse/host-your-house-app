@@ -47,44 +47,40 @@ const navigate = useNavigate();
     }
 
     return (
-        
-        <div className='register-body'>
-        <NavBar />
-            <section className="register-form">
-                <h1 className="medium text-primary">Log In</h1>
+        <section className="register-form">
+            <h1 className="medium text-primary">Log In</h1>
 
-                <p id='register-link-group'>
-                    Don't Have an Account? 
-                    <Link to="/register" id="register-link"><b>Create One Here</b></Link>
-                </p>
+            <p id='register-link-group'>
+                Don't Have an Account? 
+                <Link to="/register" id="register-link"><b>Create One Here</b></Link>
+            </p>
 
-                <form className="form" onSubmit={onSubmit}>
+            <form className="form" onSubmit={onSubmit}>
 
-                    <div className="form-group">
-                        <input 
-                            type="email" 
-                            placeholder="Email" 
-                            name="email"
-                            value={form.email}
-                            onChange={(e) => updateForm({email: e.target.value})}
-                            required/>
-                    </div>
+                <div className="form-group">
+                    <input 
+                        type="email" 
+                        placeholder="Email" 
+                        name="email"
+                        value={form.email}
+                        onChange={(e) => updateForm({email: e.target.value})}
+                        required/>
+                </div>
 
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            value={form.password}
-                            onChange={(e) => updateForm({password: e.target.value})}
-                            minLength="8"/>
-                    </div>
+                <div className="form-group">
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={form.password}
+                        onChange={(e) => updateForm({password: e.target.value})}
+                        minLength="8"/>
+                </div>
 
-                    <div className="right-justified">
-                        <input type="submit" className="btn btn-primary" value="Log In" />
-                    </div>
-                </form>
-            </section>
-        </div>
+                <div className="right-justified">
+                    <input type="submit" className="btn btn-primary" value="Log In" />
+                </div>
+            </form>
+        </section>
       )
 }
