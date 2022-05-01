@@ -1,5 +1,5 @@
 import React from "react";
-import './App.css'
+import './App.scss'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Register } from './shared/components/RegisterPage/Register';
 import { Login } from './shared/components/LoginPage/Login';
@@ -8,7 +8,6 @@ import { AccountPage } from './shared/components/AccountPage/accountPage';
 import { ReservedProperties } from './shared/components/ReservedProperties/ReservedProperties';
 import { SavedPage } from './shared/components/SavedPage/SavedPage';
 import { ReservePage } from "./shared/components/ReservePage/reserve-page";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
