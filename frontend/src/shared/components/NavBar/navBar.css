@@ -6,3 +6,8 @@
 .navBar{
   padding-bottom: 5rem;
 }
+
+.nav-dropdown-title {
+  transform: scale(1.5);
+  padding-right: 0.2rem;
+}
