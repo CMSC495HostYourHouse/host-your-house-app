@@ -27,24 +27,22 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }))
 
 // search properties
-router.get('/search/:searchType/:item1/:item2', asyncHandler(async (req, res) => {
+router.get('/search/:searchType/:param/', asyncHandler(async (req, res) => {
     const search = req.params.searchType;
     let house = ''
     // const house = await House.find({price: {$gte:req.params.item1, $lte: req.params.item2}})
     if(search == 0){
-        house = await searchPrice(req.params.item1, req.params.item2)
+        house = await searchPrice(req.params.param)
     }
     if(search == 1){
-        house = await searchCity(req.params.item1)
+        house = await searchCity(req.params.param)
     }
     if(search == 2){
-        house = await searchRating(req.params.item1)
+        house = await searchRating(req.params.param)
     }
     if(search == 3){
         house = await House.find({})
     }
-    
-    console.log(house)
     if (house) {
         res.json(house)
     } else {
@@ -54,18 +52,18 @@ router.get('/search/:searchType/:item1/:item2', asyncHandler(async (req, res) =>
 }))
 
 // helper functions to search properties
-const searchPrice = async(item1, item2) =>{
-    const house = await House.find({price: {$gte:item1, $lte:item2}})
+const searchPrice = async(item) =>{
+    const house = await House.find({price: {$gte:item, $lte:item + 100}})
     return house;
 }
 
-const searchCity = async(item1) =>{
-    const house = await House.find({city: item1})
+const searchCity = async(item) =>{
+    const house = await House.find({city: item})
     return house;
 }
 
-const searchRating = async(item1) =>{
-    const house = await House.find({rating: item1})
+const searchRating = async(item) =>{
+    const house = await House.find({rating: {$gte:item, $lte:item+1}})
     return house;
 }
 

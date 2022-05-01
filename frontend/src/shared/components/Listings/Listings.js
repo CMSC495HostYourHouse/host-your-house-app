@@ -11,43 +11,86 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 
-class listings extends React.Component{
-    state = {
-        items: [],
-        searchType: [0, 1, 2, 3],
-        price1: [0, 50],
-        price2: [50, 100],
-        city: 'Hamlin',
-        rating: 3.5
-    }
-		
+class Listings extends React.Component{
+	constructor(props) {
+		super(props);
+		this.state = {
+			items: [],
+			searchType: 3,
+			searchParam: ""
+		};
+		this.handleChangeCity = this.handleChangeCity.bind(this);
+		this.handleChangePrice = this.handleChangePrice.bind(this);
+		this.handleChangeStars = this.handleChangeRating.bind(this);
+		console.log(this.state.searchParam)
+  }
 
-    // search houses, searchtype 0 for price, 1 for city, and 2 for rating. replace with states want to use to search.
-    //need to get state from form data in mainpagesearch in here to make search bar work
-    //need a way to dynamically add the + this.state.searchType[0] + '/'.... to the end of the request to signify if just show all
-    // or add search
+	handleChangeCity(event) {    
+		this.setState({searchParam: event.target.value});
+		this.setState({searchType: 1});
+
+		fetch("http://localhost:5000/api/houses/search/" + this.state.searchType + '/' + this.state.searchParam)
+				.then(async(res) => await res.json())
+				.then((json) => {
+					this.setState({
+							items: json,
+							DataisLoaded: true
+					}); 
+				})
+this.render()
+		console.log(this.state.searchParam)
+	}
+
+	handleChangePrice(event) {    
+		this.setState({searchParam: event.target.value});
+		this.setState({searchType: 0});
+
+		fetch("http://localhost:5000/api/houses/search/" + this.state.searchType + '/' + this.state.searchParam)
+				.then(async(res) => await res.json())
+				.then((json) => {
+					this.setState({
+							items: json,
+							DataisLoaded: true
+					}); 
+				})
+				this.render()
+	console.log(this.state.searchParam)
+	}
+
+	handleChangeRating(event) {    
+		this.setState({searchParam: event.target.value});
+		this.setState({searchType: 2});
+
+		fetch("http://localhost:5000/api/houses/search/" + this.state.searchType + '/' + this.state.searchParam)
+				.then(async(res) => await res.json())
+				.then((json) => {
+					this.setState({
+							items: json,
+							DataisLoaded: true
+					}); 
+				})
+this.render()
+	console.log(this.state.searchParam)
+	}
+
+
     componentDidMount() {
-        fetch("http://localhost:5000/api/houses/search/" + this.state.searchType[3] + '/' + this.state.price1[0] + "/" + this.state.price2[1] )
-            .then(async(res) => await res.json())
-            .then((json) => {
-                this.setState({
-                    items: json,
-                    
-                    DataisLoaded: true
-                });
-                
-            })
+			fetch("http://localhost:5000/api/houses/search/3/0")
+				.then(async(res) => await res.json())
+				.then((json) => {
+					this.setState({
+							items: json,
+							DataisLoaded: true
+					}); 
+				})
     }
     
-
+		
     render(){
 		// function handleChange(evt) {
   	// 	console.log("new value", evt.target.value);
 		// }
-		// function Form() {
-		// 	const [state, setState] = React.useState({
-		// 	destination: "16.8"
-		// })}
+		
         
      return (
         <section>
@@ -85,36 +128,35 @@ class listings extends React.Component{
 																		{/* destination form group */}
 																		<Form.Group>
 																		{/* controlId="destination" onChange={handleChange} value={this.state.destination} */}
-																			<Form.Select >
-																				<option>City 1</option>
-																				<option>City 2</option>
-																				<option>City 3</option>
-																				
+																			<Form.Select name="city" value={this.state.value} onChange={this.handleChangeCity}>
+																				<option>Sebastool</option>
+																				<option>Hamlin</option>
+																				<option>Joshua Tree</option>
+																				<option>Terlingua</option>
 																			</Form.Select>
 																		</Form.Group>
 																	</Col>
 																	<Col>
 																			{/* Price form group*/}
-																		<Form.Group controlId="price">
+																		<Form.Group name="price" onChange={this.handleChangePrice}>
 																			<Form.Select>
-																				<option>0$ - 50$</option>
-																				<option>50$ - 100$</option>
-																				<option>100$ - 200$</option>
-																				<option>200$ - 300$</option>
-																				<option>300$ - 400$</option>
-																				<option>400$ and up</option>
+																				<option value={[0]}>0$ - 100$ </option>
+																				<option value={[100]}>100$ - 200$</option>
+																				<option value={[200]}>200$ - 300$</option>
+																				<option value={[300]}>300$ - 400$</option>
+																				<option value={[400]}>400$ - 500$</option>
 																			</Form.Select>
 																		</Form.Group>
 																	</Col>
 																	<Col>
 																			{/* rating form group */}
-																		<Form.Group controlId="rating">
+																		<Form.Group name="rating" onChange={this.handleChangeRating}>
 																		<Form.Select>
-																			<option>1 Star</option>
-																			<option>2 Star</option>
-																			<option>3 Star</option>
-																			<option>4 Star</option>
-																			<option>5 Star</option>
+																			<option value={0}>1 Star</option>
+																			<option value={1}>2 Star</option>
+																			<option value={2}>3 Star</option>
+																			<option value={3}>4 Star</option>
+																			<option value={4}>5 Star</option>
 																		</Form.Select>
 																		</Form.Group>
 																	</Col>
@@ -220,4 +262,4 @@ class listings extends React.Component{
     )
 }
 }
-export default listings;
+export default Listings;
