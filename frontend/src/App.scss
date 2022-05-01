@@ -2,7 +2,9 @@
 :root {
   --primary-color: #455a64;
   --primary-color-dark: #284652;
-  --light-color: #f4f4f4;
+  --light-color: #f1f1fa;
+  --border-color-light: #869fa8;
+  --border-color-dark: #455a64;
   --secondary-color: #252d99;
   --secondary-color-dark: #1c313a;
   --text-color-light: #303055;
@@ -30,6 +32,7 @@ $dark: #284652;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: -1;
   height: 100vh;
   width: 100vw;
 }
@@ -70,6 +73,12 @@ img {
 .header1 {
   font-size: 2.5rem;
   color: var(--primary-color);
+  margin-bottom: 0;
+}
+
+.header1-light {
+  font-size: 2.5rem;
+  color: var(--light-color);
   margin-bottom: 0;
 }
 

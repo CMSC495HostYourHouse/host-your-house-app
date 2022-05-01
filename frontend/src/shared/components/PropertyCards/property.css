@@ -5,9 +5,10 @@
     width: 100%;
     overflow: hidden;
     border-radius: var(--small-radius);
-    border: 1px solid var(--primary-color-dark);
+    /* border: 1px solid var(--border-color-light); */
     display: flex;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 1px 4px 4px rgba(0, 0, 20, 0.3);
 }
 
 .property-body img {

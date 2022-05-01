@@ -12,7 +12,7 @@ import Accordion from 'react-bootstrap/Accordion'
 export const mainPageSearch = () => {
      return (
         <section>
-            <Container>
+            <Container className='container'>
               <Accordion>
                 {/* accordian for search, hides until clicked */}
                 <Accordion.Item eventKey="0">
