@@ -1,6 +1,7 @@
 #listings-container {
     position: relative;
-    background-color: var(--light-color);
+    /* background-color: var(--light-color); */
+    background-color: var(--primary-color-dark);
     color: var(--secondary-color-dark);
     width: 70%;
     margin-left: auto;
