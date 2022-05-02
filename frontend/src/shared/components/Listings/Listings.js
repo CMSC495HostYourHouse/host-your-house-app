@@ -16,9 +16,9 @@ class Listings extends React.Component{
 		super(props);
 		this.state = {
 			items: [],
-			searchType: 3,
-			searchParam1: "a",
+			searchParam1: 'default',
 			searchParam2: 0,
+			searchParam3: 0,
 			
 		};
 		this.handleChange0 = this.handleChange0.bind(this);
@@ -28,50 +28,50 @@ class Listings extends React.Component{
 		
   }
 	handleChange0(evt) {
-		this.setState({searchType: 1});
-		this.setState({searchParam1: evt.target.value});
-		console.log("new value city");
-		console.log(this.state.searchParam1)
-		
+		this.setState({searchParam1: evt.target.value});	
 	}
 
 	handleChange2(evt) {
-		this.setState({searchType: 0});
 		this.setState({searchParam2: evt.target.value});
-		console.log("new value price", evt.target.value);
-		console.log(2)
-		console.log(this.state.searchParam2)
 	}
 
 	handleChange3(evt) {
-		this.setState({searchType: 2});
-		this.setState({searchParam2: evt.target.value});
-		console.log("new value rating", evt.target.value);
-		console.log(this.state.searchParam2)
+		this.setState({searchParam3: evt.target.value});
 	}
 
 	handleSubmit(evt){
 		this.updatelist()
 		evt.preventDefault();
-		
 		console.log("submitted");
 	}
 
+	handleSubmitReset(evt){
+		
+		this.setState({searchParam1: 'default'});
+		this.setState({searchParam2: 0});
+		this.setState({searchParam3: 0});
+		this.updatelist()
+		evt.preventDefault()
+		console.log("submitted reset");
+	}
+
 	updatelist(){
-		fetch("http://localhost:5000/api/houses/search/"  + this.state.searchType + '/' + this.state.searchParam1 + '/' + this.state.searchParam2)
+		fetch("http://localhost:5000/api/houses/search/" + this.state.searchParam1 + '/' + this.state.searchParam2  + '/' + this.state.searchParam3)
 				.then(async(res) => await res.json())
 				.then((json) => {
 					this.setState({
-						items: []
-					})
+						items: [],
+					});
 					this.setState({
 						items: json,
 						DataisLoaded: true
-							
-					}); 
+					});
+					console.log("here")
 					console.log(json)
 				})
-	}
+		}
+
+		
     componentDidMount() {
 		this.updatelist();
     }
@@ -238,6 +238,10 @@ class Listings extends React.Component{
 								</Accordion.Item>
 							</Accordion>
 						</Row>
+						<Col>
+								
+								<Button variant="success" type="submit" onClick={this.handleSubmitReset}>Reset</Button>
+						</Col>
 						{/*  */}
 						<Row>
 								{this.state.items.map(item =>(
