@@ -30,19 +30,24 @@ export const Register = () => {
         const newUser = {...form};
 
         //code for actually hitting the endpoint
-        await fetch("http://localhost:5000/users/add", {
+        await fetch("http://localhost:5000/users/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newUser)
+        }).then(async response => {
+            const res = await response.json();
+            if (response.status == '200') {
+                setForm({email: "", password: ""}) //reset the form
+                navigate("/login")
+            } else {
+                throw res.error
+            }
         }).catch (error => { //if there is an error
             window.alert(error); //make a pop-up of the issue appear
             return; //end the code block
         });
-
-        setForm({email: "", password: ""}) //reset the form
-        navigate("/")
     }
 
     return (

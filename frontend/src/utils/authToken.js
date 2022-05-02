@@ -6,7 +6,6 @@ let token = {
 
 export const setToken = sentToken => {
     if (token) {
-        console.log(sentToken);
         token.token = sentToken;
     } else {
         token = {
@@ -17,9 +16,16 @@ export const setToken = sentToken => {
     }
 };
 
+export const clearToken = () => {
+    token = {
+        token: '',
+        name: '',
+        email: '',
+    };
+};
+
 export const checkToken = () => {
-    if (token.token != '' || token.token != undefined) {
-        console.log(token.token);
+    if (token.token !== '') {
         return true;
     } else {
         return false;

@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import NavBar from "../NavBar/navBar";
 import {Link, useNavigate} from 'react-router-dom'
 import {setToken} from "../../../utils/authToken";
 import jwt_decode from "jwt-decode";
