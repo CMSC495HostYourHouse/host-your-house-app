@@ -142,7 +142,12 @@ class Listings extends React.Component{
 																<option value={'Sebastool'}>Sebastool</option>
 																<option value={'Hamlin'}>Hamlin</option>
 																<option value={'Joshua Tree'}>Joshua Tree</option>
-																<option value={'Terlingue'}>Terlingua</option>
+																<option value={'Sandbridge'}>Sandbridge</option>
+																<option value={'Chicago'}>Chicago</option>
+																<option value={'Key West'}>Key West</option>
+																<option value={'North Rim'}>North Rim</option>
+																<option value={'Mountain City'}>Mountain City</option>
+																<option value={'Terlingua'}>Terlingua</option>
 															</Form.Select>
 														</Form.Group>
 													</Col>
@@ -156,6 +161,11 @@ class Listings extends React.Component{
 																<option value={300}>200$ - 300$</option>
 																<option value={400}>300$ - 400$</option>
 																<option value={500}>400$ - 500$</option>
+																<option value={600}>500$ - 600$</option>
+																<option value={700}>600$ - 700$</option>
+																<option value={800}>700$ - 800$</option>
+																<option value={900}>800$ - 900$</option>
+																<option value={1000}>900$ - 1000$</option>
 															</Form.Select>
 														</Form.Group>
 													</Col>
@@ -258,7 +268,8 @@ class Listings extends React.Component{
 							{/* show the properties */}
 							<Row>
 								{this.state.items.map(item =>(
-									<Col><PropertyCards featHouse = {item._id}/></Col>  
+									<Col><PropertyCards featHouse = {item._id}/></Col>
+									
 								))}
 							</Row>
 						</Card.Body>

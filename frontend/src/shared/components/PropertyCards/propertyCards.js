@@ -39,7 +39,7 @@ state = {
           <Container className='d-flex p-2'>
             <Card style={{ width: '18.1rem', height: '28rem', text:'black'}} bg='light' text='dark' border="primary" className='container-fluid'>
               <Card.Header id='propertycardHeader'>{ items.name} </Card.Header>
-              <Card.Img style={{width:"22.5rel", height:"20rel"}} src={items.image}/>
+              <Card.Img style={{width:"250px", height:"150px"}} src={items.image}/>
               <Card.Body bg='dark'>
                 <Card.Text>
                   <span>Location: {items.city}, {items.state} {items.zipCode}</span><br/>
