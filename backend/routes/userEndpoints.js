@@ -52,7 +52,7 @@ userEndpoints.route("/login").post(function (req, response) {
   };
 
   db_connect.collection("records").findOne(myobj, function (err, user) {
-    if (err) return response.status(400).json(err);
+    if (err) return response.status(400).json({error: err});
     if (!user) {
       return response.status(400).json({error: 'User Not Found!'});
     } else {
