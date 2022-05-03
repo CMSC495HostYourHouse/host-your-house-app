@@ -4,7 +4,9 @@
     color: var(--secondary-color-dark);
     min-height: 23rem;
     max-height: 23rem;
-    width: 100%;
+    min-width: 18rem;
+    max-width: 18rem;
+    /* width: 100%; */
     overflow: hidden;
     border-radius: var(--small-radius);
     margin-bottom: 1rem;

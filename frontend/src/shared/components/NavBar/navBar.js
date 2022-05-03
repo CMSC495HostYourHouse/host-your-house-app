@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {checkToken} from "../../../utils/authToken";
+import {clearToken} from "../../../utils/authToken";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // navbar that shows on top of page
@@ -26,6 +27,7 @@ export const TopMenu = () => {
                                 <NavDropdown.Item href="/account">My Account</NavDropdown.Item>
                                 <NavDropdown.Item href="/saved">Saved Properties</NavDropdown.Item>
                                 <NavDropdown.Item href="/reserved">Reserved Properties</NavDropdown.Item>
+                                <NavDropdown.Item href="/" onClick={clearToken}>Logout</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
