@@ -16,8 +16,16 @@ export const setToken = sentToken => {
     }
 };
 
+export const clearToken = () => {
+    token = {
+        token: '',
+        name: '',
+        email: '',
+    };
+};
+
 export const checkToken = () => {
-    if (token.token != '') {
+    if (token.token !== '') {
         return true;
     } else {
         return false;

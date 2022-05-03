@@ -8,7 +8,6 @@ import {clearToken} from "../../../utils/authToken";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // navbar that shows on top of page
-
 export const TopMenu = () => {
     if (checkToken()) {
         return (

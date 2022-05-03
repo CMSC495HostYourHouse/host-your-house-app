@@ -11,7 +11,7 @@ const ObjectId = require("mongodb").ObjectId; // This help convert the id from s
 userEndpoints.route("/users").get(function (req, res) {
   let db_connect = databaseConnection.getDb("users");
   db_connect
-    .collection("records")
+    .collection("users")
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
@@ -24,7 +24,7 @@ userEndpoints.route("/users/:id").get(function (req, res) {
   let db_connect = databaseConnection.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   db_connect
-    .collection("records")
+    .collection("users")
     .findOne(myquery, function (err, result) {
       if (err) throw err;
       res.json(result);
@@ -32,27 +32,32 @@ userEndpoints.route("/users/:id").get(function (req, res) {
 });
 
 // This section will help you create a new record.
-userEndpoints.route("/users/add").post(function (req, response) {
+userEndpoints.route("/users/register").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
-  let myobj = {
+  let myUser = {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
   };
-  db_connect.collection("records").insertOne(myobj, function (err, res) {
-    if (err) throw err;
-    response.json(res);
+  db_connect.collection("users").insertOne(myUser, function (err, res) {
+    if (err) {
+      return response.status(400).json({error: err.message});
+    }
+    else {
+      console.log(res);
+      response.json(res);
+    }
   });
 });
 
 // Endpoint to login as a particular user.
 userEndpoints.route("/login").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
-  let myobj = {
+  let myUser = {
     email: req.body.email,
   };
 
-  db_connect.collection("records").findOne(myobj, function (err, user) {
-    if (err) return response.status(400).json(err);
+  db_connect.collection("users").findOne(myUser, function (err, user) {
+    if (err) return response.status(400).json({error: err.message});
     if (!user) {
       return response.status(400).json({error: 'User Not Found!'});
     } else {
@@ -92,7 +97,7 @@ userEndpoints.route("/update/:id").post(function (req, response) {
 userEndpoints.route("/:id").delete((req, response) => {
   let db_connect = databaseConnection.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
-  db_connect.collection("records").deleteOne(myquery, function (err, obj) {
+  db_connect.collection("users").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 user deleted");
     response.json(obj);
