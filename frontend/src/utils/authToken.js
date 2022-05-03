@@ -1,26 +1,17 @@
 let token = {
     token: '',
-    name: '',
-    email: '',
+    user: {}
 };
 
-export const setToken = sentToken => {
-    if (token) {
-        token.token = sentToken;
-    } else {
-        token = {
-            token: '',
-            name: '',
-            email: '',
-        }
-    }
+export const setToken = (sentToken, user) => {
+    token.token = sentToken;
+    token.user = user;
 };
 
 export const clearToken = () => {
     token = {
         token: '',
-        name: '',
-        email: '',
+        user: {}
     };
 };
 

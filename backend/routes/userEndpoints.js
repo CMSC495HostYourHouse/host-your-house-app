@@ -69,7 +69,8 @@ userEndpoints.route("/login").post(function (req, response) {
           (err, token) => {
             response.json({
               success:true,
-              token: "Bearer " + token
+              token: "Bearer " + token,
+              user: user
             });
           });
       } else {
