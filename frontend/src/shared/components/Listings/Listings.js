@@ -105,9 +105,9 @@ class Listings extends React.Component{
 			<section>
 				<Container className='d-flex p-2 justify-content-center flex-row'>
 					{/* Listings card diplays on main page, shows all the properties */}
-					<Card className='listings-card' bg='dark' text='light' >
+					<Card className='listings-card' bg='dark' text='dark' >
 						<Card.Header className='d-flex justify-content-between align-items-center'>
-							<h1>All Properties</h1>
+							<h1 style={{ color: "white" }}>All Properties</h1>
 								<Form onSubmit={this.handleSubmit}>
 									<Button variant="success" type="submit" onClick={()=>
 										this.handleReset('default', 0, 0)}>Reset</Button>
@@ -245,17 +245,17 @@ class Listings extends React.Component{
 													<Col><a>Ascending :</a></Col>
 													<Col>
 														<ButtonGroup className="me-2" aria-label="First group" onClick={this.handleSort}>
-															<Button variant="secondary" value={1}>City</Button>
-															<Button variant="secondary" value={2}>Price</Button>
-															<Button variant="secondary" value={3}>Rating</Button>
+															<Button variant="primary" value={1}>City</Button>
+															<Button variant="primary" value={2}>Price</Button>
+															<Button variant="primary" value={3}>Rating</Button>
 														</ButtonGroup>
 													</Col>
 													<Col><a>Descending: </a></Col>
 													<Col>
 														<ButtonGroup className="me-2" aria-label="First group" onClick={this.handleSort}>
-															<Button variant="secondary" value={4}>City</Button>
-															<Button variant="secondary" value={5}>Price</Button>
-															<Button variant="secondary" value={6}>Rating</Button>
+															<Button variant="primary" value={4}>City</Button>
+															<Button variant="primary" value={5}>Price</Button>
+															<Button variant="primary" value={6}>Rating</Button>
 														</ButtonGroup>
 													</Col>
 													<Col><Button variant="success" type="submit">Sort</Button></Col>
