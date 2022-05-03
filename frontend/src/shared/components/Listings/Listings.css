@@ -2,6 +2,10 @@
     color: var(--primary-color-dark);
 }
 
+.row-style {
+    color: var(--primary-color-dark);
+}
+
 .header-container {
     background-color: var(--primary-color-dark);
     position: absolute;

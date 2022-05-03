@@ -103,7 +103,7 @@ class Listings extends React.Component{
 	render(){  
 		return (
 			<section>
-				<Container className='d-flex p-2 justify-content-center flex-row' id="listings-container">
+				<Container className='d-flex p-2 justify-content-center flex-row listings-container'>
 					{/* Listings card diplays on main page, shows all the properties */}
 					<Card className='listings-card' bg='dark' text='light' >
 						<Card.Header className='d-flex justify-content-between align-items-center'>
@@ -122,7 +122,7 @@ class Listings extends React.Component{
 										<Accordion.Header>Search</Accordion.Header>
 										<Accordion.Body className='accordStyle1'>
 										{/* first row is the labels for the form groups */}
-											<Row>
+											<Row className="row-style">
 												<Col style={{textAlign: 'center'}}><a>City</a></Col>
 												<Col style={{textAlign: 'center'}}><a>Price</a></Col>
 												<Col style={{textAlign: 'center'}}><a>Stars</a></Col>
@@ -241,7 +241,7 @@ class Listings extends React.Component{
 									<Accordion.Header>Sort</Accordion.Header>
 										<Accordion.Body className='accordStyle1'>
 											<Form onSubmit={this.handleSubmit}>
-												<Row className='d-flex align-items-center'>
+												<Row className='d-flex align-items-center row-style'>
 													<Col><a>Ascending :</a></Col>
 													<Col>
 														<ButtonGroup className="me-2" aria-label="First group" onClick={this.handleSort}>

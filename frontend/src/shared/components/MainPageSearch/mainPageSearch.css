@@ -1,6 +1,6 @@
 .accordStyle1{
   background-color: grey;
-  color: white;
+  color: var(--primary-color-dark)
 }
 
 .container {
