@@ -14,7 +14,7 @@ class mainPageSearch extends React.Component{
     
      return (
         <section>
-            <Container>
+            <Container className='container'>
               <Accordion>
                 {/* accordian for search, hides until clicked */}
                 <Accordion.Item eventKey="0">

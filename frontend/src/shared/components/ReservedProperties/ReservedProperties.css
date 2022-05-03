@@ -12,9 +12,8 @@
 html,
 body {
   height: 100%;
-  background-color: rgb(6, 197, 255);
-
 }
+
 .reserved-card {
   max-width: 1000px !important;
   min-width: 1000px !important;

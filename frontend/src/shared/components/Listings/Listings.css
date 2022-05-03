@@ -1,3 +1,39 @@
+#listings-container {
+    position: relative;
+    /* background-color: var(--light-color); */
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color-dark);
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: var(--small-radius);
+    border: 1px solid var(--border-color-dark);
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    padding-bottom: 0; /* Handled by last property in list */
+    overflow: hidden;
+}
+
+.header-container {
+    background-color: var(--primary-color-dark);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: inherit;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+#header-spacer {
+    margin-top: 4rem;
+}
+
+#properties-container {
+    margin-top: 1rem;
+}
+
 .listings-card {
     max-width: 1000px !important;
     min-width: 1000px !important;

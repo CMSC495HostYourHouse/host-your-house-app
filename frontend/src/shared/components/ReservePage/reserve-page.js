@@ -5,56 +5,52 @@ import ActivityList from './ActivityList';
 import PhotoSlider from './PhotoSlider';
 import CheckInCheckOutForm from "./CheckInOutForm";
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import { Icon } from '@mui/material';
 import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
     SocialDistance, Wash, LocationOn, Flight, KeyboardBackspace} from '@mui/icons-material';
 
 export const ReservePage = () => {
     return (
-        
-        <section className='background'>
-            <section className='overlay-light'>
-                <section className='reservation-form'>
-                    
-                    {/* Link to go back */}
-                    <Link to="/" className='back-link'>
-                        <Icon component={KeyboardBackspace}/>
-                        <span>Back to Listings</span>
-                    </Link>
+        <section className='overlay-light'>
+            <section className='reservation-form'>
+                
+                {/* Link to go back */}
+                <Link to="/" className='back-link'>
+                    <Icon component={KeyboardBackspace}/>
+                    <span>Back to Listings</span>
+                </Link>
 
-                    {/* Submit list of photos for the rental here */}
-                    <PhotoSlider photos={photoUrls_test}/>
-                    
-                    {/* Pop-up form to get check in check out dates*/}
-                    <div id='reserve-button'><CheckInCheckOutForm /></div>
-                    
-    
-                    {/* Button for reserving the viewed rental */}
-                    {/* <Button id='reserve-button'>Reserve Now</Button> */}
+                {/* Submit list of photos for the rental here */}
+                <PhotoSlider photos={photoUrls_test}/>
+                
+                {/* Pop-up form to get check in check out dates*/}
+                <div id='reserve-button'><CheckInCheckOutForm /></div>
+                
 
-                    {/* Name, address, and rating section */}
-                    <section>
-                        <h1 id='rental-name'>Name</h1>
-                        <text>Address</text>
-                        <p id='rental-rating'>Rating</p>
-                    </section>
+                {/* Button for reserving the viewed rental */}
+                {/* <Button id='reserve-button'>Reserve Now</Button> */}
 
-                    {/* Left column of form: Amenities and Cleaning/Safety */}
-                    <div className='left-column'>
-                        <h1>Popular Amenities</h1>
-                        <ServiceList services={amenities_test}/>
-
-                        <h1>Cleaning and Safety Practices</h1>
-                        <ServiceList services={services_test}/>
-                    </div>
-
-                    {/* Right column of form: Nearby activities */}
-                    <div className='right-column'>
-                        <h1>Explore the Area</h1>
-                        <ActivityList activities={activities_test}/>
-                    </div>
+                {/* Name, address, and rating section */}
+                <section>
+                    <h1 id='rental-name'>Name</h1>
+                    <text>Address</text>
+                    <p id='rental-rating'>Rating</p>
                 </section>
+
+                {/* Left column of form: Amenities and Cleaning/Safety */}
+                <div className='left-column'>
+                    <h1>Popular Amenities</h1>
+                    <ServiceList services={amenities_test}/>
+
+                    <h1>Cleaning and Safety Practices</h1>
+                    <ServiceList services={services_test}/>
+                </div>
+
+                {/* Right column of form: Nearby activities */}
+                <div className='right-column'>
+                    <h1>Explore the Area</h1>
+                    <ActivityList activities={activities_test}/>
+                </div>
             </section>
         </section>
     )
