@@ -45,7 +45,7 @@ state = {
                   <span>Location: {items.city}, {items.state} {items.zipCode}</span><br/>
                   <span>Price: {items.price} / Night</span><br/>
                   <span>Rating: {items.rating}</span><br/>
-                  <span>Vaccant: {items.reservations}</span><br/>
+                  <span>Occupied: {items.reservations[0] + " To " + items.reservations[1]}</span><br/>
                 </Card.Text>
                 <Button href="/reservation" variant="primary">Reserve</Button>
                 <Button variant="success">Save</Button>
