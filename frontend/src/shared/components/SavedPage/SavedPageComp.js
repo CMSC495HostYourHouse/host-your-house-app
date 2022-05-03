@@ -3,8 +3,6 @@ import './SavedPage.css';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Savedprop from './SavedProp/saved-prop.js'
 import Property from '../PropertyCards/Property'
 
 // need to get what properties user saved and use the properties information to display the properties with thier information
@@ -30,8 +28,6 @@ class SavedPageComp extends React.Component{
                                 <Property featHouse = {this.state.house1_id} />
                                 <Property featHouse = {this.state.house2_id} />
                                 <Property featHouse = {this.state.house3_id} />
-                                {/* <Col><Savedprop /></Col>
-                                <Col><Savedprop /></Col> */}
                             </Row>
                         </Card.Body>
                     </Card>
