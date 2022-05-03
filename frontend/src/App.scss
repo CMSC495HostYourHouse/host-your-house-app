@@ -16,13 +16,14 @@
 
 /* Override Boostrap Themes */
 $primary: #455a64;
-$secondary: #252d99;
-$success: #3e8d63;
+$secondary: #284652;
+$success: #284652;
 $info: #7854e4;
 $warning: #b8c924;
 $danger: #d62518;
 $light: #f4f4f4;
 $dark: #284652;
+
 /* end custom.scss */
 
 .background-image {
@@ -93,6 +94,7 @@ img {
   font-size: 1.5rem;
   color: var(--primary-color);
   margin-bottom: 0;
+  padding: 0;
 }
 
 /* Text Styles*/
@@ -140,6 +142,10 @@ img {
   border-radius: var(--small-radius);
 }
 
+.button-inverted {
+  color: var(--primary-color)!important;
+  background-color: var(--light-color)!important;
+}
 
 // .bg-light,
 // .badge-light {

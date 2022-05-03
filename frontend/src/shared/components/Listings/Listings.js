@@ -1,7 +1,7 @@
 import React from 'react';
 import './Listings.css';
 import Card from 'react-bootstrap/Card'
-import PropertyCards from '../PropertyCards/propertyCards';
+import Property from '../PropertyCards/Property';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from  'react-bootstrap/Form';
@@ -103,14 +103,14 @@ class Listings extends React.Component{
 	render(){  
 		return (
 			<section>
-				<Container className='d-flex p-2 justify-content-center flex-row'>
+				<Container className='d-flex p-2 justify-content-center flex-row' id="listings-container">
 					{/* Listings card diplays on main page, shows all the properties */}
 					<Card className='listings-card' bg='dark' text='light' >
 						<Card.Header className='d-flex justify-content-between align-items-center'>
 							<h1>All Properties</h1>
 								<Form onSubmit={this.handleSubmit}>
-									<Button variant="success" type="submit" onClick={()=>
-										this.handleReset('default', 0, 0)}>Reset</Button>
+									<Button className="button-inverted" type="submit" onClick={()=>
+										this.handleReset('default', 0, 0)}><b>Reset</b></Button>
 								</Form>
 							</Card.Header>
 						<Card.Body>
@@ -268,8 +268,7 @@ class Listings extends React.Component{
 							{/* show the properties */}
 							<Row>
 								{this.state.items.map(item =>(
-									<Col><PropertyCards featHouse = {item._id}/></Col>
-									
+									<Property featHouse = {item._id}/>
 								))}
 							</Row>
 						</Card.Body>

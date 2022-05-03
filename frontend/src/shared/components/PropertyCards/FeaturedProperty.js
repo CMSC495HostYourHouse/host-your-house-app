@@ -41,11 +41,11 @@ state = {
                 <Link to="/reservation">
                     <div className='featured-body' href="/reservation">
                         <img src={items.image}/>
-                        <h2 className='header2'>{items.name}</h2>
+                        <h2 className='header2' id="featured-header">{items.name}</h2>
                         <span className="featured-address">{items.city}, {items.state} {items.zipCode}</span><br/>
                         
                         <div className='featured-bottom-container'>
-                            <span className='featured-price'>Price: <b>${items.price}/Night</b></span>
+                            <span className='featured-price'><b>${items.price}/Night</b></span>
                             <span><b>{items.rating}</b></span>
                             <StarRateIcon/>
                             <span className="featured-reviews-num">({items.numReviews} reviews)</span>

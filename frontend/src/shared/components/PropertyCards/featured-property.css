@@ -25,9 +25,11 @@ a {
     background-size: contain;
 }
 
-h2 {
+#featured-header {
     margin-bottom: 0;
     padding: 0.25rem 0.5rem;
+    max-height: 4rem;
+    overflow: hidden;
 }
 
 .featured-address {
@@ -45,6 +47,7 @@ h2 {
     transform: translate(-50%, 0);
     margin: auto;
     display: flex;
+    overflow: hidden;
     align-items: center;
     padding-bottom: 0.5rem;
 }
