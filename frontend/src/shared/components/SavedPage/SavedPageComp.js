@@ -12,7 +12,9 @@ class SavedPageComp extends React.Component{
     state = {
         house1_id : '626755f52b362e4bbac37904',
         house2_id : '626755f52b362e4bbac37906',
-        house3_id : '626755f52b362e4bbac37907'
+        house3_id : '626755f52b362e4bbac37907',
+				fullDate: 'a-a-a',
+				fullDate2: 'a-a-a',
     }  
 
     render() {
@@ -25,9 +27,9 @@ class SavedPageComp extends React.Component{
                         {/* need to dynamically create rows based on how many properties saved */}
                         <Card.Body>
                             <Row>
-                                <Property featHouse = {this.state.house1_id} />
-                                <Property featHouse = {this.state.house2_id} />
-                                <Property featHouse = {this.state.house3_id} />
+                                <Property featHouse = {this.state.house1_id } startDate = {this.state.fullDate} endDate = {this.state.fullDate2}/>
+                                <Property featHouse = {this.state.house2_id} startDate = {this.state.fullDate} endDate = {this.state.fullDate2}/>
+                                <Property featHouse = {this.state.house3_id} startDate = {this.state.fullDate} endDate = {this.state.fullDate2}/>
                             </Row>
                         </Card.Body>
                     </Card>
