@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import NavBar from "../NavBar/navBar";
+import './register-page.css'
 
 export const Register = () => {
 
@@ -51,52 +51,45 @@ export const Register = () => {
     }
 
     return (
-        <div className='register-body'>
-            <NavBar />
-            <section className="register-form">
-                <h1 className="large text-primary">Sign Up</h1>
-                <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
-                <form className="form" onSubmit={onSubmit}>
+        <section className="register-form">
+            <h1 className="medium text-primary">Register</h1>
+            <form className="form" onSubmit={onSubmit}>
 
-                    <div className="form-group">
-                        <input 
-                            type="email" 
-                            placeholder="Email Address" 
-                            name="email"
-                            id="email"
-                            value={form.email}
-                            onChange={(e) => updateForm({email: e.target.value})}
-                            required/>
-                    </div>
+                <div className="form-group">
+                    <input 
+                        type="email" 
+                        placeholder="Email" 
+                        name="email"
+                        id="email"
+                        value={form.email}
+                        onChange={(e) => updateForm({email: e.target.value})}
+                        required/>
+                </div>
 
-                    <div className="form-group" style={{ marginTop: '2rem' }}>
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            id="password"
-                            value={form.password}
-                            onChange={(e) => updateForm({password: e.target.value})}
-                            minLength="8"/>
-                    </div>
+                <div className="form-group">
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        id="password"
+                        value={form.password}
+                        onChange={(e) => updateForm({password: e.target.value})}
+                        minLength="8"/>
+                </div>
 
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            placeholder="Confirm Password"
-                            name="password2"
-                            minLength="8"/>
-                    </div>
+                <div className="form-group">
+                    <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        name="password2"
+                        minLength="8"/>
+                </div>
 
-                    <div className='form-group'>
-                        <input type="submit" className="btn btn-primary" value="Register" />
-                    </div>
-                </form>
-
-                <p className="my-1">Already have an account? 
-                    <Link to="/login"><b> Sign In</b></Link>
-                </p>
-            </section>
-        </div>
+                <div className='right-justified'>
+                    <Link to="/login" id='sign-in-link'><b>Sign In</b></Link>
+                    <input type="submit" className="btn btn-primary" value="Submit" />
+                </div>
+            </form>
+        </section>
       )
 }

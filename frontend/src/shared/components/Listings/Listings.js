@@ -1,7 +1,7 @@
 import React from 'react';
 import './Listings.css';
 import Card from 'react-bootstrap/Card'
-import PropertyCards from '../PropertyCards/propertyCards';
+import Property from '../PropertyCards/Property';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from  'react-bootstrap/Form';
@@ -20,17 +20,28 @@ class Listings extends React.Component{
 			searchRating: 0,
 			sortOrSearch: 0,
 			sortType: 0,
-			month: '-1',
-			day:'-1',
-			year:'-1',
+			month: 'a',
+			day:'a',
+			year:'a',
+			fullDate: 'a',
+			month2: 'a',
+			day2:'a',
+			year2:'a',
+			fullDate2: 'a',
 		};
 
 		this.handleCityChange= this.handleCityChange.bind(this);
 		this.handlePriceChange = this.handlePriceChange.bind(this);
 		this.handleRatingChange = this.handleRatingChange.bind(this);
+
 		this.handleMonthChange = this.handleMonthChange.bind(this);
 		this.handleDayChange = this.handleDayChange.bind(this);
 		this.handleYearChange = this.handleYearChange.bind(this);
+
+		this.handleMonthChange2 = this.handleMonthChange2.bind(this);
+		this.handleDayChange2 = this.handleDayChange2.bind(this);
+		this.handleYearChange2 = this.handleYearChange2.bind(this);
+		
 		this.handleSort = this.handleSort.bind(this);
 
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -45,7 +56,7 @@ class Listings extends React.Component{
 	handleRatingChange(evt) {
 		this.setState({searchRating: evt.target.value});
 	}
-	// date handles
+	// date1 handles
 	handleMonthChange(evt) {
 		this.setState({month: evt.target.value});
 	}
@@ -55,13 +66,31 @@ class Listings extends React.Component{
 	handleYearChange(evt) {
 		this.setState({year: evt.target.value});	
 	}
+		// date2 handles
+	handleMonthChange2(evt) {
+		this.setState({month2: evt.target.value});
+	}
+	handleDayChange2(evt) {
+		this.setState({day2: evt.target.value});
+	}
+	handleYearChange2(evt) {
+		this.setState({year2: evt.target.value});	
+	}
 
 	handleSort(evt){
 		this.setState({sortType: evt.target.value});
 	}
 	
+	combineDate(){
+		this.setState({fullDate:  this.state.month + '-' + this.state.day + '-' + this.state.year})
+	}
+	combineDate2(){
+			this.setState({fullDate2:  this.state.month2 + '-' + this.state.day2 + '-' + this.state.year2})
+	}
 	// handle submit/reset buttons, calls method to update what is shown
 	handleSubmit(evt){
+		this.combineDate();
+		this.combineDate2();
 		this.updatelist();
 		evt.preventDefault();
 	}
@@ -72,6 +101,9 @@ class Listings extends React.Component{
 		this.setState({searchPrice: item2});
 		this.setState({searchRating: item3});
 		this.setState({sortOrSearch: 0});
+		this.setState({fullDate: 'a', year: 'a', month: 'a', day: 'a'})
+		this.setState({fullDate2: 'a', year2: 'a', month2: 'a', day2: 'a'})
+		
 	}
 
 	// switch between search and sort
@@ -81,7 +113,8 @@ class Listings extends React.Component{
 
 	// method that refreshes what is shown
 	updatelist(){
-		fetch("http://localhost:5000/api/houses/searchSort/" + this.state.sortOrSearch + '/' + this.state.searchCity + '/' + this.state.searchPrice  + '/' + this.state.searchRating + '/' + this.state.sortType + '/' + this.state.month + '/' + this.state.day + '/' + this.state.year)
+
+		fetch("http://localhost:5000/api/houses/searchSort/" + this.state.sortOrSearch + '/' + this.state.searchCity + '/' + this.state.searchPrice  + '/' + this.state.searchRating + '/' + this.state.sortType)
 				.then(async(res) => await res.json())
 				.then((json) => {
 					this.setState({
@@ -103,14 +136,14 @@ class Listings extends React.Component{
 	render(){  
 		return (
 			<section>
-				<Container className='d-flex p-2 justify-content-center flex-row'>
+				<Container className='d-flex p-2 justify-content-center flex-row listings-container'>
 					{/* Listings card diplays on main page, shows all the properties */}
-					<Card className='listings-card' bg='dark' text='light' >
+					<Card className='listings-card' bg='dark' text='dark' >
 						<Card.Header className='d-flex justify-content-between align-items-center'>
-							<h1>All Properties</h1>
+							<h1 style={{ color: "white" }}>All Properties</h1>
 								<Form onSubmit={this.handleSubmit}>
-									<Button variant="success" type="submit" onClick={()=>
-										this.handleReset('default', 0, 0)}>Reset</Button>
+									<Button className="button-inverted" type="submit" onClick={()=>
+										this.handleReset('default', 0, 0)}><b>Reset</b></Button>
 								</Form>
 							</Card.Header>
 						<Card.Body>
@@ -122,7 +155,7 @@ class Listings extends React.Component{
 										<Accordion.Header>Search</Accordion.Header>
 										<Accordion.Body className='accordStyle1'>
 										{/* first row is the labels for the form groups */}
-											<Row>
+											<Row className="row-style">
 												<Col style={{textAlign: 'center'}}><a>City</a></Col>
 												<Col style={{textAlign: 'center'}}><a>Price</a></Col>
 												<Col style={{textAlign: 'center'}}><a>Stars</a></Col>
@@ -200,9 +233,42 @@ class Listings extends React.Component{
 																<option value={'12'}>December</option>
 															</Form.Select>
 														</Form.Group>
+														<Form.Group name="month" onChange={this.handleMonthChange2}>
+															<Form.Select>
+																<option value={'a'}></option>
+																<option value={'01'}>January</option>
+																<option value={'02'}>February</option>
+																<option value={'03'}>March</option>
+																<option value={'04'}>April</option>
+																<option value={'05'}>May</option>
+																<option value={'06'}>June</option>
+																<option value={'07'}>July</option>
+																<option value={'08'}>August</option>
+																<option value={'09'}>September</option>
+																<option value={'10'}>October</option>
+																<option value={'11'}>November</option>
+																<option value={'12'}>December</option>
+															</Form.Select>
+														</Form.Group>
 													</Col>
 													<Col>
 														<Form.Group name="day" onChange={this.handleDayChange}>
+															<Form.Select>
+																<option value={'a'}></option>
+																<option value={'01'}>01</option><option value={'02'}>02</option><option value={'03'}>03</option>
+																<option value={'04'}>04</option><option value={'05'}>05</option><option value={'06'}>06</option>
+																<option value={'07'}>07</option><option value={'08'}>08</option><option value={'09'}>09</option>
+																<option value={'10'}>10</option><option value={'11'}>11</option><option value={'12'}>12</option>
+																<option value={'13'}>13</option><option value={'14'}>14</option><option value={'15'}>15</option>
+																<option value={'16'}>16</option><option value={'17'}>17</option><option value={'18'}>18</option>
+																<option value={'19'}>19</option><option value={'20'}>20</option><option value={'21'}>21</option>
+																<option value={'22'}>22</option><option value={'23'}>23</option><option value={'24'}>24</option>
+																<option value={'25'}>25</option><option value={'25'}>26</option><option value={'27'}>27</option>
+																<option value={'28'}>28</option><option value={'29'}>29</option><option value={'30'}>30</option>
+																<option value={'31'}>31</option>
+															</Form.Select>
+														</Form.Group>
+														<Form.Group name="day" onChange={this.handleDayChange2}>
 															<Form.Select>
 																<option value={'a'}></option>
 																<option value={'01'}>01</option><option value={'02'}>02</option><option value={'03'}>03</option>
@@ -228,7 +294,16 @@ class Listings extends React.Component{
 																<option value={'2024'}>2024</option>
 															</Form.Select>
 														</Form.Group>
+														<Form.Group name="year" onChange={this.handleYearChange2}>
+															<Form.Select>
+																<option value={'a'}></option>
+																<option value={'2022'}>2022</option>
+																<option value={'2023'}>2023</option>
+																<option value={'2024'}>2024</option>
+															</Form.Select>
+														</Form.Group>
 													</Col>
+							
 													<Col><Button variant="success" type="submit" value={"Submit"}>Submit</Button></Col>
 												</Row>
 											</Form>
@@ -241,21 +316,21 @@ class Listings extends React.Component{
 									<Accordion.Header>Sort</Accordion.Header>
 										<Accordion.Body className='accordStyle1'>
 											<Form onSubmit={this.handleSubmit}>
-												<Row className='d-flex align-items-center'>
+												<Row className='d-flex align-items-center row-style'>
 													<Col><a>Ascending :</a></Col>
 													<Col>
 														<ButtonGroup className="me-2" aria-label="First group" onClick={this.handleSort}>
-															<Button variant="secondary" value={1}>City</Button>
-															<Button variant="secondary" value={2}>Price</Button>
-															<Button variant="secondary" value={3}>Rating</Button>
+															<Button variant="primary" value={1}>City</Button>
+															<Button variant="primary" value={2}>Price</Button>
+															<Button variant="primary" value={3}>Rating</Button>
 														</ButtonGroup>
 													</Col>
 													<Col><a>Descending: </a></Col>
 													<Col>
 														<ButtonGroup className="me-2" aria-label="First group" onClick={this.handleSort}>
-															<Button variant="secondary" value={4}>City</Button>
-															<Button variant="secondary" value={5}>Price</Button>
-															<Button variant="secondary" value={6}>Rating</Button>
+															<Button variant="primary" value={4}>City</Button>
+															<Button variant="primary" value={5}>Price</Button>
+															<Button variant="primary" value={6}>Rating</Button>
 														</ButtonGroup>
 													</Col>
 													<Col><Button variant="success" type="submit">Sort</Button></Col>
@@ -268,7 +343,7 @@ class Listings extends React.Component{
 							{/* show the properties */}
 							<Row>
 								{this.state.items.map(item =>(
-									<Col><PropertyCards featHouse = {item._id}/></Col>
+									<Property featHouse = {item._id} startDate = {this.state.fullDate} endDate = {this.state.fullDate2}/>
 									
 								))}
 							</Row>
