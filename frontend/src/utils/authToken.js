@@ -23,7 +23,6 @@ export const clearToken = () => {
         token: '',
         user: {}
     };
-
 };
 
 export const checkToken = () => {
@@ -36,8 +35,9 @@ export const checkToken = () => {
 
 export const grabUser = () => {
     if (checkToken()) {
-        let user = window.localStorage.getItem('token')[user];
-        return user;
+        let retrievedUser = window.localStorage.getItem('token')['user'];
+        console.log("this is the token: " +window.localStorage.getItem('token'));
+        return retrievedUser;
     } else {
         return undefined;
     }
