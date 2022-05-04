@@ -9,6 +9,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // navbar that shows on top of page
 export const TopMenu = () => {
+    console.log(checkToken());
     if (checkToken()) {
         return (
             <section className='navBar'>
