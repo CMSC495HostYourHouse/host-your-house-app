@@ -1,20 +1,10 @@
 let token = {
     token: '',
-    user: {}
 };
 
-export const setToken = (sentToken, user) => {
-    if (token) {
+export const setToken = (sentToken) => {
         token.token = sentToken;
-        token.user = user;
-        window.localStorage.setItem('token', sentToken);
-    } else {
-        token = {
-            token: '',
-            name: '',
-            email: '',
-        }
-    }
+        window.localStorage.setItem('token', JSON.stringify(token));
 };
 
 export const clearToken = () => {
@@ -35,9 +25,8 @@ export const checkToken = () => {
 
 export const grabUser = () => {
     if (checkToken()) {
-        let retrievedUser = window.localStorage.getItem('token')['user'];
-        console.log("this is the token: " +window.localStorage.getItem('token'));
-        return retrievedUser;
+        let user = JSON.parse(window.localStorage.getItem('token')).token.id;
+        return user;
     } else {
         return undefined;
     }

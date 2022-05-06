@@ -70,7 +70,7 @@ userEndpoints.route("/login").post(function (req, response) {
             response.json({
               success:true,
               token: "Bearer " + token,
-              user: user
+              user: user._id
             });
           });
       } else {
