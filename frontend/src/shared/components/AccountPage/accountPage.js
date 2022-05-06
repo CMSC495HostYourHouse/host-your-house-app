@@ -2,9 +2,6 @@ import React from 'react';
 import './accountPage.css';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/esm/Container';
-import NavBar from "../NavBar/navBar";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -39,11 +36,11 @@ export const AccountPage = ({ user, setUser }) => {
 
     //code for actually hitting the endpoint
     await fetch("http://localhost:5000/update/", {
-          method: "POST",
+          method: "PUT",
           headers: {
               "Content-Type": "application/json",
           },
-          body: JSON.stringify(localUserChanges())
+          body: JSON.stringify(localUserChanges)
       }).then(async response => {
           const res = await response.json();
           if (response.status == '200') {
@@ -64,7 +61,7 @@ export const AccountPage = ({ user, setUser }) => {
           {/* Container for card */}
           <Container className='d-flex p-2 justify-content-center'>
             {/* Card that displays relavent account information */}
-            <Card bg='dark' text='light'>
+            <Card className={'account-card'} bg='dark' text='light'>
               <Card.Header><h1>My Account</h1></Card.Header> 
               <Card.Body bg='dark'>
                 <form className="form">
@@ -130,11 +127,6 @@ export const AccountPage = ({ user, setUser }) => {
                       </Button>
                   </div>
               </form>
-                  {/* links to account related stuff in a dropdown menu */}
-                  <DropdownButton class='dropdown-menu-left' id="dropdown-basic-button" title="Properties">
-                    <Dropdown.Item href="/saved">Veiw Saved Properties</Dropdown.Item>
-                    <Dropdown.Item href="/reserved">Veiw Reserved Properties</Dropdown.Item>
-                  </DropdownButton>
               </Card.Body>
             </Card>
           </Container>
