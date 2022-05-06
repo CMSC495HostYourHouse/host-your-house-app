@@ -69,7 +69,8 @@ userEndpoints.route("/login").post(function (req, response) {
           (err, token) => {
             response.json({
               success:true,
-              token: "Bearer " + token
+              token: "Bearer " + token,
+              user: user
             });
           });
       } else {
@@ -80,7 +81,7 @@ userEndpoints.route("/login").post(function (req, response) {
 });
 
 // This section will help you update a record by id.
-userEndpoints.route("/update/:id").post(function (req, response) {
+userEndpoints.route("/update").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   let newvalues = {
@@ -88,7 +89,11 @@ userEndpoints.route("/update/:id").post(function (req, response) {
       name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 10),
-      isAdmin: req.body.isAdmin,
+      address: req.body.address,
+      city: req.body.city,
+      zip: req.body.zip,
+      state: req.body.state,
+      city: req.body.city,
     },
   }
 });
