@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {grabUser} from "../../../utils/authToken";
 
 //checking to make sure changes were made
 function shallowEqual(object1, object2) {
@@ -53,7 +54,6 @@ export const AccountPage = ({ user, setUser }) => {
           return; //end the code block
       });
   }
-
      return (
         <section className='background'>
           {/* Bring in the navbar that displays on top of page */}
@@ -65,7 +65,6 @@ export const AccountPage = ({ user, setUser }) => {
               <Card.Header><h1>My Account</h1></Card.Header> 
               <Card.Body bg='dark'>
                 <form className="form">
-
                   <div className="form-group">
                       <input 
                           type="email" 
