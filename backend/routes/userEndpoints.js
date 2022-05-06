@@ -31,6 +31,18 @@ userEndpoints.route("/users/:id").get(function (req, res) {
     });
 });
 
+// This section will help you get a single user by email
+userEndpoints.route("/users/email/:email").get(function (req, res) {
+  let db_connect = databaseConnection.getDb();
+  let myquery = { email: req.params.email };
+  db_connect
+    .collection("users")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result.saved);
+    });
+});
+
 // This section will help you create a new record.
 userEndpoints.route("/users/register").post(function (req, response) {
   let db_connect = databaseConnection.getDb();

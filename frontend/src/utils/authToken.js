@@ -36,7 +36,7 @@ export const checkToken = () => {
 export const grabUser = () => {
     if (checkToken()) {
         let retrievedUser = window.localStorage.getItem('token')['user'];
-        console.log("this is the token: " +window.localStorage.getItem('token'));
+        //console.log("this is the token: " +window.localStorage.getItem('token'));
         return retrievedUser;
     } else {
         return undefined;
