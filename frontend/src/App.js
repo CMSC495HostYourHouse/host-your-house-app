@@ -6,7 +6,7 @@ import { Login } from './shared/components/LoginPage/Login';
 import { MainPage } from './shared/components/main-page/main-page';
 import { AccountPage } from './shared/components/AccountPage/accountPage';
 import { ReservedProperties } from './shared/components/ReservedProperties/ReservedProperties';
-import { SavedPage } from './shared/components/SavedPage/SavedPage';
+import SavedPage from './shared/components/SavedPage/SavedPage';
 import { ReservePage } from "./shared/components/ReservePage/reserve-page";
 import TopMenu from "./shared/components/NavBar/navBar";
 import { AppBackground } from "./shared/components/AppBackground/AppBackground";

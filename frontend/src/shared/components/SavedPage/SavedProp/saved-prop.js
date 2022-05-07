@@ -1,58 +1,76 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ServiceList from './ServiceList';
 import './saved-prop.css';
 import ActivityList from './ActivityList';
 import PhotoSlider from './PhotoSlider';
 import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
-    SocialDistance, Wash, LocationOn, Flight, KeyboardBackspace} from '@mui/icons-material';
+    SocialDistance, Wash, LocationOn, Flight} from '@mui/icons-material';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
 import CheckInCheckOutForm from './CheckInOutForm';
 
-export const ReservePage = () => {
-    return (
-        <Container className='d-flex p-2 justify-content-center flex-row'>
-                <Card className='saved-card' bg='light' text='dark'>
-                    <Card.Body>
-                        <section className='overlay-light'>
-                <section>
-                    {/* Name, address, and rating section */}
-                    <section>
-                        <h2 id='rental-name'>Name</h2>
-                        <text>Address</text>
-                        <p id='rental-rating'>Rating</p>
-                    </section>
+export const ReservePage = (props) => {
+const [house] = useState({
+	id: props.property
+});
+const [houseData, setHouseData] = useState({
+	name: "",   
+});
 
-                    {/* Submit list of photos for the rental here */}
-                    <PhotoSlider photos={photoUrls_test}/>
+async function getProperty(){
+	await fetch("http://localhost:5000/api/houses/" + house.id, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	}).then(async(res) => {
+		setHouseData(await res.json())
+	})
+}
+	
+	useEffect(() => {
+		getProperty()
+	},[houseData]);
+		
+	//console.log(houseData)
+	return (
+		<Container className='d-flex p-2 justify-content-center flex-row'>
+			<Card className='saved-card' bg='light' text='dark'>
+				<Card.Body>
+					<section className='overlay-light'>
+						<section>
+							{/* Name, address, and rating section */}
+							<section>
+								<h2 id='rental-name'>{houseData.name}</h2>
+								<text>{houseData.city}, {houseData.state} {houseData.zip}</text>
+								<p id='rental-rating'>Rating</p>
+							</section>
 
-                    
-                    {/* Left column of form: Amenities and Cleaning/Safety */}
-                    <div className='left-column'>
-                        <h1>Popular Amenities</h1>
-                        <ServiceList services={amenities_test}/>
+								{/* Submit list of photos for the rental here */}
+								<PhotoSlider photos={photoUrls_test}/>
+								
+								{/* Left column of form: Amenities and Cleaning/Safety */}
+							<div className='left-column'>
+								<h1>Popular Amenities</h1>
+								<ServiceList services={amenities_test}/>
 
-                        <h1>Cleaning and Safety Practices</h1>
-                        <ServiceList services={services_test}/>
-                    </div>
+								<h1>Cleaning and Safety Practices</h1>
+								<ServiceList services={services_test}/>
+							</div>
 
-                    {/* Right column of form: Nearby activities */}
-                    <div className='right-column'>
-                        <h1>Explore the Area</h1>
-                        <ActivityList activities={activities_test}/>
-                    </div>
-                </section>
-                {/* Check in check out days */}
-                        <CheckInCheckOutForm />
-            </section>
-            
-                    </Card.Body>
-                </Card>
-            </Container>
-        
-            
-        
-    )
+							{/* Right column of form: Nearby activities */}
+							<div className='right-column'>
+								<h1>Explore the Area</h1>
+								<ActivityList activities={activities_test}/>
+							</div>
+						</section>
+						{/* Check in check out days */}
+						<CheckInCheckOutForm />
+					</section>
+				</Card.Body>
+			</Card>
+		</Container>
+	)
 }
 
 
