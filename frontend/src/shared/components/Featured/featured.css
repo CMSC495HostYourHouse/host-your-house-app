@@ -1,4 +1,18 @@
 .featured-card {
     max-width: 1000px !important;
-    min-width: 1000px !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-body {
+    width: 100%;
+}
+
+.featured-body {
+    align-items: center;
+}
+
+#card-header {
+    float: left;
 }

@@ -1,4 +1,5 @@
 .featured-body {
+    margin: 0 auto;
     position: relative;
     background-color: rgb(255, 255, 255);
     color: var(--secondary-color-dark);
@@ -6,7 +7,6 @@
     max-height: 23rem;
     min-width: 18rem;
     max-width: 18rem;
-    /* width: 100%; */
     overflow: hidden;
     border-radius: var(--small-radius);
     margin-bottom: 1rem;
