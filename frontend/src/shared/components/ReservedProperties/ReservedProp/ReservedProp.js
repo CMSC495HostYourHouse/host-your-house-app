@@ -7,6 +7,7 @@ import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sani
     SocialDistance, Wash, LocationOn, Flight, KeyboardBackspace} from '@mui/icons-material';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
+import Image from 'react-bootstrap/image';
 
 export const ReservePage = (props) => {
 	const [house] = useState({
@@ -52,8 +53,8 @@ export const ReservePage = (props) => {
 								<p id='rental-rating'>Rating</p>
 							</section>
 							{/* Submit list of photos for the rental here */}
-							<PhotoSlider photos={photoUrls_test}/>
-
+							{/* <PhotoSlider photos={photoUrls_test}/> */}
+							<Image src={houseData.image} style={ {objectFit: 'cover', width: "100%", height: "20rem"} }/>
 							{/* Left column of form: Amenities and Cleaning/Safety */}
 							<div className='left-column'>
 								<h1>Popular Amenities</h1>
