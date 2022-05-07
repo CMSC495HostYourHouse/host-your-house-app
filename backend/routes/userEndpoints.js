@@ -94,7 +94,7 @@ userEndpoints.route("/login").post(function (req, response) {
             response.json({
               success:true,
               token: "Bearer " + token,
-              user: user._id
+              user: user
             });
           });
       } else {
@@ -105,17 +105,25 @@ userEndpoints.route("/login").post(function (req, response) {
 });
 
 // This section will help you update a record by id.
-userEndpoints.route("/update/:id").post(function (req, response) {
+userEndpoints.route("/update").put(function (req, response) {
   let db_connect = databaseConnection.getDb();
-  let myquery = { _id: ObjectId(req.params.id) };
-  let newvalues = {
+  let newValues = {
     $set: {
       name: req.body.name,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 10),
-      isAdmin: req.body.isAdmin,
+      address: req.body.address,
+      city: req.body.city,
+      zip: req.body.zipcode,
+      state: req.body.state,
     },
   }
+
+  db_connect.collection('users').updateOne({email: req.body.email}, newValues, function (err, res) {
+    if (err) return response.status(400).json({error: err.message});
+    else {
+      response.json(res);
+    }
+  })
 });
 
 // This section will help you delete a record

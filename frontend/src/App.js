@@ -10,24 +10,29 @@ import SavedPage from './shared/components/SavedPage/SavedPage';
 import { ReservePage } from "./shared/components/ReservePage/reserve-page";
 import TopMenu from "./shared/components/NavBar/navBar";
 import { AppBackground } from "./shared/components/AppBackground/AppBackground";
+import { useState } from "react";
 
 const App = () => {
+
+  const [user, setUser] = useState({email: '', name: '', address: '', city: '', state: '', zipcode: ''})
+  console.log(user)
+
   return (
+    <Router>
       <React.Fragment>
         <AppBackground/> {/* Persistent Background */}
-        <TopMenu/>  {/* Persistent NavBar */}
-        <Router>
+        <TopMenu user={user}/>  {/* Persistent NavBar */}
             <Routes>
-                <Route path="/" element={ <MainPage/> }/>
+                <Route exact path="/" element={ <MainPage/> }/>
                 <Route path="/register" element={ <Register/> }/>
-                <Route path="/login" element={ <Login/> }/>
-                <Route path="/account" element={ <AccountPage/> }/>
+                <Route path="/login" element={ <Login setUser={setUser}/> }/>
+                <Route path="/account" element={ <AccountPage setUser={setUser} user={user}/> }/>
                 <Route path="/reserved" element={ <ReservedProperties/> }/>
                 <Route path="/saved" element={ <SavedPage/> }/>
                 <Route path="/reservation" element={ <ReservePage/> }/>
             </Routes>
-        </Router>
       </React.Fragment>
+      </Router>
   );
 }
 

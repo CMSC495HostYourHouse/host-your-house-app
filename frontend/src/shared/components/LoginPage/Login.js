@@ -4,7 +4,7 @@ import {setToken} from "../../../utils/authToken";
 import jwt_decode from "jwt-decode";
 import '../RegisterPage/register-page.css'
 
-export const Login = () => {
+export const Login = ({setUser}) => {
 
 const [form, setForm] = useState({
     email: "",
@@ -37,7 +37,8 @@ const navigate = useNavigate();
         }).then(async response => {
             let res = await response.json();
             if (response.status == '200'){
-                setToken(await jwt_decode(res.token));
+                setUser(prevState => {console.log({...prevState, email: res.user.email}); return {...prevState, email: res.user.email}})
+                setToken(await jwt_decode(res.token), res.user);
                 setForm({email: "", password: ""}) //reset the form
                 navigate("/")
             } else {
