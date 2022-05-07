@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ServiceList from './ServiceList';
 import './reserved-prop.css';
 import ActivityList from './ActivityList';
@@ -9,7 +9,36 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
 import CheckInCheckOutForm from './CheckInOutForm';
 
-export const ReservePage = () => {
+export const ReservePage = (props) => {
+    const [house] = useState({
+        id: props.userReserved[0]
+    });
+    const [startReservation] = useState({
+        startDay: props.userReserved[1]
+    });
+    const [endReservation] = useState({
+        endDay: props.userReserved[2]
+    });
+    const [houseData, setHouseData] = useState({
+        name: ""
+    });
+    async function getProperty(){
+		await fetch("http://localhost:5000/api/houses/" + house.id, {
+				method: "GET",
+				headers: {
+						"Content-Type": "application/json",
+				},
+		}).then(async(res) => {
+				setHouseData(await res.json())
+				
+		})
+}
+	
+	useEffect(() => {
+			getProperty()
+  	},[houseData]);
+
+    console.log(house.id + '  /  ' + startReservation.startDay + '   /   ' + endReservation.endDay)
     return (
         <Container className='d-flex p-2 justify-content-center flex-row'>
                 <Card className='saved-card' bg='light' text='dark'>
@@ -18,8 +47,8 @@ export const ReservePage = () => {
                 <section>
                     {/* Name, address, and rating section */}
                     <section>
-                        <h2 id='rental-name'>Name</h2>
-                        <text>Address</text>
+                        <h2 id='rental-name'>{houseData.name}</h2>
+                        <text>{houseData.city}, {houseData.state} {houseData.zip}</text>
                         <p id='rental-rating'>Rating</p>
                     </section>
 
@@ -41,6 +70,7 @@ export const ReservePage = () => {
                         <h1>Explore the Area</h1>
                         <ActivityList activities={activities_test}/>
                     </div>
+                    <div>Reservation Start Date: {startReservation.startDay} End Date: {endReservation.endDay}</div>
                 </section>
                 {/* Check in check out days */}
                         <CheckInCheckOutForm />

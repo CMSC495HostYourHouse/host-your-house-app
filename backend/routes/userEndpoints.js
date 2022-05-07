@@ -31,8 +31,8 @@ userEndpoints.route("/users/:id").get(function (req, res) {
     });
 });
 
-// This section will help you get a single user by email
-userEndpoints.route("/users/email/:email").get(function (req, res) {
+// This section will help you get a single user by email and return saved properties
+userEndpoints.route("/users/saved/:email").get(function (req, res) {
   let db_connect = databaseConnection.getDb();
   let myquery = { email: req.params.email };
   db_connect
@@ -43,14 +43,24 @@ userEndpoints.route("/users/email/:email").get(function (req, res) {
     });
 });
 
+// This section will help you get a single user by email and return reserved properties
+userEndpoints.route("/users/reserved/:email").get(function (req, res) {
+  let db_connect = databaseConnection.getDb();
+  let myquery = { email: req.params.email };
+  db_connect
+    .collection("users")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result.reserved);
+    });
+});
+
 // This section will help you create a new record.
 userEndpoints.route("/users/register").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
   let myUser = {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
-    saved: [],
-    reserved: [],
   };
   db_connect.collection("users").insertOne(myUser, function (err, res) {
     if (err) {
@@ -72,7 +82,7 @@ userEndpoints.route("/login").post(function (req, response) {
 
   db_connect.collection("users").findOne(myUser, function (err, user) {
     if (err) return response.status(400).json({error: err.message});
-    if (!user) {
+    if (!user._id) {
       return response.status(400).json({error: 'User Not Found!'});
     } else {
       if (bcrypt.compareSync(req.body.password, user.password)) {
