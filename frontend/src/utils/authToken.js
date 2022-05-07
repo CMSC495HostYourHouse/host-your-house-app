@@ -1,33 +1,33 @@
 let token = {
     token: '',
-    name: '',
-    email: '',
 };
 
-export const setToken = sentToken => {
-    if (token) {
+export const setToken = (sentToken) => {
         token.token = sentToken;
-    } else {
-        token = {
-            token: '',
-            name: '',
-            email: '',
-        }
-    }
+        window.localStorage.setItem('token', JSON.stringify(token));
 };
 
 export const clearToken = () => {
+    window.localStorage.removeItem('token');
     token = {
         token: '',
-        name: '',
-        email: '',
+        user: {}
     };
 };
 
 export const checkToken = () => {
-    if (token.token !== '') {
+    if (window.localStorage.getItem('token')) {
         return true;
     } else {
         return false;
     }
 };
+
+export const grabUser = () => {
+    if (checkToken()) {
+        let user = JSON.parse(window.localStorage.getItem('token')).token.id;
+        return user;
+    } else {
+        return undefined;
+    }
+}

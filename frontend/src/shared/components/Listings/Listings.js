@@ -124,7 +124,6 @@ class Listings extends React.Component{
 						items: json,
 						DataisLoaded: true
 					});
-					console.log(json)
 				})
 		}
 

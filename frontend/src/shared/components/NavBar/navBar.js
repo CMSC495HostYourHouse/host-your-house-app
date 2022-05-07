@@ -5,10 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {checkToken} from "../../../utils/authToken";
 import {clearToken} from "../../../utils/authToken";
+import {grabUser} from "../../../utils/authToken";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // navbar that shows on top of page
 export const TopMenu = () => {
+    grabUser();
     if (checkToken()) {
         return (
             <section className='navBar'>

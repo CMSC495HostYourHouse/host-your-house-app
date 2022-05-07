@@ -21,7 +21,6 @@ state = {
             },
         }).then(async(res) => {
             let house = await res.json()
-            console.log(house)
             this.setState({
                 items: house,
                 DataisLoaded: true

@@ -2,9 +2,9 @@ import React from 'react';
 import './accountPage.css';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/esm/Container';
-import NavBar from "../NavBar/navBar";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import {grabUser} from "../../../utils/authToken";
 
 export const AccountPage = () => {
      return (
@@ -34,8 +34,8 @@ export const AccountPage = () => {
                 <Card.Footer>
                   {/* links to account related stuff in a dropdown menu */}
                   <DropdownButton id="dropdown-basic-button" title="Account Actions">
-                    <Dropdown.Item href="/saved">Veiw Saved Properties</Dropdown.Item>
-                    <Dropdown.Item href="/reserved">Veiw Reserved Properties</Dropdown.Item>
+                    <Dropdown.Item href="/saved">View Saved Properties</Dropdown.Item>
+                    <Dropdown.Item href="/reserved">View Reserved Properties</Dropdown.Item>
                     <Dropdown.Item href="#/action-3">Reset Password</Dropdown.Item>
                     <Dropdown.Item href="#/action-3">Change Email</Dropdown.Item>
                   </DropdownButton>
