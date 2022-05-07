@@ -37,7 +37,6 @@ export const SavedPage = () => {
 			</section>
     )} else{
 		return(
-			// <section>No saved properties to display!</section>
 			<section className="empty-form">
             	<h1 className="header-light">No saved properties to display!</h1>
 			</section>
