@@ -9,78 +9,70 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
 
 export const ReservePage = (props) => {
-    const [house] = useState({
-        id: props.userReserved[0]
-    });
-    const [startReservation] = useState({
-        startDay: props.userReserved[1]
-    });
-    const [endReservation] = useState({
-        endDay: props.userReserved[2]
-    });
-    const [houseData, setHouseData] = useState({
-        name: ""
-    });
-    async function getProperty(){
+	const [house] = useState({
+		id: props.userReserved[0]
+	});
+	const [startReservation] = useState({
+		startDay: props.userReserved[1]
+	});
+	const [endReservation] = useState({
+		endDay: props.userReserved[2]
+	});
+	const [houseData, setHouseData] = useState({
+		name: ""
+	});
+
+	async function getProperty(){
 		await fetch("http://localhost:5000/api/houses/" + house.id, {
-				method: "GET",
-				headers: {
-						"Content-Type": "application/json",
-				},
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
 		}).then(async(res) => {
-				setHouseData(await res.json())
-				
+			setHouseData(await res.json())
 		})
-}
+	}
 	
 	useEffect(() => {
-        if(typeof house.id !== 'undefined')
-			getProperty()
-  	},[houseData]);
+		if(typeof house.id !== 'undefined')
+		getProperty()
+	},[houseData]);
 
     // console.log(house.id + '  /  ' + startReservation.startDay + '   /   ' + endReservation.endDay)
-    return (
-        <Container className='d-flex p-2 justify-content-center flex-row'>
-                <Card className='saved-card' bg='light' text='dark'>
-                    <Card.Body>
-                        <section className='overlay-light'>
-                <section>
-                    {/* Name, address, and rating section */}
-                    <section>
-                        <h2 id='rental-name'>{houseData.name}</h2>
-                        <text>{houseData.city}, {houseData.state} {houseData.zip}</text>
-                        <p id='rental-rating'>Rating</p>
-                    </section>
+	return (
+		<Container className='d-flex p-2 justify-content-center flex-row'>
+			<Card className='saved-card' bg='light' text='dark'>
+				<Card.Body>
+					<section className='overlay-light'>
+						<section>
+							{/* Name, address, and rating section */}
+							<section>
+								<h2 id='rental-name'>{houseData.name}</h2>
+								<text>{houseData.city}, {houseData.state} {houseData.zip}</text>
+								<p id='rental-rating'>Rating</p>
+							</section>
+							{/* Submit list of photos for the rental here */}
+							<PhotoSlider photos={photoUrls_test}/>
 
-                    {/* Submit list of photos for the rental here */}
-                    <PhotoSlider photos={photoUrls_test}/>
+							{/* Left column of form: Amenities and Cleaning/Safety */}
+							<div className='left-column'>
+								<h1>Popular Amenities</h1>
+								<ServiceList services={amenities_test}/>
+								<h1>Cleaning and Safety Practices</h1>
+								<ServiceList services={services_test}/>
+							</div>
 
-                    
-                    {/* Left column of form: Amenities and Cleaning/Safety */}
-                    <div className='left-column'>
-                        <h1>Popular Amenities</h1>
-                        <ServiceList services={amenities_test}/>
-
-                        <h1>Cleaning and Safety Practices</h1>
-                        <ServiceList services={services_test}/>
-                    </div>
-
-                    {/* Right column of form: Nearby activities */}
-                    <div className='right-column'>
-                        <h1>Explore the Area</h1>
-                        <ActivityList activities={activities_test}/>
-                    </div>
-                    <div>Reservation Start Date: {startReservation.startDay} End Date: {endReservation.endDay}</div>
-                </section>
-                
-            </section>
-            
-                    </Card.Body>
-                </Card>
-            </Container>
-        
-            
-        
+							{/* Right column of form: Nearby activities */}
+							<div className='right-column'>
+									<h1>Explore the Area</h1>
+									<ActivityList activities={activities_test}/>
+							</div>
+							<div>Reservation Start Date: {startReservation.startDay} End Date: {endReservation.endDay}</div>
+						</section>
+					</section>
+				</Card.Body>
+			</Card>
+		</Container>   
     )
 }
 

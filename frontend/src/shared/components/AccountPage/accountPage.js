@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './accountPage.css';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {grabUser} from "../../../utils/authToken";
 
@@ -32,9 +31,9 @@ export const AccountPage = ({ user, setUser }) => {
     setLocalChanges(prev => ({...prev, ...changes}))
   }
 
+	
   async function handleSave(){
     setUser(localUserChanges)
-
     //code for actually hitting the endpoint
     await fetch("http://localhost:5000/update/", {
           method: "PUT",
@@ -54,6 +53,22 @@ export const AccountPage = ({ user, setUser }) => {
           return; //end the code block
       });
   }
+
+async function getUserData(){
+		await fetch("http://localhost:5000/account/" + grabUser(), {
+				method: "GET",
+				headers: {
+						"Content-Type": "application/json",
+				},
+		}).then(async(res) => {
+				setLocalChanges(await res.json())
+		})
+}
+
+	useEffect(() => {
+			getUserData()
+  	},[localUserChanges]);
+
      return (
         <section className='background'>
           {/* Bring in the navbar that displays on top of page */}
@@ -116,8 +131,8 @@ export const AccountPage = ({ user, setUser }) => {
                           type="text"
                           placeholder="Zip Code"
                           name="zipcode"
-                          value={localUserChanges.zipcode}
-                          onChange={(e) => handleSetLocalChanges({zipcode: e.target.value})}/>
+                          value={localUserChanges.zip}
+                          onChange={(e) => handleSetLocalChanges({zip: e.target.value})}/>
                   </div>
 
                   <div className="right-justified">
