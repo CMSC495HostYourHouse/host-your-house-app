@@ -26,7 +26,7 @@ export const TopMenu = ({ user }) => {
                         <Nav className="justify-content-end d-flex pe-5" style={{ width: "100%" }}>
                             {/* Todo: Get name from signed in user */}
 														<Nav.Link className="justify-content-end d-flex pe-5" onClick={() => handleOnClick("/")}> Home </Nav.Link>
-                            <Navbar.Text>Hello, {user.name}</Navbar.Text>
+                            <Navbar.Text>Hello, {(user.name != "") ? user.name : user.email}</Navbar.Text>
                             {/* inline styling to add the profile icon as the title */}
                             <NavDropdown title={ <div className='nav-dropdown-title' style={{display: "inline-block"}}>
                                                     <AccountCircleIcon/></div>} id="nav-dropdown" menuVariant='dark'>

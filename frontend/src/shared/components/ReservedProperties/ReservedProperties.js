@@ -42,8 +42,11 @@ if(reserved.length > 0){
     </section>
 	)} else{
 		return(
-			<section>No reserved properties to display!</section>
-		)}
+			<section className="empty-form">
+            	<h1 className="header-light">No reserved properties to display!</h1>
+			</section>
+		)
+	}
 }
 
 export default ReservedProperties;

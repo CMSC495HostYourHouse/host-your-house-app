@@ -1,15 +1,11 @@
-.background {
-  position: fixed;
-  background: url('/src/img/vacation_home.jpg');
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-}
-
 .account-card {
-  max-width: 1000px !important;
-  min-width: 1000px !important;
+  max-width: 800px !important;
+  min-width: 400px !important;
+  width: 40%;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

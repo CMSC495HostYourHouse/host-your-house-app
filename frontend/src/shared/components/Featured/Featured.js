@@ -13,23 +13,23 @@ class Featured extends React.Component{
         house3_id : '626755f52b362e4bbac37907'
     }
     render(){
-      return (  
-        <section>
+      	return (  
+        	<section>
 					<Container className='d-flex p-2 justify-content-center'>
 						{/* Featured properties that show at top of page, under nav bar */}
 						<Card className='featured-card' bg='dark' text='light'>
-							<Card.Header><h1>Featured Properties</h1></Card.Header>
-							<Card.Body>
+							<Card.Header><h1 id="card-header">Featured Properties</h1></Card.Header>
+							<Card.Body className='card-body'>
 								<Row>
-									<Col><FeaturedProperty featHouse = {this.state.house1_id} /></Col>
+									<Col><FeaturedProperty featHouse = {this.state.house1_id}/></Col>
 									<Col><FeaturedProperty featHouse = {this.state.house2_id}/></Col>
 									<Col><FeaturedProperty featHouse = {this.state.house3_id}/></Col>
 								</Row>
 							</Card.Body>
 						</Card>
 					</Container>
-        </section>
-    )
+        	</section>
+    	)
     }
 }
 
