@@ -8,3 +8,8 @@
   height: 100vh;
   width: 100vw;
 }
+
+.account-card {
+  max-width: 1000px !important;
+  min-width: 1000px !important;
+}
