@@ -49,6 +49,8 @@ userEndpoints.route("/users/register").post(function (req, response) {
   let myUser = {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
+    saved: [],
+    reserved: [],
   };
   db_connect.collection("users").insertOne(myUser, function (err, res) {
     if (err) {
