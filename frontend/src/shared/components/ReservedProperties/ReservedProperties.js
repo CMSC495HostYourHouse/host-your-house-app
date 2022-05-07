@@ -26,7 +26,7 @@ export const ReservedProperties = () => {
 
 useEffect(() => {
     getUser();
-    if(user != ""){
+    if(user !== ""){
         fetchData();
     }
   }, [user]);

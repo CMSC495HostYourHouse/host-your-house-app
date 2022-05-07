@@ -7,7 +7,6 @@ import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sani
     SocialDistance, Wash, LocationOn, Flight, KeyboardBackspace} from '@mui/icons-material';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
-import CheckInCheckOutForm from './CheckInOutForm';
 
 export const ReservePage = (props) => {
     const [house] = useState({
@@ -35,10 +34,11 @@ export const ReservePage = (props) => {
 }
 	
 	useEffect(() => {
+        if(typeof house.id !== 'undefined')
 			getProperty()
   	},[houseData]);
 
-    console.log(house.id + '  /  ' + startReservation.startDay + '   /   ' + endReservation.endDay)
+    // console.log(house.id + '  /  ' + startReservation.startDay + '   /   ' + endReservation.endDay)
     return (
         <Container className='d-flex p-2 justify-content-center flex-row'>
                 <Card className='saved-card' bg='light' text='dark'>
@@ -72,8 +72,7 @@ export const ReservePage = (props) => {
                     </div>
                     <div>Reservation Start Date: {startReservation.startDay} End Date: {endReservation.endDay}</div>
                 </section>
-                {/* Check in check out days */}
-                        <CheckInCheckOutForm />
+                
             </section>
             
                     </Card.Body>

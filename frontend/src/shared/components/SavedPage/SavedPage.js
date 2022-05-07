@@ -5,13 +5,10 @@ import {grabUser} from "../../../utils/authToken";
 // saved page, brings in the navbar and the component
 
 export const SavedPage = () => {
-		const [user, setUser] = useState("");
+		const [user] = useState(grabUser());
 		const [saved, setSaved] = useState([]);
 	
-		function getUser(){
-			//console.log(grabUser())
-			setUser(grabUser())
-		}
+	
 
 		async function fetchData(){
 			await fetch("http://localhost:5000/users/saved/" + user, {
@@ -25,11 +22,12 @@ export const SavedPage = () => {
 		}
 
 	useEffect(() => {
-		getUser();
-		if(user != ""){
+		console.log(user)
+		if(user !== 'undefined'){
+			console.log(user)
 			fetchData();
 		}
-  	}, [user]);
+  	}, [""]);
 
 	if(saved.length > 0){
      return (
