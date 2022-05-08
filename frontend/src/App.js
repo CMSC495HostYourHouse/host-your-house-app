@@ -14,25 +14,25 @@ import { useState } from "react";
 
 const App = () => {
 
-  const [user, setUser] = useState({email: '', name: '', address: '', city: '', state: '', zipcode: ''})
-  console.log(user)
+  const [user, setUser] = useState({ email: '', name: '', address: '', city: '', state: '', zipcode: '' })
+  // console.log(user)
 
   return (
     <Router>
       <React.Fragment>
-        <AppBackground/> {/* Persistent Background */}
-        <TopMenu user={user}/>  {/* Persistent NavBar */}
-            <Routes>
-                <Route exact path="/" element={ <MainPage/> }/>
-                <Route path="/register" element={ <Register/> }/>
-                <Route path="/login" element={ <Login setUser={setUser}/> }/>
-                <Route path="/account" element={ <AccountPage setUser={setUser} user={user}/> }/>
-                <Route path="/reserved" element={ <ReservedProperties/> }/>
-                <Route path="/saved" element={ <SavedPage/> }/>
-                <Route path="/reservation" element={ <ReservePage/> }/>
-            </Routes>
+        <AppBackground /> {/* Persistent Background */}
+        <TopMenu user={user} />  {/* Persistent NavBar */}
+        <Routes>
+          <Route exact path="/" element={<MainPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/account" element={<AccountPage setUser={setUser} user={user} />} />
+          <Route path="/reserved" element={<ReservedProperties />} />
+          <Route path="/saved" element={<SavedPage />} />
+          <Route path="/reservation" element={<ReservePage />} />
+        </Routes>
       </React.Fragment>
-      </Router>
+    </Router>
   );
 }
 
