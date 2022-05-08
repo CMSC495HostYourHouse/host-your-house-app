@@ -1,7 +1,9 @@
 import React from 'react';
 import './property.css';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import {checkToken, grabUser} from "../../../utils/authToken";
 
 // need to take in what property card to make for properties from the database.
 
@@ -61,6 +63,32 @@ class Property extends React.Component{
 		}	
 	}
 
+	savePropertyToUser(evt){
+		let save = evt.target.value
+		if(checkToken()){
+			let currentUser = grabUser();
+			console.log(save)
+			fetch("http://localhost:5000/users/save/" + currentUser + '/' + save, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			}).then(async response => {
+				const res = await response.json();
+				if (response.status == '200') {
+					alert('Property saved to your account!')
+				} else {
+					throw res.error
+				}
+			}).catch (error => { //if there is an error
+				window.alert(error); //make a pop-up of the issue appear
+				return; //end the code block
+			});
+		}else{
+			alert('Not Logged In!')
+		}
+	}
+
 	render(){
 		const { items, DataisLoaded } = this.state;
 		if (!DataisLoaded) return <div><h1>Loading</h1></div>;
@@ -81,7 +109,12 @@ class Property extends React.Component{
 									<span >{items.rating}</span>
 									<StarRateIcon/>
 								</div>
-								<Button id="property-reserve-btn" href="/reservation" variant="primary">Reserve</Button>
+								<ButtonGroup aria-label="save/reserve" id="property-reserve-btn">
+									<Button variant="secondary" value={items._id} onClick={this.savePropertyToUser}>Save</Button>
+									<Button href="/reservation" variant="primary">Reserve</Button>
+								</ButtonGroup>
+								
+								
 							</div>
 						</div>
 					</div>
