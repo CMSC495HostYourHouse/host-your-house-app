@@ -7,6 +7,7 @@ export const Register = () => {
     const [form, setForm] = useState({
         email: "",
         password: "",
+        password2: ""
     });
 
     const navigate = useNavigate();
@@ -18,36 +19,48 @@ export const Register = () => {
         });
     }
 
-    function comparePasswords(password1, password2) {
+    function comparePasswords(password, password2) {
 
     }
 
     //responsible for submitting the user
     async function onSubmit(e) {
         e.preventDefault();
-
-        //creating a new user using the form data
-        const newUser = {...form};
-
-        //code for actually hitting the endpoint
-        await fetch("http://localhost:5000/users/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newUser)
-        }).then(async response => {
-            const res = await response.json();
-            if (response.status == '200') {
-                setForm({email: "", password: ""}) //reset the form
-                navigate("/login")
+        
+        if(form.password !== form.password2){
+            
+            alert('Passwords do not match!')
+            
+        } else {
+            //creating a new user using the form data
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            const newUser = {...form};
+        
+            if(re.test(newUser.email)){
+                //code for actually hitting the endpoint
+                await fetch("http://localhost:5000/users/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newUser)
+                }).then(async response => {
+                    const res = await response.json();
+                    if (response.status == '200') {
+                        setForm({email: "", password: ""}) //reset the form
+                        navigate("/login")
+                    } else {
+                        throw res.error
+                    }
+                }).catch (error => { //if there is an error
+                    alert('User with same email already exists!')
+                    //window.alert(error); //make a pop-up of the issue appear
+                    return; //end the code block
+                });
             } else {
-                throw res.error
+                return alert('Email is not valid!')
             }
-        }).catch (error => { //if there is an error
-            window.alert(error); //make a pop-up of the issue appear
-            return; //end the code block
-        });
+        }  
     }
 
     return (
@@ -57,7 +70,7 @@ export const Register = () => {
 
                 <div className="form-group">
                     <input 
-                        type="email" 
+                        type="text" 
                         placeholder="Email" 
                         name="email"
                         id="email"
@@ -82,6 +95,8 @@ export const Register = () => {
                         type="password"
                         placeholder="Confirm Password"
                         name="password2"
+                        value={form.password2}
+                        onChange={(e) => updateForm({password2: e.target.value})}
                         minLength="8"/>
                 </div>
 

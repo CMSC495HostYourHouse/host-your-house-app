@@ -76,7 +76,7 @@ class Property extends React.Component{
 			}).then(async response => {
 				const res = await response.json();
 				if (response.status == '200') {
-					
+					alert('Property saved to your account!')
 				} else {
 					throw res.error
 				}
