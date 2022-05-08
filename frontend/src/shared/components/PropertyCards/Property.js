@@ -2,6 +2,7 @@ import React from 'react';
 import './property.css';
 import Button from 'react-bootstrap/Button';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import SaveButton from '../SaveButton/SaveButton';
 
 // need to take in what property card to make for properties from the database.
 
@@ -81,6 +82,7 @@ class Property extends React.Component{
 									<span >{items.rating}</span>
 									<StarRateIcon/>
 								</div>
+								<Button id="property-reserve-btn" variant="primary">Reserve</Button>
 								<Button id="property-reserve-btn" href="/reservation" variant="primary">Reserve</Button>
 							</div>
 						</div>
