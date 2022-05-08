@@ -147,10 +147,6 @@ img {
   background-color: var(--light-color)!important;
 }
 
-// .bg-light,
-// .badge-light {
-//   border: #ccc solid 1px;
-// }
 
 .line {
   height: 1px;
@@ -170,7 +166,7 @@ img {
 
 /* Forms */
 .form .form-group {
-  margin: 1rem 0;
+  margin: 0 0 1rem 0;
 }
 
 .form .form-text {
@@ -197,6 +193,25 @@ img {
 button {
   font: inherit;
   border-radius: var(--small-radius);
+}
+
+.empty-form {
+  background-color: var(--primary-color-dark);
+  color: var(--light-color);
+  text-align: center;
+  width: 30%;
+  min-width: 300px;
+  max-width: 600px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  padding: 1rem 1.5rem;
+  border-radius: var(--large-radius);
+  border: 1px solid var(--primary-color);
 }
 
 

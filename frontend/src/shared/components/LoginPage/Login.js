@@ -37,7 +37,7 @@ const navigate = useNavigate();
         }).then(async response => {
             let res = await response.json();
             if (response.status == '200'){
-                setUser(prevState => {console.log({...prevState, email: res.user.email}); return {...prevState, email: res.user.email}})
+								setUser(prevState => {console.log({...prevState, email: res.user.email}); return {...prevState, email: res.user.email}})
                 setToken(await jwt_decode(res.token), res.user);
                 setForm({email: "", password: ""}) //reset the form
                 navigate("/")

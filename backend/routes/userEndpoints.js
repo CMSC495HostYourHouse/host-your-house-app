@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs') //used for encrypting the password
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys") //secret keys for things
 const express = require("express");
-
 const userEndpoints = express.Router(); //instance of express router that takes control of requests starting with /users
 const databaseConnection = require("../conn"); // This will help us connect to the database
 const ObjectId = require("mongodb").ObjectId; // This help convert the id from string to ObjectId for the _id.
@@ -28,6 +27,42 @@ userEndpoints.route("/users/:id").get(function (req, res) {
     .findOne(myquery, function (err, result) {
       if (err) throw err;
       res.json(result);
+    });
+});
+
+// This section will help you get a single user by email and return user info without password
+userEndpoints.route("/account/:email").get(function (req, res) {
+  let db_connect = databaseConnection.getDb();
+  let myquery = { email: req.params.email };
+  db_connect
+    .collection("users")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
+// This section will help you get a single user by email and return saved properties
+userEndpoints.route("/users/saved/:email").get(function (req, res) {
+  let db_connect = databaseConnection.getDb();
+  let myquery = { email: req.params.email };
+  db_connect
+    .collection("users")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result.saved);
+    });
+});
+
+// This section will help you get a single user by email and return reserved properties
+userEndpoints.route("/users/reserved/:email").get(function (req, res) {
+  let db_connect = databaseConnection.getDb();
+  let myquery = { email: req.params.email };
+  db_connect
+    .collection("users")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result.reserved);
     });
 });
 
@@ -58,7 +93,7 @@ userEndpoints.route("/login").post(function (req, response) {
 
   db_connect.collection("users").findOne(myUser, function (err, user) {
     if (err) return response.status(400).json({error: err.message});
-    if (!user) {
+    if (!user._id) {
       return response.status(400).json({error: 'User Not Found!'});
     } else {
       if (bcrypt.compareSync(req.body.password, user.password)) {

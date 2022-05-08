@@ -3,9 +3,7 @@ import './navBar.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import {checkToken} from "../../../utils/authToken";
 import {clearToken} from "../../../utils/authToken";
-import {grabUser} from "../../../utils/authToken";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
@@ -22,13 +20,13 @@ export const TopMenu = ({ user }) => {
         return (
             <section className='navBar'>
                 <Navbar bg="dark" expand="md" variant='dark' fixed="top">
-                    <Navbar.Brand href="/">Host A House</Navbar.Brand>
+                    <Navbar.Brand onClick={() => handleOnClick("/")}>Host A House</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="justify-content-end d-flex pe-5" style={{ width: "100%" }}>
                             {/* Todo: Get name from signed in user */}
-                            <Navbar.Text>Hello, {user.name}</Navbar.Text>
-
+														<Nav.Link className="justify-content-end d-flex pe-5" onClick={() => handleOnClick("/")}> Home </Nav.Link>
+                            <Navbar.Text>Hello, {(user.name != "") ? user.name : user.email}</Navbar.Text>
                             {/* inline styling to add the profile icon as the title */}
                             <NavDropdown title={ <div className='nav-dropdown-title' style={{display: "inline-block"}}>
                                                     <AccountCircleIcon/></div>} id="nav-dropdown" menuVariant='dark'>
@@ -48,10 +46,10 @@ export const TopMenu = ({ user }) => {
                 <Navbar bg="dark" expand="md" variant='dark' fixed="top">
                     <Navbar.Brand href="/">Host A House</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    
                     <Nav className="justify-content-end d-flex pe-5" style={{ width: "100%" }}>
-                        <Nav.Link href="/login">Login</Nav.Link>
-                        <Nav.Link href="/register">Register</Nav.Link>                            
+											<Nav.Link className="justify-content-end d-flex pe-5" onClick={() => handleOnClick("/")}> Home </Nav.Link>
+											<Nav.Link onClick={() => handleOnClick("/login")}>Login</Nav.Link>
+											<Nav.Link onClick={() => handleOnClick("/register")}>Register</Nav.Link>                            
                     </Nav>
                 </Navbar>
             </section>

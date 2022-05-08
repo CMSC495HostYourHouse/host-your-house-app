@@ -1,18 +1,14 @@
-const { ContactlessOutlined } = require('@mui/icons-material');
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
-const databaseConnection = require("../conn"); // This will help us connect to the database
 const House = require('../models/propertiesModel');
 const ObjectId = require("mongodb").ObjectId; // This help convert the id from string to ObjectId for the _id.
-
 
 // @desc Fetch all houses
 // @route GET /api/houses
 // @access Public
 router.get('/', asyncHandler(async (req, res) => {
     const houses = await House.find({})
-
     res.json(houses)
 }))
 
@@ -27,12 +23,12 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }))
 
 // search properties
-router.get('/searchSort/:paramA/:paramB/:paramC/:paramD/:paramE/', asyncHandler(async (req, res) => {
-		const sortOrSearch = req.params.paramA
-		const city = req.params.paramB; 
-		const price = req.params.paramC; 
-		const rating = req.params.paramD;
-		const sortType = req.params.paramE;
+router.get('/searchSort/:sortSearch/:city/:price/:rating/:sortType/', asyncHandler(async (req, res) => {
+		const sortOrSearch = req.params.sortSearch;
+		const city = req.params.city; 
+		const price = req.params.price; 
+		const rating = req.params.rating;
+		const sortType = req.params.sortType;
     let house = '';
 		// search if 0, sort if not
     if(sortOrSearch == 0){
@@ -67,7 +63,6 @@ router.get('/searchSort/:paramA/:paramB/:paramC/:paramD/:paramE/', asyncHandler(
 			if((city === 'default') && (price == 0) && (rating != 0)){
 				house = await searchRating(rating);
 			}
-			
 		} else{
 			if(sortType == 1){
 				house = await House.find({}).sort({city: "asc"});
@@ -139,6 +134,4 @@ const searchRating = async(rating) =>{
     const house = await House.find({rating: {$gte:ratevar, $lte:rating}})
     return house;
 }
-
-
 module.exports = router;
