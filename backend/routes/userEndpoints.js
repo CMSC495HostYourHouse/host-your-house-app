@@ -39,7 +39,6 @@ userEndpoints.route("/account/:email").get(function (req, res) {
     .findOne(myquery, function (err, result) {
       if (err) throw err;
       res.json(result);
-      // console.log(result)
     });
 });
 
@@ -77,6 +76,24 @@ userEndpoints.route("/users/save/:email/:save").post(function (req, response) {
     },
   }
   db_connect.collection('users').findOneAndUpdate(myquery, newValues, {upsert: true}, function (err, res) {
+    if (err) return response.status(400).json({error: err.message});
+    else {
+      response.json(res);
+    }
+  })
+});
+
+// This section will help you reserve a property to properties.
+userEndpoints.route("/saveReservation/:id").post(function (req, response) {
+  let db_connect = databaseConnection.getDb();
+  let myquery = { _id: ObjectId(req.params.id)};
+  let newValues = {
+    $push: {
+      reservations: { $each: [req.body.reservation1, req.body.reservation2]},
+    },
+		
+  }
+  db_connect.collection('properties').findOneAndUpdate(myquery, newValues, {upsert: true}, function (err, res) {
     if (err) return response.status(400).json({error: err.message});
     else {
       response.json(res);

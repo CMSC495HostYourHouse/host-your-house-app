@@ -33,6 +33,7 @@ class Property extends React.Component {
 
 	checkDate() {
 		if (!this.state.startDate.includes('a') && !this.state.endDate.includes('a')) {
+			var dateConflict = false;
 			var startDateInput = this.state.startDate;
 			var endDateInput = this.state.endDate;
 			var startNewRes = startDateInput.split("-");
@@ -40,26 +41,39 @@ class Property extends React.Component {
 			var newResStart = new Date(startNewRes[2], parseInt(startNewRes[0]) - 1, startNewRes[1]);
 			var newResEnd = new Date(endNewRes[2], parseInt(endNewRes[0]) - 1, endNewRes[1]);
 
-			let i = 0;
+			var prevResStartDate = "";
+			var dbResStart = '';
+			var dbStart = 0;
+			if (newResStart >= newResEnd) {
+				return 'Invalid dates entered!'
+			}
+			var i;
 			for (i = 0; i < this.state.items.reservations.length; i++) {
-				var prevResStartDate = this.state.items.reservations[i];
-				var prevResEndDate = this.state.items.reservations[i + 1];
-				// increment array since we are checking this item and the next item, reservations are in pairs.
-				i++
-
-				var dbResStart = prevResStartDate.split("/");
-				var dbResEnd = prevResEndDate.split("/");
-				var dbStart = new Date(dbResStart[2], parseInt(dbResStart[0]) - 1, dbResStart[1]);  // -1 because months are from 0 to 11
-				var dbEnd = new Date(dbResEnd[2], parseInt(dbResEnd[0]) - 1, dbResEnd[1]);
-				if (newResStart >= newResEnd) {
-					return 'Invalid dates entered!'
-				}
-				// check1 and check2 are the dates we searched with, to and from are the dates already reserved in database
-				if ((newResStart >= dbStart && newResStart <= dbEnd) || (newResEnd >= dbStart && newResEnd <= dbEnd) || (dbStart >= newResStart && dbStart <= newResEnd) || (dbEnd >= newResStart && dbEnd <= newResEnd)) {
-					return "Property is not available on dates entered."
+				if ((i+2)%2==1) {
+					// even items
+					
+					prevResStartDate = this.state.items.reservations[i];
+					dbResStart = prevResStartDate.split("/");
+					dbStart = new Date(dbResStart[2], parseInt(dbResStart[0]) - 1, dbResStart[1]);
 				} else {
-					return "Property is available on dates entered!"
-				}
+					
+					// odd items
+					var prevResEndDate = this.state.items.reservations[i];
+					var dbResEnd = prevResEndDate.split("/");
+					var dbEnd = new Date(dbResEnd[2], parseInt(dbResEnd[0]) - 1, dbResEnd[1]);
+
+					
+					// run the check on odd items since we now have start and end date ready to compare
+					if ((newResStart >= dbStart && newResStart <= dbEnd) || (newResEnd >= dbStart && newResEnd <= dbEnd) || (dbStart >= newResStart && dbStart <= newResEnd) || (dbEnd >= newResStart && dbEnd <= newResEnd)) {
+						dateConflict = true
+					}
+				}	
+			}
+
+			if(dateConflict == true){
+				return 'Property is not available on dates entered!'
+			}else{
+				return 'Property is available on dates entered!'
 			}
 		}
 	}
@@ -68,7 +82,7 @@ class Property extends React.Component {
 		let save = evt.target.value
 		if (checkToken()) {
 			let currentUser = grabUser();
-			console.log(save)
+			
 			fetch("http://localhost:5000/users/save/" + currentUser + '/' + save, {
 				method: "POST",
 				headers: {
