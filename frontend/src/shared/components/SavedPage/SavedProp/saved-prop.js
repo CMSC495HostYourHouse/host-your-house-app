@@ -2,12 +2,10 @@ import React, {useEffect, useState} from 'react';
 import ServiceList from './ServiceList';
 import './saved-prop.css';
 import ActivityList from './ActivityList';
-import PhotoSlider from './PhotoSlider';
 import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sanitizer, Masks, 
     SocialDistance, Wash, LocationOn, Flight} from '@mui/icons-material';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
-import CheckInCheckOutForm from './CheckInOutForm';
 import Image from 'react-bootstrap/Image';
 
 
@@ -67,8 +65,8 @@ async function getProperty(){
 								<ActivityList activities={activities_test}/>
 							</div>
 						</section>
-						{/* Check in check out days */}
-						<CheckInCheckOutForm />
+						{/* Check in check out days
+						<CheckInCheckOutForm /> */}
 					</section>
 				</Card.Body>
 			</Card>

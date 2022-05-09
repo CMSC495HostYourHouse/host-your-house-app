@@ -31,7 +31,7 @@ export const ReservePage = () => {
                 <PhotoSlider photos={photoUrls_test} />
 
                 {/* Pop-up form to get check in check out dates*/}
-                <div id='reserve-button'><CheckInCheckOutForm resHouse={resHouse} /></div>
+                <div id='reserve-button' ><CheckInCheckOutForm resHouse={resHouse} /></div>
 
 
                 {/* Button for reserving the viewed rental */}
