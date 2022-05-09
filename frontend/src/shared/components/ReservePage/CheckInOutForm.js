@@ -24,12 +24,15 @@ export const CheckInCheckOutForm = ({ resHouse }) => {
 
   const navigate = useNavigate();
 
-  function getUser() {
-    setUser(grabUser())
-  }
+  useEffect(() => {
+    const getUser = async () => {
+      setUser(grabUser())
+    }
+
+    getUser()
+  }, [])
 
   async function handleSaveReservation(saveReservation) {
-    await getUser()
     //code for actually hitting the endpoint
     await fetch("http://localhost:5000/reservation/", {
       method: "POST",
@@ -40,7 +43,7 @@ export const CheckInCheckOutForm = ({ resHouse }) => {
     }).then(async response => {
       const res = await response.json();
       if (response.status == '200') {
-        // navigate("/reserved")
+        navigate("/reserved")
         console.log(JSON.stringify({ email: user, reserved: saveReservation }))
       } else {
         throw res.error
