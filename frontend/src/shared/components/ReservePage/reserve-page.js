@@ -17,7 +17,6 @@ export const ReservePage = () => {
 
     const resHouse = location.state.items;
 
-    console.log(resHouse)
     return (
         <section className='overlay-light'>
             <section className='reservation-form'>
@@ -32,7 +31,7 @@ export const ReservePage = () => {
                 <PhotoSlider photos={photoUrls_test} />
 
                 {/* Pop-up form to get check in check out dates*/}
-                <div id='reserve-button'><CheckInCheckOutForm /></div>
+                <div id='reserve-button'><CheckInCheckOutForm resHouse={resHouse} /></div>
 
 
                 {/* Button for reserving the viewed rental */}

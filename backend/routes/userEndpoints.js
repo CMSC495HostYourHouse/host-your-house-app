@@ -75,7 +75,7 @@ userEndpoints.route("/users/register").post(function (req, response) {
   };
   db_connect.collection("users").insertOne(myUser, function (err, res) {
     if (err) {
-      return response.status(400).json({error: err.message});
+      return response.status(400).json({ error: err.message });
     }
     else {
       console.log(res);
@@ -92,24 +92,24 @@ userEndpoints.route("/login").post(function (req, response) {
   };
 
   db_connect.collection("users").findOne(myUser, function (err, user) {
-    if (err) return response.status(400).json({error: err.message});
+    if (err) return response.status(400).json({ error: err.message });
     if (!user._id) {
-      return response.status(400).json({error: 'User Not Found!'});
+      return response.status(400).json({ error: 'User Not Found!' });
     } else {
       if (bcrypt.compareSync(req.body.password, user.password)) {
-        const payload = {id: user.email, name: user.name};
+        const payload = { id: user.email, name: user.name };
         jwt.sign(payload, keys.secretOrKey, {
           expiresIn: 1440
         },
           (err, token) => {
             response.json({
-              success:true,
+              success: true,
               token: "Bearer " + token,
               user: user
             });
           });
       } else {
-        return response.status(400).json({error: 'Incorrect Password!'});
+        return response.status(400).json({ error: 'Incorrect Password!' });
       }
     }
   });
@@ -129,8 +129,20 @@ userEndpoints.route("/update").put(function (req, response) {
     },
   }
 
-  db_connect.collection('users').updateOne({email: req.body.email}, newValues, function (err, res) {
-    if (err) return response.status(400).json({error: err.message});
+  db_connect.collection('users').updateOne({ email: req.body.email }, newValues, function (err, res) {
+    if (err) return response.status(400).json({ error: err.message });
+    else {
+      response.json(res);
+    }
+  })
+});
+
+// This section will help you update a record by id.
+userEndpoints.route("/reservation").post(function (req, response) {
+  let db_connect = databaseConnection.getDb();
+
+  db_connect.collection('users').updateOne({ email: req.body.email }, { $push: { reserved: req.body.reserved } }, function (err, res) {
+    if (err) return response.status(400).json({ error: err.message });
     else {
       response.json(res);
     }
