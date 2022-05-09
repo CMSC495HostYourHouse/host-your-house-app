@@ -8,6 +8,7 @@ import { Modal } from 'react-bootstrap';
 import './reserve-page.css';
 import { grabUser } from "../../../utils/authToken";
 import { useNavigate } from 'react-router-dom';
+import {checkToken} from "../../../utils/authToken";
 
 
 export const CheckInCheckOutForm = ({ resHouse }) => {
@@ -135,6 +136,10 @@ function checkDate() {
   }
 
   const handleReservation = () => {
+		if(!checkToken()){
+			alert('Must be logged in to reserve!')
+			return
+		}
     let reservationData = [resHouse._id, `${inMonth}/${inDay}/${inYear}`, `${outMonth}/${outDay}/${outYear}`];
 		if(checkDate() == 0){
 			alert('Invalid dates entered! Start day cannot be after end day.')
