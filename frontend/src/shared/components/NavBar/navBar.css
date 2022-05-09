@@ -1,3 +1,7 @@
+.nav-brand {
+  cursor: pointer;
+}
+
 .accountDropdown {
   background-color: #01020394;
   color: rgb(255, 255, 255);
@@ -10,4 +14,8 @@
 .nav-dropdown-title {
   transform: scale(1.5);
   padding-right: 0.2rem;
+}
+
+.navbar-text{
+  cursor: default;
 }

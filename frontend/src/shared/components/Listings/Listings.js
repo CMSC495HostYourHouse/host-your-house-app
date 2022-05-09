@@ -4,13 +4,13 @@ import Card from 'react-bootstrap/Card'
 import Property from '../PropertyCards/Property';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from  'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
-class Listings extends React.Component{
+class Listings extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -21,16 +21,16 @@ class Listings extends React.Component{
 			sortOrSearch: 0,
 			sortType: 0,
 			month: 'a',
-			day:'a',
-			year:'a',
+			day: 'a',
+			year: 'a',
 			fullDate: 'a',
 			month2: 'a',
-			day2:'a',
-			year2:'a',
+			day2: 'a',
+			year2: 'a',
 			fullDate2: 'a',
 		};
 
-		this.handleCityChange= this.handleCityChange.bind(this);
+		this.handleCityChange = this.handleCityChange.bind(this);
 		this.handlePriceChange = this.handlePriceChange.bind(this);
 		this.handleRatingChange = this.handleRatingChange.bind(this);
 
@@ -41,54 +41,54 @@ class Listings extends React.Component{
 		this.handleMonthChange2 = this.handleMonthChange2.bind(this);
 		this.handleDayChange2 = this.handleDayChange2.bind(this);
 		this.handleYearChange2 = this.handleYearChange2.bind(this);
-		
+
 		this.handleSort = this.handleSort.bind(this);
 
 		this.handleSubmit = this.handleSubmit.bind(this)
-  }
+	}
 	// handle changes in search selection
 	handleCityChange(evt) {
-		this.setState({searchCity: evt.target.value});	
+		this.setState({ searchCity: evt.target.value });
 	}
 	handlePriceChange(evt) {
-		this.setState({searchPrice: evt.target.value});
+		this.setState({ searchPrice: evt.target.value });
 	}
 	handleRatingChange(evt) {
-		this.setState({searchRating: evt.target.value});
+		this.setState({ searchRating: evt.target.value });
 	}
 	// date1 handles
 	handleMonthChange(evt) {
-		this.setState({month: evt.target.value});
+		this.setState({ month: evt.target.value });
 	}
 	handleDayChange(evt) {
-		this.setState({day: evt.target.value});
+		this.setState({ day: evt.target.value });
 	}
 	handleYearChange(evt) {
-		this.setState({year: evt.target.value});	
+		this.setState({ year: evt.target.value });
 	}
-		// date2 handles
+	// date2 handles
 	handleMonthChange2(evt) {
-		this.setState({month2: evt.target.value});
+		this.setState({ month2: evt.target.value });
 	}
 	handleDayChange2(evt) {
-		this.setState({day2: evt.target.value});
+		this.setState({ day2: evt.target.value });
 	}
 	handleYearChange2(evt) {
-		this.setState({year2: evt.target.value});	
+		this.setState({ year2: evt.target.value });
 	}
 
-	handleSort(evt){
-		this.setState({sortType: evt.target.value});
+	handleSort(evt) {
+		this.setState({ sortType: evt.target.value });
 	}
-	
-	combineDate(){
-		this.setState({fullDate:  this.state.month + '-' + this.state.day + '-' + this.state.year})
+
+	combineDate() {
+		this.setState({ fullDate: this.state.month + '-' + this.state.day + '-' + this.state.year })
 	}
-	combineDate2(){
-			this.setState({fullDate2:  this.state.month2 + '-' + this.state.day2 + '-' + this.state.year2})
+	combineDate2() {
+		this.setState({ fullDate2: this.state.month2 + '-' + this.state.day2 + '-' + this.state.year2 })
 	}
 	// handle submit/reset buttons, calls method to update what is shown
-	handleSubmit(evt){
+	handleSubmit(evt) {
 		this.combineDate();
 		this.combineDate2();
 		this.updatelist();
@@ -97,42 +97,42 @@ class Listings extends React.Component{
 
 	// sets state to default values when reset in card header is clicked
 	handleReset(item1, item2, item3) {
-		this.setState({searchCity: item1});
-		this.setState({searchPrice: item2});
-		this.setState({searchRating: item3});
-		this.setState({sortOrSearch: 0});
-		this.setState({fullDate: 'a', year: 'a', month: 'a', day: 'a'})
-		this.setState({fullDate2: 'a', year2: 'a', month2: 'a', day2: 'a'})
-		
+		this.setState({ searchCity: item1 });
+		this.setState({ searchPrice: item2 });
+		this.setState({ searchRating: item3 });
+		this.setState({ sortOrSearch: 0 });
+		this.setState({ fullDate: 'a', year: 'a', month: 'a', day: 'a' })
+		this.setState({ fullDate2: 'a', year2: 'a', month2: 'a', day2: 'a' })
+
 	}
 
 	// switch between search and sort
-	switchSortSearch(option){
-		this.setState({sortOrSearch: option});
+	switchSortSearch(option) {
+		this.setState({ sortOrSearch: option });
 	}
 
 	// method that refreshes what is shown
-	updatelist(){
+	updatelist() {
 
-		fetch("http://localhost:5000/api/houses/searchSort/" + this.state.sortOrSearch + '/' + this.state.searchCity + '/' + this.state.searchPrice  + '/' + this.state.searchRating + '/' + this.state.sortType)
-				.then(async(res) => await res.json())
-				.then((json) => {
-					this.setState({
-						items: [],
-					});
-					this.setState({
-						items: json,
-						DataisLoaded: true
-					});
-				})
-		}
+		fetch("http://localhost:5000/api/houses/searchSort/" + this.state.sortOrSearch + '/' + this.state.searchCity + '/' + this.state.searchPrice + '/' + this.state.searchRating + '/' + this.state.sortType)
+			.then(async (res) => await res.json())
+			.then((json) => {
+				this.setState({
+					items: [],
+				});
+				this.setState({
+					items: json,
+					DataisLoaded: true
+				});
+			})
+	}
 
 	// initially call fetch to sever to get all data
 	componentDidMount() {
-	this.updatelist();
+		this.updatelist();
 	}
-    
-	render(){  
+
+	render() {
 		return (
 			<section>
 				<Container className='d-flex p-2 justify-content-center flex-row listings-container'>
@@ -140,31 +140,31 @@ class Listings extends React.Component{
 					<Card className='listings-card' bg='dark' text='dark' >
 						<Card.Header className='d-flex justify-content-between align-items-center'>
 							<h1 style={{ color: "white" }}>All Properties</h1>
-								<Form onSubmit={this.handleSubmit}>
-									<Button className="button-inverted" type="submit" onClick={()=>
-										this.handleReset('default', 0, 0)}><b>Reset</b></Button>
-								</Form>
-							</Card.Header>
+							<Form onSubmit={this.handleSubmit}>
+								<Button className="button-inverted" type="submit" onClick={() =>
+									this.handleReset('default', 0, 0)}><b>Reset</b></Button>
+							</Form>
+						</Card.Header>
 						<Card.Body>
 							<Row>
 								<Accordion>
-								{/* accordian for search, hides until clicked */}
-									<Accordion.Item eventKey="0" onClick={()=>
+									{/* accordian for search, hides until clicked */}
+									<Accordion.Item eventKey="0" onClick={() =>
 										this.switchSortSearch(0)}>
 										<Accordion.Header>Search</Accordion.Header>
 										<Accordion.Body className='accordStyle1'>
-										{/* first row is the labels for the form groups */}
+											{/* first row is the labels for the form groups */}
 											<Row className="row-style">
-												<Col style={{textAlign: 'center'}}><a>City</a></Col>
-												<Col style={{textAlign: 'center'}}><a>Price</a></Col>
-												<Col style={{textAlign: 'center'}}><a>Stars</a></Col>
-												<Col style={{textAlign: 'center'}}><a>Month</a></Col>
-												<Col style={{textAlign: 'center'}}><a>Day</a></Col>
-												<Col style={{textAlign: 'center'}}><a>Year</a></Col>
+												<Col style={{ textAlign: 'center' }}><a>City</a></Col>
+												<Col style={{ textAlign: 'center' }}><a>Price</a></Col>
+												<Col style={{ textAlign: 'center' }}><a>Stars</a></Col>
+												<Col style={{ textAlign: 'center' }}><a>Month</a></Col>
+												<Col style={{ textAlign: 'center' }}><a>Day</a></Col>
+												<Col style={{ textAlign: 'center' }}><a>Year</a></Col>
 												<Col></Col>
 											</Row>
 											<Form onSubmit={this.handleSubmit}>
-											{/* second row is the form groups */}
+												{/* second row is the form groups */}
 												<Row className='d-flex align-items-center'>
 													<Col>
 														{/* destination form group */}
@@ -202,16 +202,16 @@ class Listings extends React.Component{
 														</Form.Group>
 													</Col>
 													<Col>
-															{/* rating form group */}
+														{/* rating form group */}
 														<Form.Group name="rating" onChange={this.handleRatingChange}>
-														<Form.Select>
-															<option value={0}></option>
-															<option value={1}>0 to 1 Star</option>
-															<option value={2}>1 to 2 Star</option>
-															<option value={3}>2 to 3 Star</option>
-															<option value={4}>3 to 4 Star</option>
-															<option value={5}>4 to 5 Star</option>
-														</Form.Select>
+															<Form.Select>
+																<option value={0}></option>
+																<option value={1}>0 to 1 Star</option>
+																<option value={2}>1 to 2 Star</option>
+																<option value={3}>2 to 3 Star</option>
+																<option value={4}>3 to 4 Star</option>
+																<option value={5}>4 to 5 Star</option>
+															</Form.Select>
 														</Form.Group>
 													</Col>
 													<Col>
@@ -302,7 +302,7 @@ class Listings extends React.Component{
 															</Form.Select>
 														</Form.Group>
 													</Col>
-							
+
 													<Col><Button variant="success" type="submit" value={"Submit"}>Submit</Button></Col>
 												</Row>
 											</Form>
@@ -310,9 +310,9 @@ class Listings extends React.Component{
 									</Accordion.Item>
 
 									{/* Accordion for the sort bar, hides until clicked */}
-									<Accordion.Item eventKey="1" onClick={()=>
+									<Accordion.Item eventKey="1" onClick={() =>
 										this.switchSortSearch(1)}>
-									<Accordion.Header>Sort</Accordion.Header>
+										<Accordion.Header>Sort</Accordion.Header>
 										<Accordion.Body className='accordStyle1'>
 											<Form onSubmit={this.handleSubmit}>
 												<Row className='d-flex align-items-center row-style'>
@@ -334,21 +334,22 @@ class Listings extends React.Component{
 													</Col>
 													<Col><Button variant="success" type="submit">Sort</Button></Col>
 												</Row>
-											</Form>  
+											</Form>
 										</Accordion.Body>
 									</Accordion.Item>
 								</Accordion>
 							</Row>
 							{/* show the properties */}
 							<Row>
-								{this.state.items.map(item =>(
-									<Property featHouse = {item._id} startDate = {this.state.fullDate} endDate = {this.state.fullDate2}/>
-									
+								{this.state.items.map(item => (
+									<Property featHouse={item._id} startDate={this.state.fullDate} endDate={this.state.fullDate2} />
 								))}
 							</Row>
 						</Card.Body>
 					</Card>
 				</Container>
 			</section>
-)}}
+		)
+	}
+}
 export default Listings;
