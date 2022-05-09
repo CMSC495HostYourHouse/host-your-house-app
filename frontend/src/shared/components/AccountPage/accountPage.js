@@ -54,8 +54,9 @@ export const AccountPage = ({ user, setUser }) => {
       });
   }
 
-async function getUserData(){
-		await fetch("http://localhost:5000/account/" + grabUser(), {
+	useEffect(() => {
+    
+		fetch("http://localhost:5000/account/" + grabUser(), {
 				method: "GET",
 				headers: {
 						"Content-Type": "application/json",
@@ -63,11 +64,7 @@ async function getUserData(){
 		}).then(async(res) => {
 				setLocalChanges(await res.json())
 		})
-}
-
-	useEffect(() => {
-			getUserData()
-  	},[localUserChanges]);
+  	},[]);
 
      return (
         <section className='background'>
@@ -130,7 +127,7 @@ async function getUserData(){
                       <input
                           type="text"
                           placeholder="Zip Code"
-                          name="zipcode"
+                          name="zip"
                           value={localUserChanges.zip}
                           onChange={(e) => handleSetLocalChanges({zip: e.target.value})}/>
                   </div>

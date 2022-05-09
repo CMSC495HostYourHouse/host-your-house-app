@@ -8,7 +8,8 @@ import { Pool, CellWifi, LocalParking, FreeBreakfast, Pets, AirportShuttle, Sani
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
 import CheckInCheckOutForm from './CheckInOutForm';
-import Image from 'react-bootstrap/image';
+import Image from 'react-bootstrap/Image';
+
 
 export const ReservePage = (props) => {
 const [house] = useState({

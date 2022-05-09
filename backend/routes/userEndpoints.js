@@ -33,12 +33,13 @@ userEndpoints.route("/users/:id").get(function (req, res) {
 // This section will help you get a single user by email and return user info without password
 userEndpoints.route("/account/:email").get(function (req, res) {
   let db_connect = databaseConnection.getDb();
-  let myquery = { email: req.params.email };
+  let myquery = { email: req.params.email};
   db_connect
     .collection("users")
     .findOne(myquery, function (err, result) {
       if (err) throw err;
       res.json(result);
+      // console.log(result)
     });
 });
 
@@ -66,6 +67,23 @@ userEndpoints.route("/users/reserved/:email").get(function (req, res) {
     });
 });
 
+// This section will help you save a property to user.
+userEndpoints.route("/users/save/:email/:save").post(function (req, response) {
+  let db_connect = databaseConnection.getDb();
+  let myquery = { email: req.params.email };
+  let newValues = {
+    $push: {
+      saved: req.params.save
+    },
+  }
+  db_connect.collection('users').findOneAndUpdate(myquery, newValues, {upsert: true}, function (err, res) {
+    if (err) return response.status(400).json({error: err.message});
+    else {
+      response.json(res);
+    }
+  })
+});
+
 // This section will help you create a new record.
 userEndpoints.route("/users/register").post(function (req, response) {
   let db_connect = databaseConnection.getDb();
@@ -78,7 +96,6 @@ userEndpoints.route("/users/register").post(function (req, response) {
       return response.status(400).json({ error: err.message });
     }
     else {
-      console.log(res);
       response.json(res);
     }
   });
@@ -124,7 +141,7 @@ userEndpoints.route("/update").put(function (req, response) {
       email: req.body.email,
       address: req.body.address,
       city: req.body.city,
-      zip: req.body.zipcode,
+      zip: req.body.zip,
       state: req.body.state,
     },
   }
