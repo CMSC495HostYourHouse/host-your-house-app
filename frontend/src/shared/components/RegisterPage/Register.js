@@ -31,7 +31,9 @@ export const Register = () => {
             
             alert('Passwords do not match!')
             
-        } else {
+        } else if(form.password === ""){
+            alert('Password field can not be empty!')
+        }else {
             //creating a new user using the form data
             const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             const newUser = {...form};
