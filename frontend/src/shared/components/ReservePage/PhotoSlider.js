@@ -3,9 +3,9 @@ import Photo from './Photo';
 import PropTypes from 'prop-types'
 
 function PhotoSlider(props) {
-    return  (
+    return (
         <div className="photo-container">
-            {props.photos.map((photo, index) => <Photo key={index} photo={photo}/>)}
+            {props.photos.map((photo, index) => <Photo key={index} photo={photo} />)}
         </div>
     );
 }

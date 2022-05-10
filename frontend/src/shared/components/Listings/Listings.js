@@ -342,7 +342,7 @@ class Listings extends React.Component {
 							{/* show the properties */}
 							<Row>
 								{this.state.items.map(item => (
-									<Property featHouse={item._id} startDate={this.state.fullDate} endDate={this.state.fullDate2} />
+									<Property key={item._id} featHouse={item._id} startDate={this.state.fullDate} endDate={this.state.fullDate2} />
 								))}
 							</Row>
 						</Card.Body>

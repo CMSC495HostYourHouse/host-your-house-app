@@ -34,9 +34,9 @@ export const ReservedProperties = () => {
 		return (
 			<section>
 				<div className='homepagebackground'></div>
-				{reserved.map((item) => {
+				{reserved.map((item, index) => {
 					return (
-						<ReservedCards userReserved={item} />
+						<ReservedCards key={index} userReserved={item} />
 					);
 				})}
 			</section>
