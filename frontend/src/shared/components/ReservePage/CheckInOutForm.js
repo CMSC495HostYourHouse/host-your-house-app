@@ -329,3 +329,4 @@ export const CheckInCheckOutForm = ({ resHouse }) => {
 }
 
 export default CheckInCheckOutForm;
+

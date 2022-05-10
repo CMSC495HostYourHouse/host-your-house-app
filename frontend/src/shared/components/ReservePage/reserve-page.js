@@ -83,7 +83,7 @@ const amenities_test = [{
 }, {
     description: "Free Airport Shuttle",
     icon: AirportShuttle
-}];
+}]
 
 const services_test = [{
     description: "Cleaned with disinfectant",
