@@ -21,8 +21,6 @@ export const CheckInCheckOutForm = ({ resHouse }) => {
   const [outMonth, setOutMonth] = useState(1);
   const [outDay, setOutDay] = useState(1);
   const [outYear, setOutYear] = useState(2022);
-  // const [startDay, setStartDay] = useState();
-  // const [endDay, setEndDay] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -72,8 +70,6 @@ export const CheckInCheckOutForm = ({ resHouse }) => {
         prevResStartDate = houseToCheck.reservations[i];
         dbResStart = prevResStartDate.split("/");
         dbStart = new Date(dbResStart[2], parseInt(dbResStart[0]) - 1, dbResStart[1]);
-
-        console.log(newResStart + ' i am in even')
       } else {
         // odd items
 
