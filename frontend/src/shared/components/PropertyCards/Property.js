@@ -47,9 +47,9 @@ class Property extends React.Component {
 			if (newResStart >= newResEnd) {
 				return 'Invalid dates entered!'
 			}
-			var i;
-			for (i = 0; i < this.state.items.reservations.length; i++) {
-				if ((i+2)%2==1) {
+			
+			for (let i = 0; i < this.state.items.reservations.length; i++) {
+				if ((i%2==0)) {
 					// even items
 					
 					prevResStartDate = this.state.items.reservations[i];
