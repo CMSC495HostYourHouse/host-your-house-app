@@ -21,6 +21,8 @@ export const CheckInCheckOutForm = ({ resHouse }) => {
   const [outMonth, setOutMonth] = useState(1);
   const [outDay, setOutDay] = useState(1);
   const [outYear, setOutYear] = useState(2022);
+  // const [startDay, setStartDay] = useState();
+  // const [endDay, setEndDay] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -47,10 +49,10 @@ export const CheckInCheckOutForm = ({ resHouse }) => {
 		})
 	}
 
-function checkDate() {
+function checkDate(startDay, endDay) {
 		var dateConflict = false
-		var startDateInput = `${inMonth}/${inDay}/${inYear}`;
-		var endDateInput = `${outMonth}/${outDay}/${outYear}`;
+		var startDateInput = startDay;
+		var endDateInput = endDay;
 		var startNewRes = startDateInput.split("/");
 		var endNewRes = endDateInput.split("/");
 		var newResStart = new Date(startNewRes[2], parseInt(startNewRes[0]) - 1, startNewRes[1]);
@@ -62,32 +64,35 @@ function checkDate() {
 		if (newResStart >= newResEnd) {
 			return 0
 		}
-		var i;
-		for (i = 0; i < houseToCheck.reservations.length; i++) {
-			if ((i+2)%2==1) {
+		
+		for (var i = 0; i < houseToCheck.reservations.length; i++) {
+			if ((i%2==0)) {
 				// even items
+        
 				prevResStartDate = houseToCheck.reservations[i];
 				dbResStart = prevResStartDate.split("/");
 				dbStart = new Date(dbResStart[2], parseInt(dbResStart[0]) - 1, dbResStart[1]);
+        
+        console.log(newResStart + ' i am in even')
 			} else {
 				// odd items
+        
 				var prevResEndDate = houseToCheck.reservations[i];
 				var dbResEnd = prevResEndDate.split("/");
 				var dbEnd = new Date(dbResEnd[2], parseInt(dbResEnd[0]) - 1, dbResEnd[1]);
-
 				
 				// run the check on odd items since we now have start and end date ready to compare
 				if ((newResStart >= dbStart && newResStart <= dbEnd) || (newResEnd >= dbStart && newResEnd <= dbEnd) || (dbStart >= newResStart && dbStart <= newResEnd) || (dbEnd >= newResStart && dbEnd <= newResEnd)) {
 					dateConflict = true
-					console.log('ksjdhflhasjhfdljhsalkdhfja')
+					
 				}
 			}	
 		}
 		if(dateConflict == true){
-			console.log('conflict')
+			
 			return 1
 		}else{
-			console.log('nookjasjhdfajhsfd')
+			
 			return 2
 			
 		}
@@ -141,13 +146,14 @@ function checkDate() {
 			return
 		}
     let reservationData = [resHouse._id, `${inMonth}/${inDay}/${inYear}`, `${outMonth}/${outDay}/${outYear}`];
-		if(checkDate() == 0){
+    var checkResult = checkDate(reservationData[1], reservationData[2]);
+		if(checkResult == 0){
 			alert('Invalid dates entered! Start day cannot be after end day.')
 		}
-		if(checkDate() == 1){
+		if(checkResult == 1){
 			alert('Reservation conflicts with existing reservation for the property!')
 		}
-		if(checkDate() == 2){
+		if(checkResult == 2){
 			handleSaveReservation(reservationData)
 		}
   };
